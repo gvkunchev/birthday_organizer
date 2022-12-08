@@ -1,7 +1,7 @@
 #### Initial setup  
 * Create a project  
 https://console.cloud.google.com/projectcreate  
-* Create a Kubernetes Engine Cluster  
+* Create a Standard Kubernetes Engine Cluster  
 https://console.cloud.google.com/kubernetes/list/overview  
 * Install and configure kubectl and gcloud:  
 https://cloud.google.com/sdk/docs/install  
