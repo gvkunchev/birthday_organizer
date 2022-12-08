@@ -42,3 +42,5 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 
 TODO: Add gunicorn  
       Hide secrets (Django key and DB credentials)  
+      Take the actual code and include it  
+      Refactor the actual code  
