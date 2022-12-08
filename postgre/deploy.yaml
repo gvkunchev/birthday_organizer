@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: birthday-organizer-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: birthday-organizer-db
+  template:
+    metadata:
+      labels:
+        app: birthday-organizer-db
+    spec:
+      containers:
+      - name: postgre
+        image: "europe-central2-docker.pkg.dev/birthday-organizer-370909/birthday-organizer-containers/birthday-organizer-postgre-image:latest"
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgresdata
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgresql-data-claim

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: birthday-organizer-django
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: birthday-organizer-django
+  template:
+    metadata:
+      labels:
+        app: birthday-organizer-django
+    spec:
+      containers:
+      - name: django
+        image: "europe-central2-docker.pkg.dev/birthday-organizer-370909/birthday-organizer-containers/birthday-organizer-django-image:latest"
+        ports:
+        - containerPort: 80

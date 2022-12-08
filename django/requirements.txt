@@ -1,0 +1,8 @@
+Django==4.0.1
+django-user-agents
+django-sass-processor
+django-compressor
+psycopg2-binary
+tzdata
+whitenoise
+libsass
