@@ -40,7 +40,7 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl get pods``` -> Take a note of the pod  
     ```kubectl exec -i -t birthday-organizer-django-69f5c67b88-8vc7z -- /bin/bash```  
 
-TODO: Add gunicorn  
+TODO: Add apache  
       Test deployment on a fresh cluster to verify DB reinitialization
       Hide secrets (Django key and DB credentials)  
       Take the actual code and include it  
