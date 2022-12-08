@@ -17,3 +17,19 @@ spec:
         image: "europe-central2-docker.pkg.dev/birthday-organizer-370909/birthday-organizer-containers/birthday-organizer-django-image:latest"
         ports:
         - containerPort: 80
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgre-credentials
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgre-credentials
+              key: password
+        - name: DJANGO_KEY
+          valueFrom:
+            secretKeyRef:
+              name: django-key
+              key: djangokey

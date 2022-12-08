@@ -14,6 +14,8 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 ```gcloud builds submit --region=us-west2 --config cloudbuild.yaml```  
 
 #### Deploying based on already built images:  
+  * Define and upload all secrets one by one:  
+    ```kubectl apply -f secrets/<secret>.yaml```  
   * Create peristent volume:  
     ```kubectl apply -f volume/persistent_volume.yaml```  
   * Claim peristent volume:  
@@ -40,7 +42,6 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl get pods``` -> Take a note of the pod  
     ```kubectl exec -i -t birthday-organizer-django-69f5c67b88-cbl7l -- /bin/bash```  
 
-TODO: Hide secrets (Django key and DB credentials)  
-      Take the actual code and include it  
+TODO: Take the actual code and include it  
       Refactor the actual code  
       Include email alerts and some kind of Google Authentication  

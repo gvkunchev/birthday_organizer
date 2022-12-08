@@ -20,7 +20,19 @@ spec:
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
             name: postgresdata
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgre-credentials
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgre-credentials
+              key: password
       volumes:
         - name: postgresdata
           persistentVolumeClaim:
             claimName: postgresql-data-claim
+    
