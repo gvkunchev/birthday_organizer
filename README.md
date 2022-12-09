@@ -40,6 +40,6 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 #### Usefull commands:
   * Open terminal to a pod:  
     ```kubectl get pods``` -> Take a note of the pod  
-    ```kubectl exec -i -t birthday-organizer-django-5bd9877d4d-5t2cp -- /bin/bash```  
+    ```kubectl exec -i -t birthday-organizer-django-57bd655465-8bsv6 -- /bin/bash```  
   * Force update once a new container image is available:
     ```kubectl rollout restart deploy birthday-organizer-django```
