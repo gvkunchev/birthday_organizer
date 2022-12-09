@@ -10,7 +10,9 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 ```gcloud container clusters get-credentials birthday-organizer-cluster --region europe-central2 --project birthday-organizer-370909```  
 
 #### Building and uploading container images to Google Artifact Repository:  
-*  Ensuring that the repository location in the YAML file is updated, execute the following for each submodule (django and postgre):  
+* Create a Docker repository using this linke (changing project name):
+  https://console.cloud.google.com/artifacts/create-repo?project=birthday-organizer-370909
+* Ensuring that the repository location in the YAML file is updated, execute the following for each submodule (django and postgre):  
 ```gcloud builds submit --region=us-west2 --config cloudbuild.yaml```  
 
 #### Deploying based on already built images:  
@@ -34,12 +36,14 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl apply -f django/deploy.yaml```  
   * Expose the app pod by creating a service:  
     ```kubectl apply -f django/expose.yaml```  
+  * Migrate the database by opening a terminal in a django pod and running:  
+    ```python3 /var/birthday_organizer/manage.py migrate``` 
   * Get the external IP from the list of services:  
     ```kubectl get service/birthday-organizer-django-service```  
 
 #### Usefull commands:
   * Open terminal to a pod:  
     ```kubectl get pods``` -> Take a note of the pod  
-    ```kubectl exec -i -t birthday-organizer-django-57bd655465-8bsv6 -- /bin/bash```  
+    ```kubectl exec -i -t birthday-organizer-django-96c9f7568-gdx8h -- /bin/bash```  
   * Force update once a new container image is available:
     ```kubectl rollout restart deploy birthday-organizer-django```
