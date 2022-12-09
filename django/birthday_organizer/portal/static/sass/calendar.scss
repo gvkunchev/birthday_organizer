@@ -107,10 +107,15 @@
 			height: 90%;
 			overflow-y: auto;
 
+			.event-legend {
+				color: $theme_color_main_light;
+			}
+
 			a.calendar-event-link {
 				cursor: pointer;
 				display: block;
 				margin: 10px 0;
+				padding-left: 30px;
 			}
 
 			span {
@@ -118,6 +123,34 @@
 			}
 		}
 
+	}
+
+	.legend-wrapper {
+		text-align: center;
+
+		.dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			vertical-align: middle;
+			line-height: 1em;
+			margin: 0 5px;
+		}
+
+		.legend-participating {
+			color: $theme_color_main_dark;
+			.dot {
+				background-color: $theme_color_main_dark;
+				display: inline-block;
+			}
+		}
+		.legend-hosting {
+			color: $theme_color_main_light;
+			.dot {
+				background-color: $theme_color_main_light;
+				display: inline-block;
+			}
+		}
 	}
 
 	button {

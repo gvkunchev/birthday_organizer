@@ -238,10 +238,21 @@ header {
       padding: 5px;
       height: 90%;
       overflow-y: auto; }
-      #calendar .calendar-popup .calendar-popup-content a {
-        cursor: pointer; }
+      #calendar .calendar-popup .calendar-popup-content .event-legend {
+        color: #62CCC0; }
+      #calendar .calendar-popup .calendar-popup-content a.calendar-event-link {
+        cursor: pointer;
+        display: block;
+        margin: 10px 0;
+        padding-left: 30px; }
       #calendar .calendar-popup .calendar-popup-content span {
         margin-left: 5px; }
+  #calendar .legend-wrapper {
+    text-align: center; }
+    #calendar .legend-wrapper .legend-participating {
+      color: #368980; }
+    #calendar .legend-wrapper .legend-hosting {
+      color: #62CCC0; }
   #calendar button {
     color: #62CCC0;
     border: 0 none;

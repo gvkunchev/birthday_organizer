@@ -13,6 +13,7 @@ class Calendar {
         this.build_headers();
         this.build_weeks();
         this.build_buttons();
+        this.build_legend();
         this.build_popup();
         this.init_days();
     }
@@ -59,6 +60,18 @@ class Calendar {
         buttons_cell.append(this.next_button);
         buttons_row.append(buttons_cell);
         this.table.append(buttons_row);
+    }
+
+    build_legend() {
+        var dot = $("<div>").attr('class', 'dot');
+        var legend_participating = $("<div>").text('Participating').attr('class', 'legend-participating');
+        var legend_hosting = $("<div>").text('Hosting').attr('class', 'legend-hosting');
+        var legend = $("<div>").attr('class', 'legend-wrapper');
+        legend_participating.prepend(dot.clone());
+        legend_hosting.prepend(dot.clone());
+        legend.append(legend_participating);
+        legend.append(legend_hosting);
+        this.table.find('td').last().append(legend);
     }
 
     build_headers() {
@@ -187,9 +200,10 @@ class Calendar {
             this.popup_content.append($('<span>').text('No events'));
             return
         }
-        $(el).find('.event-marker').each(function(i, e){
+        function add_events_to_popup(i, e){
             var event_id = $(e).data('id');
             var event_data = $('#event-data-' + event_id);
+            console.log();
             var event = $('<span>').text(event_data.text())
             var link = $('<a>').attr({
                 'href': 'event?id=' + event_id,
@@ -199,7 +213,17 @@ class Calendar {
             link.append(icon);
             link.append(event);
             self.popup_content.append(link);
-        })
+        }
+        if ($(el).find('.event-marker.event-hosting').length){
+            var header = $('<div>').text('Hosting').addClass('event-legend');
+            self.popup_content.append(header);
+            $(el).find('.event-marker.event-hosting').each(add_events_to_popup);
+        }
+        if ($(el).find('.event-marker.event-participating').length){
+            var header = $('<div>').text('Participating').addClass('event-legend');
+            self.popup_content.append(header);
+            $(el).find('.event-marker.event-participating').each(add_events_to_popup);
+        }
     }
 
 
