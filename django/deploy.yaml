@@ -20,7 +20,6 @@ spec:
         env:
         - name: BIRTHDAY_ORGANIZER_ENV
           value: "prd"
-        env:
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
