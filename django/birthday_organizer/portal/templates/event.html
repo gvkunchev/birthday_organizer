@@ -31,6 +31,30 @@
         {% endif %}
         {% if event.host %}
             <div class="event-overview-host">Host: <b>{{ event.host.full_name }}</b></div>
+            <div class="event-overview-payment-method">
+                {% if event.host.iban %}
+                    IBAN:
+                    <b><span class='clipboard-data tooltip-trigger'
+                        {% if not request.user_agent.is_mobile %}
+                           title="Click to copy"
+                        {% endif %}
+                        >{{ event.host.iban }}</span></b>
+                {% else %}
+                    IBAN: <b>-</b>
+                {% endif %}
+            </div>
+            <div class="event-overview-payment-method">
+                {% if event.host.revolut %}
+                    Revolut:
+                    <b><span class='clipboard-data tooltip-trigger'
+                        {% if not request.user_agent.is_mobile %}
+                           title="Click to copy"
+                        {% endif %}
+                        >{{ event.host.revolut }}</span></b>
+                {% else %}
+                    Revolut: <b>-</b>
+                {% endif %}
+            </div>
             <div class="event-overview-total">Total: <b><span class='total-money'>{{ event.get_total_money|floatformat:2 }}</span> {{ currency }}</b></div>
         {% endif %}
         <hr/>

@@ -326,6 +326,8 @@ header {
     color: #eb6012; }
   .event-overview .event-overview-host {
     color: #0f596e; }
+  .event-overview .event-overview-payment-method {
+    color: #0f596e; }
   .event-overview .event-overview-total {
     color: #0f596e; }
 
