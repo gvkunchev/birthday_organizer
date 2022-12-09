@@ -102,6 +102,19 @@ def join_event(request):
         return redirect('/event?id={}'.format(req_event.pk))
 
 @login_required(login_url='/log_in')
+def become_host(request):
+    '''Become a host to an event.'''
+    req_event = get_object_or_404(Event, pk=request.GET['id'])
+    eligible_events = request.user.get_eligible_events()['participated_events']
+    eligible_events_ids = [x.pk for x in eligible_events]
+    if req_event.pk not in eligible_events_ids:
+        return redirect(events)
+    else:
+        req_event.host = request.user
+        req_event.save()
+        return redirect('/event?id={}'.format(req_event.pk))
+
+@login_required(login_url='/log_in')
 def add_payment(request):
     '''Add payment.'''
     try:

@@ -13,6 +13,10 @@
             {% else %}
                 {% if request.user.id not in event.participants_ids %}
                     <a href="join_event?id={{ event.id }}" class="button-link">Join event</a>
+                {% else %}
+                    {% if not event.host %}
+                        <a href="become_host?id={{ event.id }}" class="button-link">Become host</a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </div>
@@ -33,22 +37,23 @@
         <hr/>
     </div>
     <div class="content">
-        {% if event.host %}
             <div class="expand-on-mobile">
                 <table class="event-participant-list expand-on-mobile">
-                    <tr>
-                        <td class="add-payment-cell" colspan="3">
-                            Add a payment for
-                            <input type="number"
-                                    min="1"
-                                    data-user="{{ request.user.id }}"
-                                    data-event="{{ event.id }}"
-                                    class="add-payment-amount" />
-                                    {{ currency }} <span class="add-payment-button">
-                                                        <i class="fa fa-plus-circle"></i>
-                                                    </span>
-                        </td>
-                    </tr>
+                    {% if event.host %}
+                        <tr>
+                            <td class="add-payment-cell" colspan="3">
+                                Add a payment for
+                                <input type="number"
+                                        min="1"
+                                        data-user="{{ request.user.id }}"
+                                        data-event="{{ event.id }}"
+                                        class="add-payment-amount" />
+                                        {{ currency }} <span class="add-payment-button">
+                                                            <i class="fa fa-plus-circle"></i>
+                                                        </span>
+                            </td>
+                        </tr>
+                    {% endif %}
                     <tr>
                         <th>Participant Name</th>
                         <th colspan="2">Payments</th>
@@ -57,7 +62,6 @@
                     {% include 'event_participants.html' %}
                 </table>
             </div>
-        {% endif %}
 
         <div class="event-comments expand-on-mobile">
             <textarea

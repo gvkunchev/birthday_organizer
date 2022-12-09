@@ -20,5 +20,6 @@ urlpatterns = [
     path('remove_payment', views.remove_payment),
     path('add_comment', views.add_comment),
     path('get_total', views.get_total),
-    path('join_event', views.join_event)
+    path('join_event', views.join_event),
+    path('become_host', views.become_host)
 ]
