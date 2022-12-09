@@ -40,8 +40,12 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 #### Usefull commands:
   * Open terminal to a pod:  
     ```kubectl get pods``` -> Take a note of the pod  
-    ```kubectl exec -i -t birthday-organizer-django-69f5c67b88-cbl7l -- /bin/bash```  
+    ```kubectl exec -i -t birthday-organizer-django-5bd9877d4d-5t2cp -- /bin/bash```  
+  * Force update once a new container image is available:
+    ```kubectl rollout restart deploy birthday-organizer-django```
 
-TODO: Take the actual code and include it  
+TODO: 
+      Ensure available compiled css
+      Figure out how to roll put changes  
       Refactor the actual code  
       Include email alerts and some kind of Google Authentication  

@@ -1,0 +1,44 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="events" %}
+
+<div class="content">
+
+    <div class="center">
+        <form action="" method="post" class="basic-form add-payment-form">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>
+                        <label for="event">Event:</label>
+                        <span class="error">{{ errors.event }}</span>
+                    </td>
+                    <td>
+                        <input disabled="disabled" type="text" name="event" id="event" value="{{ event.name }}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="user">User:</label>
+                        <span class="error">{{ errors.user }}</span>
+                    </td>
+                    <td>
+                        <input disabled="disabled" type="text" name="user" id="user" value="{{ request.user.full_name }}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="amount">Amount:</label>
+                        <span class="error">{{ errors.amount }}</span>
+                    </td>
+                    <td>
+                        <input type="text" name="amount" id="amount" value="{{ request.POST.amount }}" />
+                    </td>
+                </tr>
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+{% include 'foot.html' %}

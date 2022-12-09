@@ -1,0 +1,28 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="home" %}
+<div class="welcome-message">Welcome, {{ request.user.full_name }}!</div>
+<div class="content">
+    <div id="calendar">
+        {% for event in participated_events %}
+            <div
+                class="hidden event-data"
+                id="event-data-{{ event.id }}"
+                data-type="participating"
+                data-id="{{ event.id }}"
+                data-year="{{ event.year }}"
+                data-month="{{ event.month }}"
+                data-day="{{ event.day }}">{{ event.name }}</div>
+        {% endfor %}
+        {% for event in hosted_events %}
+            <div
+                class="hidden event-data"
+                id="event-data-{{ event.id }}"
+                data-type="hosting"
+                data-id="{{ event.id }}"
+                data-year="{{ event.year }}"
+                data-month="{{ event.month }}"
+                data-day="{{ event.day }}">{{ event.name }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'foot.html' %}

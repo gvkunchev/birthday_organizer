@@ -1,0 +1,99 @@
+{% load birthday_organizer_extras %}
+<tr class="event-participant-list-item">
+
+    <td class="event-participant-name"
+        {% if payments|get_value_from_dict:participant.id|length == 0 %}
+            rowspan="1"
+        {% else %}
+            rowspan="{{ payments|get_value_from_dict:participant.id|length }}"
+        {% endif %}
+    >{{ participant.full_name }}</td>
+
+    {% for payment in payments|get_value_from_dict:participant.id %}
+        {% if forloop.counter > 1 %}<tr class="event-participant-list-item">{% endif %}
+            <td class="event-participant-payment">
+                {{ payment.amount|floatformat:2 }}{{payment.currency}}
+            </td>
+            <td class="event-participant-payment-confirmation">
+
+                {% if request.user == event.host %}
+
+                    {% if payment.user == request.user %}
+                        <span class="payment-remove-trigger payment-remove-icon tooltip-trigger"
+                            title="Click to remove payment."
+                            data-payment="{{ payment.id }}"
+                            id="{{ payment.id }}">
+                            <i class="fa fa-circle-xmark"></i>
+                        </span>
+                    {% else %}
+                        {% if payment.confirmed %}
+                            <span
+                                class="payment-confirmation-trigger-true payment-approved-icon tooltip-trigger"
+                                title="Click to remove confirmation."
+                                data-payment="{{ payment.id }}">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                            <span
+                                class="hidden payment-confirmation-trigger-false payment-approved-icon tooltip-trigger semitransparent"
+                                title="Click to confirm payment."
+                                data-payment="{{ payment.id }}">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                        {% else %}
+                            <span
+                                class="hidden payment-confirmation-trigger-true payment-approved-icon tooltip-trigger"
+                                title="Click to remove confirmation."
+                                data-payment="{{ payment.id }}">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                            <span
+                                class="payment-confirmation-trigger-false payment-approved-icon tooltip-trigger semitransparent"
+                                title="Click to confirm payment."
+                                data-payment="{{ payment.id }}">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                        {% endif %}
+                    {% endif %}
+
+                {% else %} {# request.user != event.host #}
+
+                    {% if payment.user == request.user %}
+                        {% if payment.confirmed %}
+                            <span class="payment-approved-icon tooltip-trigger"
+                                title="Payment is received">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                        {% else %}
+                            <span class="payment-remove-trigger payment-remove-icon tooltip-trigger"
+                                title="Click to remove payment."
+                                data-payment="{{ payment.id }}"
+                                id="{{ payment.id }}">
+                                <i class="fa fa-circle-xmark"></i>
+                            </span>
+                        {% endif %}
+                    {% else %}
+                        {% if payment.confirmed %}
+                            <span
+                                class="payment-approved-icon tooltip-trigger"
+                                title="Payment is confirmed.">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                        {% else %}
+                            <span
+                                class="payment-approved-icon tooltip-trigger semitransparent no-mouseover"
+                                title="Payment is made but not confirmed.">
+                                <i class="fa fa-check-circle"></i>
+                            </span>
+                        {% endif %}
+                    {% endif %}
+
+                {% endif %}
+            </td>
+        {% if forloop.counter > 1 %}</tr>{% endif %}
+    {% endfor %}
+
+    {% if payments|get_value_from_dict:participant.id|length == 0 %}
+        <td class="event-participant-payment">-</td>
+        <td class="event-participant-payment-confirmation">-</td>
+    {% endif %}
+</tr>

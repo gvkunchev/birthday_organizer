@@ -1,0 +1,27 @@
+@use 'variables';
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 5px;
+    padding-bottom: 20px;
+    max-width: 100%;
+
+    .content-block {
+        margin: 10px;
+        max-width: 100%;
+    }
+}
+
+.welcome-message {
+    color: $theme_color_main_dark;
+    font-weight: bold;
+    padding: 4px;
+}
+
+@media screen and (max-width: $mobile_limit) {
+    .content-block {
+        flex: 1;
+    }
+}

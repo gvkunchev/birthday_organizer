@@ -1,0 +1,106 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="events" %}
+
+<div class="content">
+
+    <div class="center">
+        <form action="" method="post" class="basic-form add-event-form">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    {% with event.name as default_name %}
+                    <td>
+                        <label for="name">Name:</label>
+                        <span class="error">{{ errors.name }}</span>
+                    </td>
+                    <td>
+                        <input type="text" name="name" id="name" value="{{ request.POST.name|default:default_name }}"/>
+                    </td>
+                    {% endwith %}
+                </tr>
+                <tr>
+                    {% with event.date_input as default_date %}
+                    <td>
+                        <label for="date">Date:</label>
+                        <span class="error">{{ errors.date }}</span>
+                    </td>
+                    <td>
+                        <input type="date" name="date" id="date" value="{{ request.POST.date|default:default_date }}" />
+                    </td>
+                    {% endwith %}
+                </tr>
+                <tr>
+                    {% with event.celebrant.id|stringformat:'s' as default_celebrant %}
+                    <td>
+                        <label for="celebrant">Celebrant:</label>
+                        <span class="error">{{ errors.celebrant }}</span>
+                    </td>
+                    <td>
+                        <select name="celebrant" id="celebrant">
+                            <option value="" selected="selected">Please select one</option>
+                            {% for user in users %}
+                                <option
+                                {% if user.id|stringformat:'s' == request.POST.celebrant|default:default_celebrant %}
+                                    selected="selected"
+                                {% endif %}
+                                value="{{ user.id|default:default_celebrant }}">{{ user.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    {% endwith %}
+                </tr>
+                <tr>
+                    {% with event.host.id|stringformat:'s' as default_host %}
+                    <td>
+                        <label for="host">Host:</label>
+                        <span class="error">{{ errors.host }}</span>
+                    </td>
+                    <td>
+                        <select name="host" id="host">
+                            <option value="" selected="selected">Please select one</option>
+                            {% for user in users %}
+                                <option
+                                    {% if user.id|stringformat:'s' == request.POST.host|default:default_host %}
+                                        selected="selected"
+                                    {% endif %}
+                                    value="{{ user.id|default:default_host }}">{{ user.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    {% endwith %}
+                </tr>
+                <tr>
+                    <td>
+                        <label for="participants">Participants:</label>
+                        <span class="error">{{ errors.participants }}</span>
+                    </td>
+                    <td>
+                        <select name="participants" id="participants" multiple="multiple">
+                            {% for user in users %}
+                                <option
+                                {% if participants %}
+                                    {% if user.id in participants %}
+                                        selected="selected"
+                                    {% endif %}
+                                {% else %}
+                                    {% if user.id in event.participants_ids %}
+                                        selected="selected"
+                                    {% endif %}
+                                {% endif %}
+                                value="{{ user.id }}">{{ user.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            {% if type == 'add' %}
+                <button type="submit">Create</button>
+            {% else %}
+                <button type="submit">Edit</button>
+            {% endif %}
+        </form>
+
+    </div>
+</div>
+
+{% include 'foot.html' %}

@@ -1,0 +1,14 @@
+{% if event.comments.all|length == 0 %}
+    <div class="no-comments">There are no comments yet.</div>
+{% endif %}
+
+{% for comment in event.sorted_comments %}
+    <fieldset class="event-comment">
+        <legend>
+            <span class="event-comment-author">{{ comment.user.full_name }}</span>
+            -
+            <span class="event-comment-date">{{ comment.human_timestamp }}</span>
+        </legend>
+        <div class="event-comment-content">{{ comment.content|linebreaks }}</div>
+    </fieldset>
+{% endfor %}

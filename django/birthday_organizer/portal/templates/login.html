@@ -1,0 +1,32 @@
+{% load static %}
+
+{% include 'head.html'%}
+
+<div class="center">
+    <img src="{% static 'strypes_logo.png' %}" class="login-logo"/>
+    <br/>
+    <i>Birthday Organizer</i>
+    <br/><br/>
+    <form action="" method="post" class="basic-form login-form">
+        {% csrf_token %}
+        Please log in or <a href="signup">sign up</a>:
+        <br/><br/>
+        {% if errors %}
+        <span class="error">{{ errors }}</span>
+        {% endif %}
+        <table>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" name="email" id="email" /></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" id="password" /></td>
+            </tr>
+        </table>
+        <button type="submit">Login</button>
+    </form>
+
+</div>
+
+{% include 'foot.html' %}

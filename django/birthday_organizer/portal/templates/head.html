@@ -1,0 +1,27 @@
+{% load static %}
+{% load sass_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'font_awesome.min.css' %}">
+        {% if request.user.theme == 'STR' %}
+            <link href="{% sass_src 'strypes_theme.scss' %}" rel="stylesheet" type="text/css" />
+        {% elif request.user.theme == 'PRH' %}
+            <link href="{% sass_src 'purplehaze_theme.scss' %}" rel="stylesheet" type="text/css" />
+        {% elif request.user.theme == 'CPR' %}
+            <link href="{% sass_src 'caprese_theme.scss' %}" rel="stylesheet" type="text/css" />
+        {% else %}
+            <link href="{% sass_src 'default_theme.scss' %}" rel="stylesheet" type="text/css" />
+        {% endif %}
+        <link href="{% static 'jquery-ui.css' %}" rel="stylesheet" type="text/css" />
+        <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'jquery-ui.min.js' %}"></script>
+        <script src="{% static 'calendar.js' %}"></script>
+        <script src="{% static 'general.js' %}"></script>
+        <link rel="icon" href="{% static 'strypes_logo.png' %}" type="image/png">
+        <title>Birthday Organizer</title>
+    </head>
+    <body>

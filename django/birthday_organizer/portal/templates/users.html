@@ -1,0 +1,41 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="users" %}
+
+<div class="content">
+    {% for user in users %}
+        <div class="content-block user-block">
+            <div class="user-block-name nowrap">{{ user.full_name }}</div>
+            <hr/>
+            <div class="user-block-content nowrap">Email: <b>{{ user.email }}</b></div>
+            <br/>
+            <div class="user-block-content nowrap">Birthday: <b>{{ user.human_birthday }}</b></div>
+            <br/>
+            <div class="user-block-content nowrap">
+                {% if user.iban %}
+                    IBAN:
+                    <b><span class='clipboard-data tooltip-trigger'
+                        {% if not request.user_agent.is_mobile %}
+                           title="Click to copy"
+                        {% endif %}
+                        >{{ user.iban }}</span></b>
+                {% else %}
+                    IBAN: <b>-</b>
+                {% endif %}
+            </div>
+            <br/>
+            <div class="user-block-content nowrap">
+                {% if user.revolut %}
+                    Revolut:
+                    <b><span class='clipboard-data tooltip-trigger'
+                        {% if not request.user_agent.is_mobile %}
+                           title="Click to copy"
+                        {% endif %}
+                        >{{ user.revolut }}</span></b>
+                {% else %}
+                    Revolut: <b>-</b>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% include 'foot.html' %}

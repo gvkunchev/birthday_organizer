@@ -1,0 +1,54 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="events" %}
+
+<div class="offset-wrapper">
+    <a href="add_event" class="button-link float-right">Add event</a>
+</div>
+<div class="clearfix"></div>
+
+<div class="content">
+
+    <fieldset class="event-type-set">
+        <legend>Hosted events</legend>
+        {% if hosted_events %}
+            <div class="content">
+                {% for event in hosted_events %}
+                    {% include 'event_block.html' with event=event %}
+                {% endfor %}
+            </div>
+        {% else %}
+            There are no events that you are hosting.
+        {% endif %}
+    </fieldset>
+
+
+    <fieldset class="event-type-set">
+        <legend>Participating events</legend>
+        {% if participated_events %}
+            <div class="content">
+                {% for event in participated_events %}
+                    {% include 'event_block.html' with event=event %}
+                {% endfor %}
+            </div>
+        {% else %}
+            There are no events that you are participating in.
+        {% endif %}
+    </fieldset>
+
+
+    <fieldset class="event-type-set">
+        <legend>Other events</legend>
+        {% if other_events %}
+            <div class="content">
+                {% for event in other_events %}
+                    {% include 'event_block.html' with event=event %}
+                {% endfor %}
+            </div>
+        {% else %}
+            There are no other events that you are eligible for.
+        {% endif %}
+    </fieldset>
+
+</div>
+
+{% include 'foot.html' %}

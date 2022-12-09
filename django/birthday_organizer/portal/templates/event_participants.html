@@ -1,0 +1,8 @@
+{% if event.host %}
+    {% include 'event_participant.html' with participant=event.host %}
+{% endif %}
+{% for participant in event.participants.all %}
+    {% if participant != event.host %}
+        {% include 'event_participant.html' with participant=participant %}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,79 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="events" %}
+
+
+{# This check is simply for people trying to access random event numbers #}
+{% if not event %}
+    Error: Event not found
+{% else %}
+    <div class="event-overview">
+        <div class="right">
+            {% if event.host == request.user %}
+                <a href="edit_event?id={{ event.id }}" class="button-link">Edit event</a>
+            {% else %}
+                {% if request.user.id not in event.participants_ids %}
+                    <a href="join_event?id={{ event.id }}" class="button-link">Join event</a>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="event-overview-name">
+            <span class="event-overview-date">{{ event.human_date }}</span>
+            -
+            {{ event.name }}
+        </div>
+        <hr/>
+        {% if event.celebrant %}
+            <div class="event-overview-celebrant">Celebrant: <b>{{ event.celebrant.full_name }}</b></div>
+        {% endif %}
+        {% if event.host %}
+            <div class="event-overview-host">Host: <b>{{ event.host.full_name }}</b></div>
+            <div class="event-overview-total">Total: <b><span class='total-money'>{{ event.get_total_money|floatformat:2 }}</span> {{ currency }}</b></div>
+        {% endif %}
+        <hr/>
+        <hr/>
+    </div>
+    <div class="content">
+        {% if event.host %}
+            <div class="expand-on-mobile">
+                <table class="event-participant-list expand-on-mobile">
+                    <tr>
+                        <td class="add-payment-cell" colspan="3">
+                            Add a payment for
+                            <input type="number"
+                                    min="1"
+                                    data-user="{{ request.user.id }}"
+                                    data-event="{{ event.id }}"
+                                    class="add-payment-amount" />
+                                    {{ currency }} <span class="add-payment-button">
+                                                        <i class="fa fa-plus-circle"></i>
+                                                    </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Participant Name</th>
+                        <th colspan="2">Payments</th>
+                    </tr>
+
+                    {% include 'event_participants.html' %}
+                </table>
+            </div>
+        {% endif %}
+
+        <div class="event-comments expand-on-mobile">
+            <textarea
+                id="comment"
+                data-user="{{ request.user.id }}"
+                data-event="{{ event.id }}"></textarea>
+            <input
+                type="button"
+                id="make_comment"
+                value="Post"/>
+            <div class="events-list">
+                {% include 'event_comments.html' %}
+            </div>
+        </div>
+
+    </div>
+{% endif %}
+
+{% include 'foot.html' %}

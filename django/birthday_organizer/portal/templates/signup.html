@@ -1,0 +1,75 @@
+{% load static %}
+
+{% include 'head.html'%}
+
+<div class="center">
+    <a href="home">
+        <img src="{% static 'strypes_logo.png' %}" class="login-logo"/>
+    </a>
+    <br/>
+    <i>Birthday Organizer</i>
+    <br/><br/>
+    <form action="" method="post" class="basic-form signup-form">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>
+                    <label for="first_name">First name:</label>
+                    <span class="error">{{ errors.first_name }}</span>
+                </td>
+                <td>
+                    <input type="text" name="first_name" id="first_name" value="{{ request.POST.first_name }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="last_name">Last Name:</label>
+                    <span class="error">{{ errors.last_name }}</span>
+                </td>
+                <td>
+                    <input type="last_name" name="last_name" id="last_name" value="{{ request.POST.last_name }}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                    <span class="error">{{ errors.email }}</span>
+                </td>
+                <td>
+                    <input type="text" name="email" id="email" value="{{ request.POST.email }}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password1">Password:</label>
+                    <span class="error">{{ errors.password1 }}</span>
+                </td>
+                <td>
+                    <input type="password" name="password1" id="password1" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password2">Confirm password:</label>
+                    <span class="error">{{ errors.password2 }}</span>
+                </td>
+                <td>
+                    <input type="password" name="password2" id="password2" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="birthdate">Birthday:</label>
+                    <span class="error">{{ errors.birthdate }}</span>
+                </td>
+                <td>
+                    <input type="date" name="birthdate" id="birthdate" value="{{ request.POST.birthdate }}" />
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Sign up</button>
+    </form>
+
+</div>
+
+{% include 'foot.html' %}

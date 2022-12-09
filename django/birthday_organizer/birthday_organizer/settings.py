@@ -36,11 +36,21 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'sass_processor',
+    'portal',
+    'django_user_agents'
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -73,7 +83,6 @@ WSGI_APPLICATION = 'birthday_organizer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# TODO: Save these credentials somewhere safe
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -121,8 +130,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+SASS_PROCESSOR_ROOT = BASE_DIR / 'portal/static/sass'
+STATICFILES_DIRS = [
+    BASE_DIR / "portal/static",
+    BASE_DIR / "portal/static/fonts",
+    BASE_DIR / "portal/static/images",
+    BASE_DIR / "portal/static/js",
+    BASE_DIR / "portal/static/css",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'portal.CustomUser'
+
+SESSION_ENGINE="django.contrib.sessions.backends.db"
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
