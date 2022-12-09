@@ -43,9 +43,3 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl exec -i -t birthday-organizer-django-5bd9877d4d-5t2cp -- /bin/bash```  
   * Force update once a new container image is available:
     ```kubectl rollout restart deploy birthday-organizer-django```
-
-TODO: 
-      Ensure available compiled css
-      Figure out how to roll put changes  
-      Refactor the actual code  
-      Include email alerts and some kind of Google Authentication  

@@ -39,7 +39,7 @@
     <div class="content">
             <div class="expand-on-mobile">
                 <table class="event-participant-list expand-on-mobile">
-                    {% if event.host %}
+                    {% if event.host and request.user.id in event.participants_ids or erequest.user.id == event.host.id %}
                         <tr>
                             <td class="add-payment-cell" colspan="3">
                                 Add a payment for

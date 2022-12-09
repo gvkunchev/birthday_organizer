@@ -1,15 +1,11 @@
-from calendar import WEDNESDAY
-import re
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
-from django.contrib.auth import (authenticate, login, logout,
-                                 update_session_auth_hash)
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from .forms import (SignUpForm, EditPersonalInformationForm, AddEventForm,
-                    AddPaymentForm, AddCommentForm)
-from .models import Theme, Event, CustomUser, Payment
+from .forms import AddEventForm, AddPaymentForm, AddCommentForm
+from users.models import Theme, CustomUser
+from base.models import Event, Payment
+
 
 @login_required(login_url='/log_in')
 def index(request):
@@ -20,7 +16,8 @@ def index(request):
 @login_required(login_url='/log_in')
 def events(request):
     '''Event page.'''
-    context = request.user.get_eligible_events()
+    all = Event.objects.all().exclude(celebrant=request.user)
+    context = request.user.get_eligible_events(all)
     return render(request, "events.html", context)
 
 @login_required(login_url='/log_in')
@@ -92,7 +89,8 @@ def edit_event(request):
 def join_event(request):
     '''Join to an event.'''
     req_event = get_object_or_404(Event, pk=request.GET['id'])
-    eligible_events = request.user.get_eligible_events()['other_events']
+    all = Event.objects.all().exclude(celebrant=request.user)
+    eligible_events = request.user.get_eligible_events(all)['other_events']
     eligible_events_ids = [x.pk for x in eligible_events]
     if req_event.pk not in eligible_events_ids:
         return redirect(events)
@@ -105,7 +103,8 @@ def join_event(request):
 def become_host(request):
     '''Become a host to an event.'''
     req_event = get_object_or_404(Event, pk=request.GET['id'])
-    eligible_events = request.user.get_eligible_events()['participated_events']
+    all = Event.objects.all().exclude(celebrant=request.user)
+    eligible_events = request.user.get_eligible_events(all)['participated_events']
     eligible_events_ids = [x.pk for x in eligible_events]
     if req_event.pk not in eligible_events_ids:
         return redirect(events)
@@ -201,66 +200,3 @@ def settings(request):
     '''User's settings page.'''
     context = {'themes': Theme.choices}
     return render(request, "settings.html", context)
-
-
-'''User authorization specifics'''
-
-
-@login_required(login_url='/log_in')
-def update_personal_info(request):
-    '''Update personal info and load user's settings.'''
-    form = EditPersonalInformationForm(request.POST, instance=request.user)
-    context = {'errors': form.errors, 'themes': Theme.choices}
-    if form.is_valid():
-        form.save()
-        context.update({'personal_form_message': 'Successfully updated.'})
-    return render(request, 'settings.html', context)
-
-@login_required(login_url='/log_in')
-def update_password(request):
-    '''Update password and load user's settings.'''
-    form = PasswordChangeForm(request.user, request.POST)
-    context = {'errors': form.errors, 'themes': Theme.choices}
-    if form.is_valid():
-        user = form.save()
-        update_session_auth_hash(request, user)
-        context.update({'password_form_message': 'Successfully updated.'})
-    return render(request, 'settings.html', context)
-
-def log_in(request):
-    '''Login page.'''
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
-        if user is None:
-            return render(request, "login.html",
-                          {'errors': 'Wrong credentials.'})
-        else:
-            login(request, user)
-            try:
-                return redirect(request.GET['next'])
-            except KeyError:
-                return redirect(index)
-    else:
-        return render(request, "login.html")
-
-def log_out(request):
-    '''Logout page.'''
-    logout(request)
-    return redirect(index)
-
-def signup(request):
-    '''Sign up page.'''
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password=raw_password)
-            login(request, user)
-            return redirect(index)
-        return render(request, 'signup.html', {'errors': form.errors})
-    else:
-        return render(request, 'signup.html')

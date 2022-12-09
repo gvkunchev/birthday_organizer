@@ -1,23 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Event, Payment, Comment
-
-
-class SignUpForm(UserCreationForm):
-
-    class Meta:
-        model = CustomUser
-        fields = ('first_name', 'last_name', 'email', 'birthdate',
-                  'password1', 'password2', )
-
-
-class EditPersonalInformationForm(forms.ModelForm):
-
-    class Meta:
-        model = CustomUser
-        fields = ('first_name', 'last_name', 'birthdate',
-                  'iban', 'revolut', 'theme')
+from base.models import Event, Payment, Comment
 
 
 class AddEventForm(forms.ModelForm):
@@ -46,14 +29,6 @@ class AddPaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ('event', 'user', 'amount', 'confirmed')
-
-
-class CommentAdminForm(forms.ModelForm):
-    content = forms.CharField( widget=forms.Textarea )
-
-    class Meta:
-        model = Comment
-        fields = ('user', 'event', 'content')
 
 
 class AddCommentForm(forms.ModelForm):

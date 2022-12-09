@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'users',
+    'base',
     'portal',
     'django_user_agents'
 ]
@@ -156,7 +158,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'portal.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 SESSION_ENGINE="django.contrib.sessions.backends.db"
 

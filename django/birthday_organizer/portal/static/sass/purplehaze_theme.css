@@ -249,10 +249,23 @@ header {
         margin-left: 5px; }
   #calendar .legend-wrapper {
     text-align: center; }
+    #calendar .legend-wrapper .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      vertical-align: middle;
+      line-height: 1em;
+      margin: 0 5px; }
     #calendar .legend-wrapper .legend-participating {
       color: #645c9f; }
+      #calendar .legend-wrapper .legend-participating .dot {
+        background-color: #645c9f;
+        display: inline-block; }
     #calendar .legend-wrapper .legend-hosting {
       color: #eed102; }
+      #calendar .legend-wrapper .legend-hosting .dot {
+        background-color: #eed102;
+        display: inline-block; }
   #calendar button {
     color: #eed102;
     border: 0 none;
