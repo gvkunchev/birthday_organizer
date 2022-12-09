@@ -39,20 +39,22 @@
     <div class="content">
             <div class="expand-on-mobile">
                 <table class="event-participant-list expand-on-mobile">
-                    {% if event.host and (request.user.id in event.participants_ids or erequest.user.id == event.host.id) %}
-                        <tr>
-                            <td class="add-payment-cell" colspan="3">
-                                Add a payment for
-                                <input type="number"
-                                        min="1"
-                                        data-user="{{ request.user.id }}"
-                                        data-event="{{ event.id }}"
-                                        class="add-payment-amount" />
-                                        {{ currency }} <span class="add-payment-button">
-                                                            <i class="fa fa-plus-circle"></i>
-                                                        </span>
-                            </td>
-                        </tr>
+                    {% if event.host %}
+                        {% if request.user.id in event.participants_ids or erequest.user.id == event.host.id %}
+                            <tr>
+                                <td class="add-payment-cell" colspan="3">
+                                    Add a payment for
+                                    <input type="number"
+                                            min="1"
+                                            data-user="{{ request.user.id }}"
+                                            data-event="{{ event.id }}"
+                                            class="add-payment-amount" />
+                                            {{ currency }} <span class="add-payment-button">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </span>
+                                </td>
+                            </tr>
+                        {% endif %}
                     {% endif %}
                     <tr>
                         <th>Participant Name</th>
