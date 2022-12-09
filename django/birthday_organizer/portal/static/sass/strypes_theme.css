@@ -238,8 +238,10 @@ header {
       padding: 5px;
       height: 90%;
       overflow-y: auto; }
-      #calendar .calendar-popup .calendar-popup-content a {
-        cursor: pointer; }
+      #calendar .calendar-popup .calendar-popup-content a.calendar-event-link {
+        cursor: pointer;
+        display: block;
+        margin: 10px 0; }
       #calendar .calendar-popup .calendar-popup-content span {
         margin-left: 5px; }
   #calendar button {

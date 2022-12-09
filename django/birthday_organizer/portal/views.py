@@ -60,6 +60,7 @@ def add_event(request):
         context['errors'] = form.errors
         if form.is_valid():
             form.save()
+            return redirect(events)
     return render(request, 'add_edit_event.html', context)
 
 @login_required(login_url='/log_in')

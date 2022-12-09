@@ -3,7 +3,7 @@ from portal import views
 
 
 urlpatterns = [
-    path('home', views.index),
+    path('', views.index),
     path('signup', views.signup),
     path('log_in', views.log_in),
     path('log_out', views.log_out),

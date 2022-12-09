@@ -193,7 +193,7 @@ class Calendar {
             var event = $('<span>').text(event_data.text())
             var link = $('<a>').attr({
                 'href': 'event?id=' + event_id,
-                'class': 'disable-link-color'
+                'class': 'disable-link-color calendar-event-link'
             });
             var icon = $('<i>').addClass('fa fa-external-link');
             link.append(icon);

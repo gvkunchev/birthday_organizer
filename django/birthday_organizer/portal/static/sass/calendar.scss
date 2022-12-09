@@ -107,8 +107,10 @@
 			height: 90%;
 			overflow-y: auto;
 
-			a {
+			a.calendar-event-link {
 				cursor: pointer;
+				display: block;
+				margin: 10px 0;
 			}
 
 			span {
