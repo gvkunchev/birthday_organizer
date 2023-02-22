@@ -10,7 +10,7 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
 ```gcloud container clusters get-credentials birthday-organizer-cluster --region europe-central2 --project birthday-organizer-370909```  
 
 #### Building and uploading container images to Google Artifact Repository:  
-* Create a Docker repository using this linke (changing project name):
+* Create a Docker repository using this link (changing project name):
   https://console.cloud.google.com/artifacts/create-repo?project=birthday-organizer-370909
 * Ensuring that the repository location in the YAML file is updated, execute the following for each submodule (django and postgre):  
 ```gcloud builds submit --region=us-west2 --config cloudbuild.yaml```  
