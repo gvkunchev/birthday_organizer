@@ -1,8 +1,11 @@
 from celery import shared_task
-from datetime import datetime
+from .email import Email
 
-@shared_task(name="create_birthday_event")
-def create_birthday_event(*args, **kwargs):
-    with open('/tmp/' + datetime.now().strftime('%H_%M_%S'), 'w'):
-        pass
+
+email = Email()
+
+
+@shared_task(name="sample_periodic_event")
+def sample_periodic_event(*args, **kwargs):
+    email.send_email(['gvkunchev@gmail.com'], 'Birthday organizer', 'It works!')
 

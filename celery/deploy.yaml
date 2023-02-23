@@ -36,3 +36,13 @@ spec:
             secretKeyRef:
               name: django-key
               key: djangokey
+        - name: GMAIL_PASS
+          valueFrom:
+            secretKeyRef:
+              name: gmail-credentials
+              key: gmailpass
+        - name: GMAIL_USER
+          valueFrom:
+            secretKeyRef:
+              name: gmail-credentials
+              key: gmailuser

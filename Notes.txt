@@ -1,4 +1,3 @@
-Include redis and celery
 Create automatic event creator for registered users and their birthdays
 Create alerts for upcoming events that are automatically created
 Create alert for upcoming events still without a host

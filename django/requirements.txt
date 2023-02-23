@@ -8,3 +8,4 @@ whitenoise
 libsass
 celery
 redis
+yagmail
