@@ -8,7 +8,8 @@ https://cloud.google.com/sdk/docs/install
 https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#gcloud  
 * Connect to the cluster for the project, for example:  
 ```gcloud container clusters get-credentials birthday-organizer-cluster --region europe-central2 --project birthday-organizer-370909```  
-
+* Select the project
+```gcloud config set project birthday-organizer-370909```
 #### Building and uploading container images to Google Artifact Repository:  
 * Create a Docker repository using this link (changing project name):
   https://console.cloud.google.com/artifacts/create-repo?project=birthday-organizer-370909
