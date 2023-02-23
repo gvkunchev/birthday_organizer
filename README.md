@@ -30,8 +30,8 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
   * Ensure "birthday_organizer" database exists. Open a terminal to the DB pod (see instructions below) and do:  
     ```su postgres```   
     ```psql -l```  
-    If you get an error "role does not exist", create a cluster:  
-    ```pg_createcluster 15 main```
+    If you get an error "role does not exist", create a cluster (15 is simply the version of postgre):  
+    ```pg_createcluster 15 main```  
     ```service postgresql restart```  
     If the database doesn't exist, create it:   
     ```psql```  
