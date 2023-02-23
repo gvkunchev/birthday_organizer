@@ -7,6 +7,7 @@ RUN apt install -y python3-pip
 RUN apt install -y apache2
 RUN apt install -y apache2-utils
 RUN apt install -y libapache2-mod-wsgi-py3
+RUN apt install -y redis-server
 
 # Install all python packages
 COPY requirements.txt .
@@ -21,4 +22,3 @@ RUN a2enmod wsgi
 
 # Expose the port and start Apache
 EXPOSE 80
-ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]

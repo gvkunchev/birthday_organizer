@@ -6,3 +6,5 @@ psycopg2-binary
 tzdata
 whitenoise
 libsass
+celery
+redis

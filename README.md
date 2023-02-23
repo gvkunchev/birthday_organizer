@@ -30,13 +30,16 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
   * Ensure "birthday_organizer" database exists. Open a terminal to the DB pod (see instructions below) and do:  
     ```su postgres```   
     ```psql -l```
-    If you get an error "role does not exist", create a cluster:
+    If you get an error "role does not exist", create a cluster:  
     ```pg_createcluster 15 main```
     ```service postgresql restart```  
-    If doesn't exist, create it:  
+    If doesn't exist, create it:   
     ```psql```  
     ```CREATE DATABASE birthday_organizer;```  
   * Apply deployment for the Django app:  
+    ```kubectl apply -f django/deploy.yaml```  
+  * Apply deployment for Celery (basically a clone of Django, but with Celery and Redis started):
+    This requires a separate deployment, because it muts be in a single pod to ensure single execution of all tasks.
     ```kubectl apply -f django/deploy.yaml```  
   * Expose the app pod by creating a service:  
     ```kubectl apply -f django/expose.yaml```  

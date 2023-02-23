@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /var/birthday_organizer
+if [ "$1" == "include-celery" ]; then
+    redis-server --daemonize yes
+    celery -A birthday_organizer worker -l info --logfile=celery_worker.log --detach
+    celery -A birthday_organizer beat -l info --logfile=celery_beat.log --detach
+fi
+apache2ctl -D FOREGROUND
