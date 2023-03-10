@@ -79,3 +79,41 @@ class CustomUser(AbstractUser):
         if next_birthday - timezone.now() < datetime.timedelta():
             next_birthday = self.birthdate.replace(year=timezone.now().year + 1)
         return next_birthday
+    
+    def get_overview(self, events):
+        """Get overview items for the home page."""
+        # Events is passed as argument, because base.models imports from here
+        # and thus base.models.Event cannot be imported here - circular import.
+        LIMIT = 12 # Show only the most recent items
+        overview_list = []
+        for event in sorted(events, key=lambda x: x.date, reverse=True):
+            self_participates = event.participants.filter(id=self.id)
+            # New events you are not part of
+            if event.host != self and not self_participates:
+                    if self != event.celebrant:
+                        overview_list.append({
+                            'name': event.name,
+                            'id': event.id,
+                            'type': 'new'
+                        })
+            if event.host is None and self_participates:
+                overview_list.append({
+                    'name': event.name,
+                    'id': event.id,
+                    'type': 'no_host'
+                })
+            if event.host and (event.host is self or self_participates):
+                for payment in event.payments.iterator():
+                    if self.payments.filter(id=payment.id):
+                        break
+                else:
+                    overview_list.append({
+                        'name': event.name,
+                        'id': event.id,
+                        'type': 'payment'
+                    })
+
+        # Events your are part of without a host yet
+        # Events you are part of (or you are a host) without payment
+
+        return {'overview_tasks': overview_list}

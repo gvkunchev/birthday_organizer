@@ -168,7 +168,8 @@ header {
 
 #calendar {
   max-width: 100%;
-  position: relative; }
+  position: relative;
+  margin: 0 10px; }
   #calendar table {
     border-spacing: 4px;
     background-color: white;
@@ -289,6 +290,34 @@ header {
       float: left; }
     #calendar button.calendar-button-right {
       float: right; }
+
+#overview {
+  position: relative;
+  background-color: white;
+  border: 2px solid #eb6012;
+  border-radius: 3px;
+  max-width: 100%;
+  margin: 0 10px;
+  padding: 0; }
+  #overview .overview-table {
+    border-spacing: 4px;
+    width: 350px; }
+  #overview .overview-title {
+    border-bottom: 2px solid #eb6012;
+    color: #eb6012;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center; }
+  #overview .overview-content-item {
+    color: #0f596e;
+    border-bottom: 1px solid #eb6012;
+    border-radius: 3px;
+    padding: 1px 15px;
+    max-width: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer; }
 
 .event-type-set {
   border: 2px solid #0f596e;
@@ -440,6 +469,9 @@ header {
 .cursor-pointer,
 .tooltip-trigger {
   cursor: pointer; }
+
+.ui-tooltip-content {
+  font-size: 100% !important; }
 
 .semitransparent {
   opacity: 0.5; }

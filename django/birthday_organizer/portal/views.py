@@ -11,6 +11,7 @@ from base.models import Event, Payment
 def index(request):
     '''Home page.'''
     context = request.user.get_events_involved_in()
+    context.update(request.user.get_overview(Event.objects.all()))
     return render(request, "home.html", context)
 
 @login_required(login_url='/log_in')

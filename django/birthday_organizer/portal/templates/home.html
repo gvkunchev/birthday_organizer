@@ -24,5 +24,41 @@
                 data-day="{{ event.day }}">{{ event.name }}</div>
         {% endfor %}
     </div>
+    <div class="content-block" id="overview">
+        <table class="overview-table">
+            <tr>
+                <td class="overview-title">Overview</td>
+            </tr>
+            {% if overview_tasks %}
+                {% for task in overview_tasks %}
+                    <tr>
+                        {% if task.type == 'new' %}
+                        <td class="overview-content-item tooltip-trigger" title="New event for you - {{ task.name }}">
+                            <a href="/event?id={{ task.id }}" class="disable-link-color">
+                                <i class="fa fa-gift"></i> New event for you - {{ task.name }}
+                            </a>
+                        </td>
+                        {% endif %}
+                        {% if task.type == 'no_host' %}
+                        <td class="overview-content-item tooltip-trigger" title="Host wanted - {{ task.name }}">
+                            <a href="/event?id={{ task.id }}" class="disable-link-color">
+                                <i class="fa fa-question"></i> Host wanted - {{ task.name }}
+                            </a>
+                        </td>
+                        {% endif %}
+                        {% if task.type == 'payment' %}
+                        <td class="overview-content-item tooltip-trigger" title="Payment missing - {{ task.name }}">
+                            <a href="/event?id={{ task.id }}" class="disable-link-color">
+                                <i class="fa fa-money-check"></i> Payment missing - {{ task.name }}
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td class="overview-content-item"><i class="fa fa-circle-check"></i> No pending tasks</td></tr>
+            {% endif %}
+    </table>
+    </div>
 </div>
 {% include 'foot.html' %}

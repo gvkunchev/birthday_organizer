@@ -79,10 +79,10 @@ class Event(models.Model):
 
 
 class Payment(models.Model):
-    user = models.ForeignKey(CustomUser, models.SET_NULL,
+    user = models.ForeignKey(CustomUser, models.CASCADE,
                              blank=True, null=True, related_name='payments')
     amount = models.FloatField(validators=[MinValueValidator(1.0)])
-    event = models.ForeignKey(Event, models.SET_NULL, blank=True, null=True,
+    event = models.ForeignKey(Event, models.CASCADE, blank=True, null=True,
                               related_name='payments')
     confirmed = models.BooleanField(default=False)
 
@@ -103,9 +103,9 @@ class Payment(models.Model):
                                       self.user.full_name)
 
 class Comment(models.Model):
-    user = models.ForeignKey(CustomUser, models.SET_NULL,
+    user = models.ForeignKey(CustomUser, models.CASCADE,
                              blank=True, null=True, related_name='comments')
-    event = models.ForeignKey(Event, models.SET_NULL, blank=True, null=True,
+    event = models.ForeignKey(Event, models.CASCADE, blank=True, null=True,
                               related_name='comments')
     timestamp = models.DateTimeField(auto_now=False, editable=True,
                                      auto_now_add=True)

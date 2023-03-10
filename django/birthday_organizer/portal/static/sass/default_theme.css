@@ -11,6 +11,16 @@ body {
   font-size: 20px;
   background-color: #F4F7F0; }
 
+.ui-dialog-titlebar {
+  background-color: #62CCC0 !important; }
+
+.ui-dialog-title {
+  background: transparent; }
+
+.ui-button:active {
+  background-color: #62CCC0 !important;
+  border: 1px solid black !important; }
+
 @use 'variables';
 .content {
   display: flex;
@@ -158,7 +168,8 @@ header {
 
 #calendar {
   max-width: 100%;
-  position: relative; }
+  position: relative;
+  margin: 0 10px; }
   #calendar table {
     border-spacing: 4px;
     background-color: white;
@@ -279,6 +290,30 @@ header {
       float: left; }
     #calendar button.calendar-button-right {
       float: right; }
+
+#overview {
+  position: relative;
+  background-color: white;
+  border: 2px solid #62CCC0;
+  border-radius: 3px;
+  max-width: 100%;
+  margin: 0 10px;
+  padding: 0; }
+  #overview .overview-table {
+    border-spacing: 4px;
+    width: 350px;
+    overflow-y: auto; }
+  #overview .overview-title {
+    border-bottom: 2px solid #62CCC0;
+    color: #62CCC0;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center; }
+  #overview .overview-content-item {
+    color: #368980;
+    border-bottom: 1px solid #62CCC0;
+    border-radius: 3px;
+    padding: 1px 15px; }
 
 .event-type-set {
   border: 2px solid #368980;
