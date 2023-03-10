@@ -103,3 +103,12 @@ def alert_for_new_comments(*args, **kwargs):
         email.send_email(all_emails,
                          f'New comments - "{event.name}"',
                          render_to_string('emails/new_comments.html', context))
+
+@shared_task(name="archive_events")
+def archive_events(*args, **kwargs):
+    """Archive passed events."""
+    all_events = Event.objects.all().filter(archived=False)
+    for event in all_events.iterator():
+        if event.date < timezone.now():
+            event.archived = True
+            event.save()

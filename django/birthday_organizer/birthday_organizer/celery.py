@@ -33,5 +33,9 @@ app.conf.beat_schedule = {
     'alert_for_new_comments': {
         'task': 'alert_for_new_comments',
         'schedule': crontab(minute=0), # Hourly
+    },
+    'archive_events': {
+        'task': 'archive_events',
+        'schedule': crontab(minute=10, hour=0), # Daily at 10 minutes midnight
     }
 }
