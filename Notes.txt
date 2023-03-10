@@ -1,8 +1,3 @@
-Create alerts for upcoming events that are automatically created
-Create alert for upcoming events still without a host
-Create alerts for users that there is a new event that they are eligible for
-Create alert for participants that haven't paid yet.
-Create "poke" button that can be used by the host to alert participants that they need to provide their input
 Create overview of pending tasks in the home page - what you need to comment about/what you need to pay for
 Add wishlists (probably a good idea to make a new model with a one-to-one relationship with CustomUser)
 Add user filter for searching

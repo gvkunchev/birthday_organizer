@@ -110,6 +110,7 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(auto_now=False, editable=True,
                                      auto_now_add=True)
     content = models.CharField(max_length=10000)
+    alert_sent = models.BooleanField(default=False)
 
     @property
     def human_timestamp(self):

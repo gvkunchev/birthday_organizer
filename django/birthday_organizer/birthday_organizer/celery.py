@@ -24,6 +24,14 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'create_birthday_event_per_user': {
         'task': 'create_birthday_event_per_user',
+        'schedule': crontab(minute=5, hour=0), # Daily at 5 minutes past midnight
+    },
+    'alert_for_events_without_host': {
+        'task': 'alert_for_events_without_host',
         'schedule': crontab(minute=0, hour=0), # Daily at midnight
+    },
+    'alert_for_new_comments': {
+        'task': 'alert_for_new_comments',
+        'schedule': crontab(minute=0), # Hourly
     }
 }
