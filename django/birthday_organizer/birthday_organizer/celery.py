@@ -22,8 +22,8 @@ app.autodiscover_tasks()
 
 
 app.conf.beat_schedule = {
-    'sample_periodic_event': {
-        'task': 'sample_periodic_event',
-        'schedule': crontab(),
+    'create_birthday_event_per_user': {
+        'task': 'create_birthday_event_per_user',
+        'schedule': crontab(minute=0, hour=0), # Daily at midnight
     }
 }

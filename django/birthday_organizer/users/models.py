@@ -1,3 +1,6 @@
+import datetime
+
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -68,3 +71,11 @@ class CustomUser(AbstractUser):
     def get_all_other_users(self):
         '''Get all users except self.'''
         return {'users': CustomUser.objects.all().exclude(id=self.id)}
+
+    def get_next_birthday(self):
+        '''Get the date for the next birthday.'''
+        next_birthday = self.birthdate.replace(year=datetime.datetime.now().year)
+        # If this year's birthday already passed, get next year's one
+        if next_birthday - timezone.now() < datetime.timedelta():
+            next_birthday = self.birthdate.replace(year=timezone.now().year + 1)
+        return next_birthday
