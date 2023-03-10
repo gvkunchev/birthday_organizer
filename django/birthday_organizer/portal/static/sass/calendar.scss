@@ -35,6 +35,11 @@
 		cursor: pointer;
 		color: $theme_color_main_dark;
 
+		&.today {
+			border: 1px solid $theme_color_main_light;
+			box-shadow: 0px 0px 3px 1px $theme_color_main_light inset;
+		}
+
 		&:hover {
 			box-shadow: 0px 0px 4px 1px $theme_color_main_light;
 		}

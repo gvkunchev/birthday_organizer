@@ -184,6 +184,9 @@ header {
     border-radius: 25%;
     cursor: pointer;
     color: #368980; }
+    #calendar .calendar-day.today {
+      border: 1px solid #62CCC0;
+      box-shadow: 0px 0px 3px 1px #62CCC0 inset; }
     #calendar .calendar-day:hover {
       box-shadow: 0px 0px 4px 1px #62CCC0; }
     #calendar .calendar-day.empty {
@@ -325,6 +328,8 @@ header {
   .event-overview .event-overview-date {
     color: #62CCC0; }
   .event-overview .event-overview-host {
+    color: #368980; }
+  .event-overview .event-overview-payment-method {
     color: #368980; }
   .event-overview .event-overview-total {
     color: #368980; }

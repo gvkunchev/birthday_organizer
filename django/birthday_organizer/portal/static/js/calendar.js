@@ -146,6 +146,8 @@ class Calendar {
 
         var first_date = new Date(year, month, 1);
         var last_day = new Date(year, month + 1, 0).getDate();
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
         // Get index of week day, normalizing so that Mon=0
         var first_date_week_index = first_date.getDay() - 1;
         if (first_date_week_index === -1){
@@ -163,8 +165,17 @@ class Calendar {
                 else{
                     // Normal days
                     if (temp_day <= last_day){
-                        day.text(temp_day++).removeClass('empty');
+                        day.text(temp_day).removeClass('empty');
                         this.set_events(day);
+                        // Highligh if this is today
+                        var day_obj = new Date(this.year, this.month, temp_day);
+                        if (day_obj.toDateString() == today.toDateString()){
+                            day.addClass('today');
+                        }
+                        else{
+                            day.removeClass('today');
+                        }
+                        temp_day++;
                     }
                     // Empty days after the end of the month
                     else{
