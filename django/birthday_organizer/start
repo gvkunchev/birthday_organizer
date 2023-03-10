@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /var/birthday_organizer
+python3 /var/birthday_organizer/manage.py migrate
 if [ "$1" == "include-celery" ]; then
     redis-server --daemonize yes
     celery -A birthday_organizer worker -l info --logfile=celery_worker.log --detach
