@@ -51,8 +51,8 @@ class CustomUser(AbstractUser):
 
     def get_events_involved_in(self):
         '''Get list of events the user is part of.'''
-        participating = self.participated_events.all()
-        hosting = self.hosted_events.all()
+        participating = self.participated_events.filter(archived=False)
+        hosting = self.hosted_events.filter(archived=False)
         return {
             'participated_events': participating.difference(hosting),
             'hosted_events': hosting
@@ -60,8 +60,8 @@ class CustomUser(AbstractUser):
 
     def get_eligible_events(self, all):
         '''Get all eligible events for a user based on all events as input.'''
-        participating = self.participated_events.all()
-        hosting = self.hosted_events.all()
+        participating = self.participated_events.filter(archived=False)
+        hosting = self.hosted_events.filter(archived=False)
         return {
             'participated_events': participating.difference(hosting),
             'hosted_events': hosting,

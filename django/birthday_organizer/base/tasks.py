@@ -57,7 +57,7 @@ def create_birthday_event_per_user(*args, **kwargs):
 @shared_task(name="alert_for_events_without_host")
 def alert_for_events_without_host(*args, **kwargs):
     """Alert for upcoming events that still doesn't have hosts."""
-    all_events = Event.objects.all()
+    all_events = Event.objects.all().filter(archived=False)
     all_users = CustomUser.objects.all()
     for event in all_events.iterator():
         if not datetime.timedelta() < event.date - timezone.now() < NO_HOST_ALERT_SPAN:
@@ -80,7 +80,7 @@ def alert_for_events_without_host(*args, **kwargs):
 @shared_task(name="alert_for_events_without_host")
 def alert_for_new_comments(*args, **kwargs):
     """Alert for new comments on events that the person participates in."""
-    all_events = Event.objects.all()
+    all_events = Event.objects.all().filter(archived=False)
     all_users = CustomUser.objects.all()
     for event in all_events.iterator():
         send_alert = False

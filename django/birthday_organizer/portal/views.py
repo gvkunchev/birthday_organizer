@@ -11,13 +11,13 @@ from base.models import Event, Payment
 def index(request):
     '''Home page.'''
     context = request.user.get_events_involved_in()
-    context.update(request.user.get_overview(Event.objects.all()))
+    context.update(request.user.get_overview(Event.objects.filter(archived=False)))
     return render(request, "home.html", context)
 
 @login_required(login_url='/log_in')
 def events(request):
     '''Event page.'''
-    all = Event.objects.all().exclude(celebrant=request.user)
+    all = Event.objects.filter(archived=False).exclude(celebrant=request.user)
     context = request.user.get_eligible_events(all)
     return render(request, "events.html", context)
 
@@ -25,7 +25,7 @@ def events(request):
 def event(request):
     '''Event page.'''
     try:
-        event = Event.objects.get(pk=request.GET['id'])
+        event = Event.objects.filter(archived=False).get(pk=request.GET['id'])
         if event.celebrant and event.celebrant.id == request.user.id:
             # Make sure no-one can access events created for them
             raise Event.DoesNotExist
@@ -35,8 +35,7 @@ def event(request):
     except KeyError:
         return redirect(events)
     except Event.DoesNotExist:
-        context = Event()
-        return render(request, "event.html", context)
+        return redirect(events)
 
 @login_required(login_url='/log_in')
 def users(request):
@@ -91,7 +90,7 @@ def edit_event(request):
             form.save()
             return redirect('/event?id={}'.format(event.pk))
     else:
-        event = Event.objects.get(pk=request.GET['id'])
+        event = Event.objects.filter(archived=False).get(pk=request.GET['id'])
         context['event'] = event
     return render(request, 'add_edit_event.html', context)
 
@@ -100,7 +99,7 @@ def edit_event(request):
 def join_event(request):
     '''Join to an event.'''
     req_event = get_object_or_404(Event, pk=request.GET['id'])
-    all = Event.objects.all().exclude(celebrant=request.user)
+    all = Event.objects.filter(archived=False).exclude(celebrant=request.user)
     eligible_events = request.user.get_eligible_events(all)['other_events']
     eligible_events_ids = [x.pk for x in eligible_events]
     if req_event.pk not in eligible_events_ids:
@@ -114,7 +113,7 @@ def join_event(request):
 def become_host(request):
     '''Become a host to an event.'''
     req_event = get_object_or_404(Event, pk=request.GET['id'])
-    all = Event.objects.all().exclude(celebrant=request.user)
+    all = Event.objects.filter(archived=False).exclude(celebrant=request.user)
     eligible_events = request.user.get_eligible_events(all)['participated_events']
     eligible_events_ids = [x.pk for x in eligible_events]
     if req_event.pk not in eligible_events_ids:
@@ -129,7 +128,7 @@ def add_payment(request):
     '''Add payment.'''
     try:
         form = AddPaymentForm(request.POST)
-        event = Event.objects.get(pk=request.POST['event'])
+        event = Event.objects.filter(archived=False).get(pk=request.POST['event'])
         if str(request.user.id) != request.POST['user']:
             raise Event.DoesNotExist
         if not event.eligible_for_actions(request.user):
@@ -148,7 +147,7 @@ def add_payment(request):
 def get_total(request):
     '''Get total amount for an event.'''
     try:
-        event = Event.objects.get(pk=request.POST['event'])
+        event = Event.objects.filter(archived=False).get(pk=request.POST['event'])
         if not event.eligible_for_actions(request.user):
             raise Event.DoesNotExist
         return JsonResponse({'result': 'success',
@@ -191,7 +190,7 @@ def remove_payment(request):
 def add_comment(request):
     '''Add a comment to an event.'''
     try:
-        event = Event.objects.get(pk=request.POST['event'])
+        event = Event.objects.filter(archived=False).get(pk=request.POST['event'])
         if not event.eligible_for_actions(request.user):
             raise Event.DoesNotExist
         if str(request.user.id) != request.POST['user']:

@@ -5,15 +5,15 @@ from .forms import CommentAdminForm
 
 class EventAdmin(admin.ModelAdmin):
     model = Event
-    ordering = ('date',)
+    ordering = ('date', 'archived')
     search_fields = ('date', 'name',)
     filter_horizontal = ()
     list_display = ('name', 'date', 'celebrant', 'host')
-    list_filter = ()
+    list_filter = ('archived', )
     fieldsets = (
             (None, {
                 "fields": (
-                    ('name', 'date', 'celebrant', 'host', 'participants')
+                    ('name', 'date', 'celebrant', 'host', 'participants', 'archived')
                 ),
             }),
         )
@@ -31,7 +31,7 @@ class PaymentAdmin(admin.ModelAdmin):
     search_fields = ('user__first_name', 'user__last_name', 'event__name')
     filter_horizontal = ()
     list_display = ('event', 'user', 'amount', 'confirmed')
-    list_filter = ()
+    list_filter = ('confirmed', )
     fieldsets = (
             (None, {
                 "fields": (
@@ -53,7 +53,7 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('event__first_name', 'user__last_name', 'event__name')
     filter_horizontal = ()
     list_display = ('event', 'timestamp', 'user')
-    list_filter = ()
+    list_filter = ('alert_sent', )
     form = CommentAdminForm
     readonly_fields=('timestamp',)
     fieldsets = (

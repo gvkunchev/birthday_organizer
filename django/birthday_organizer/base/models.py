@@ -13,6 +13,7 @@ class Event(models.Model):
     host = models.ForeignKey(CustomUser, models.SET_NULL,
                              blank=True, null=True,
                              related_name='hosted_events')
+    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -69,7 +70,7 @@ class Event(models.Model):
 
     def eligible_for_actions(self, user):
         '''Check if a user is eligible to make actions for the event.'''
-        return user == self.host or user in self.participants.all()
+        return not self.archived and (user == self.host or user in self.participants.all())
 
     @property
     def sorted_comments(self):
