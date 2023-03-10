@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/primeval-proton-378710/birthday-organier-containers/birthday-organizer-postgre-image', '.' ]
+  args: [ 'build', '-t', 'europe-central2-docker.pkg.dev/birthday-organizer-380215/containers/birthday-organizer-postgre-image', '.' ]
 images:
-- 'europe-west1-docker.pkg.dev/primeval-proton-378710/birthday-organier-containers/birthday-organizer-postgre-image'
+- 'europe-central2-docker.pkg.dev/birthday-organizer-380215/containers/birthday-organizer-postgre-image'

@@ -40,7 +40,7 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl apply -f django/deploy.yaml```  
   * Apply deployment for Celery (basically a clone of Django, but with Celery and Redis started).  
     This requires a separate deployment, because it must be in a single pod to ensure single execution of all tasks.
-    ```kubectl apply -f django/deploy.yaml```  
+    ```kubectl apply -f celery/deploy.yaml```  
   * Expose the app pod by creating a service:  
     ```kubectl apply -f django/expose.yaml```  
   * Migrate the database by opening a terminal in a django pod and running:  
