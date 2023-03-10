@@ -12,3 +12,16 @@ body {
     font-size: 20px;
     background-color: $theme_color_background_light;
 }
+
+.ui-dialog-titlebar {
+    background-color: $theme_color_main_light !important;
+}
+
+.ui-dialog-title {
+    background: transparent;
+}
+
+.ui-button:active {
+    background-color: $theme_color_main_light !important;
+    border: 1px solid black !important;
+}

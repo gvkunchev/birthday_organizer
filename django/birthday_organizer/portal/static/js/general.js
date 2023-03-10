@@ -124,6 +124,31 @@ $(document).ready(function(){
             }
         });
     })
+
+    //Bind confirm events
+    $('.confirm').each(function(i, e){
+        $(e).click(function(event){
+            $("<div>").html("Are you sure you want to delete this event?").dialog({
+                title: "Please confirm",
+                buttons: [
+                  {
+                    text: "OK",
+                    click: function() {
+                        window.location.href = $(e).attr('href');
+                        $(this).dialog("close");
+                    }
+                  },
+                  {
+                    text: "Cancel",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                  }
+                ]
+              });
+            event.preventDefault();
+        })
+    })
 });
 
 // Get csrftoken from cookies

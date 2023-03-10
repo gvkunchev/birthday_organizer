@@ -61,6 +61,16 @@ def add_event(request):
     return render(request, 'add_edit_event.html', context)
 
 @login_required(login_url='/log_in')
+def delete_event(request):
+    '''Delete an event page.'''
+    event = get_object_or_404(Event, pk=request.GET['id'])
+    # No access to this view if not requested by the host
+    if not event.host or event.host != request.user:
+         return redirect('/event?id={}'.format(event.pk))
+    event.delete()
+    return redirect(events)
+
+@login_required(login_url='/log_in')
 def edit_event(request):
     '''Add an event page.'''
     context = {
