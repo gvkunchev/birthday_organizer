@@ -17,7 +17,7 @@ NO_HOST_ALERT_SPAN = datetime.timedelta(days=14)
 
 # Domain name for constructing links
 # TODO: Put the real one once in production
-DOMAIN_NAME = 'http://http://34.118.114.251'
+DOMAIN_NAME = 'http://34.118.114.251'
 
 
 email = Email()
