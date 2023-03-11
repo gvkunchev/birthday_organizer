@@ -77,7 +77,7 @@ def alert_for_events_without_host(*args, **kwargs):
                          f'Host wanted - "{event.name}"',
                          render_to_string('emails/no_host_alert.html', context))
 
-@shared_task(name="alert_for_events_without_host")
+@shared_task(name="alert_for_new_comments")
 def alert_for_new_comments(*args, **kwargs):
     """Alert for new comments on events that the person participates in."""
     all_events = Event.objects.all().filter(archived=False)
