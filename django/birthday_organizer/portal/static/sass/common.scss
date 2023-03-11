@@ -46,11 +46,17 @@
     text-align: right;
 }
 
+.right-nomobile {
+    float: right;
+    text-align: right;
+}
+
 .clearfix:after {
     content: "";
     display: block;
     clear: both;
 }
+
 
 .hidden {
     display: none;
@@ -87,6 +93,12 @@
     #calendar table {
         margin: 10px auto;
         width: 100%;
+    }
+
+    .right-nomobile {
+        float: none;
+        text-align: center;
+        margin-bottom: 5px;
     }
 }
 

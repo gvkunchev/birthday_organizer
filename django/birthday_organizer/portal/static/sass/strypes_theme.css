@@ -452,7 +452,8 @@ header {
     height: 100px;
     vertical-align: middle;
     margin: 3px;
-    border: 1px solid #0f596e; }
+    border: 1px solid #0f596e;
+    background-color: #F4F7F0; }
   .event-comments #make_comment {
     vertical-align: middle;
     color: #0f596e;
@@ -497,6 +498,10 @@ header {
   float: right;
   text-align: right; }
 
+.right-nomobile {
+  float: right;
+  text-align: right; }
+
 .clearfix:after {
   content: "";
   display: block;
@@ -525,7 +530,11 @@ header {
     width: 100%; }
   #calendar table {
     margin: 10px auto;
-    width: 100%; } }
+    width: 100%; }
+  .right-nomobile {
+    float: none;
+    text-align: center;
+    margin-bottom: 5px; } }
 
 .offset-wrapper {
   margin: 5px; }

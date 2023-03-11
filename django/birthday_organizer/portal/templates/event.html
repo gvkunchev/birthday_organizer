@@ -7,7 +7,7 @@
     Error: Event not found
 {% else %}
     <div class="event-overview">
-        <div class="right">
+        <div class="right-nomobile">
             {% if event.host == request.user %}
                 <a href="edit_event?id={{ event.id }}" class="button-link"><i class="fa fa-edit"></i>Edit event</a>
                 <a href="delete_event?id={{ event.id }}" class="button-link confirm"><i class="fa fa-trash"></i> Delete event</a>
