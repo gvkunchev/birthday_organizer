@@ -96,12 +96,14 @@ class CustomUser(AbstractUser):
                             'id': event.id,
                             'type': 'new'
                         })
+            # Events your are part of without a host yet
             if event.host is None and self_participates:
                 overview_list.append({
                     'name': event.name,
                     'id': event.id,
                     'type': 'no_host'
                 })
+            # Events you are part of (or you are a host) without payment
             if event.host and (event.host is self or self_participates):
                 for payment in event.payments.iterator():
                     if self.payments.filter(id=payment.id):
@@ -112,8 +114,6 @@ class CustomUser(AbstractUser):
                         'id': event.id,
                         'type': 'payment'
                     })
-
-        # Events your are part of without a host yet
-        # Events you are part of (or you are a host) without payment
-
+            if len(overview_list) >= LIMIT:
+                break
         return {'overview_tasks': overview_list}
