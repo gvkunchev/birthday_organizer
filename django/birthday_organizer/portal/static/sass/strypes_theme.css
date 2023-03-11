@@ -516,7 +516,16 @@ header {
   .expand-on-mobile {
     width: 100%;
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+  #overview {
+    margin: 10px auto;
+    width: 100%; }
+  #calendar {
+    margin: 0 auto;
+    width: 100%; }
+  #calendar table {
+    margin: 10px auto;
+    width: 100%; } }
 
 .offset-wrapper {
   margin: 5px; }
