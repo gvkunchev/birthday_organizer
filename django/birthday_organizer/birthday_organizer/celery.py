@@ -36,6 +36,6 @@ app.conf.beat_schedule = {
     },
     'archive_events': {
         'task': 'archive_events',
-        'schedule': crontab(minute=10, hour=0), # Daily at 10 minutes midnight
+        'schedule': crontab(minute=10, hour=0), # Daily at 10 minutes past midnight
     }
 }
