@@ -94,6 +94,9 @@ class Calendar {
             for (var j=0; j<this.week_days.length; j++){
                 var day = $('<td>').addClass('calendar-day');
                 day.bind('click', function(event){
+                    if ($(this).hasClass('empty')){
+                        return;
+                    }
                     self.show_events(event.target);
                 })
                 week.append(day);
