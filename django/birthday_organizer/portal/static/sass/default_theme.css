@@ -301,8 +301,7 @@ header {
   padding: 0; }
   #overview .overview-table {
     border-spacing: 4px;
-    width: 350px;
-    overflow-y: auto; }
+    width: 350px; }
   #overview .overview-title {
     border-bottom: 2px solid #62CCC0;
     color: #62CCC0;
@@ -313,7 +312,12 @@ header {
     color: #368980;
     border-bottom: 1px solid #62CCC0;
     border-radius: 3px;
-    padding: 1px 15px; }
+    padding: 1px 15px;
+    max-width: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer; }
 
 .event-type-set {
   border: 2px solid #368980;
@@ -448,7 +452,8 @@ header {
     height: 100px;
     vertical-align: middle;
     margin: 3px;
-    border: 1px solid #368980; }
+    border: 1px solid #368980;
+    background-color: #F4F7F0; }
   .event-comments #make_comment {
     vertical-align: middle;
     color: #368980;
@@ -465,6 +470,9 @@ header {
 .cursor-pointer,
 .tooltip-trigger {
   cursor: pointer; }
+
+.ui-tooltip-content {
+  font-size: 100% !important; }
 
 .semitransparent {
   opacity: 0.5; }
@@ -490,6 +498,10 @@ header {
   float: right;
   text-align: right; }
 
+.right-nomobile {
+  float: right;
+  text-align: right; }
+
 .clearfix:after {
   content: "";
   display: block;
@@ -509,7 +521,20 @@ header {
   .expand-on-mobile {
     width: 100%;
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+  #overview {
+    margin: 10px auto;
+    width: 100%; }
+  #calendar {
+    margin: 0 auto;
+    width: 100%; }
+  #calendar table {
+    margin: 10px auto;
+    width: 100%; }
+  .right-nomobile {
+    float: none;
+    text-align: center;
+    margin-bottom: 5px; } }
 
 .offset-wrapper {
   margin: 5px; }

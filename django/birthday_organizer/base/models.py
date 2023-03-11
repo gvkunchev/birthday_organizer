@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 from users.models import CustomUser
+from django.utils import timezone
 
 
 class Event(models.Model):
@@ -108,12 +109,11 @@ class Comment(models.Model):
                              blank=True, null=True, related_name='comments')
     event = models.ForeignKey(Event, models.CASCADE, blank=True, null=True,
                               related_name='comments')
-    timestamp = models.DateTimeField(auto_now=False, editable=True,
-                                     auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now, editable=True)
     content = models.CharField(max_length=10000)
     alert_sent = models.BooleanField(default=False)
 
     @property
     def human_timestamp(self):
         '''Return timestamp in human readable format.'''
-        return self.timestamp.strftime("%Y %B %d %H:%M:%S")
+        return timezone.localtime(self.timestamp).strftime("%Y %B %d %H:%M:%S")
