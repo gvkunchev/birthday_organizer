@@ -5,5 +5,4 @@ Also good idea to include search for host and celebrant in the create event form
 Figure out how people will log-in - Google Authentication or manual, lookup in Bamboo or simply email domain name. Do we allow all strypes or whitelisted only? Do we want team separataions ot something like this?
 Send email on new users (probably validate the email)
 In case there are multiple envets requiring an alert email - send one email for all, not one for each event.
-Celery timezone ia still wrog
 Logging
