@@ -70,7 +70,7 @@ class CustomUser(AbstractUser):
 
     def get_all_other_users(self):
         '''Get all users except self.'''
-        return {'users': CustomUser.objects.all().exclude(id=self.id)}
+        return {'users': CustomUser.objects.all().exclude(id=self.id).exclude(is_superuser=True)}
 
     def get_next_birthday(self):
         '''Get the date for the next birthday.'''

@@ -28,6 +28,8 @@ def create_birthday_event_per_user(*args, **kwargs):
     """Create birthday events automatically."""
     all_users = CustomUser.objects.all()
     for user in all_users.iterator():
+        if user.is_superuser:
+            continue
         next_birthday = user.get_next_birthday()
         if not datetime.timedelta() < next_birthday - timezone.now() < EVENT_CREATOR_SPAN:
             continue # Birthday passed or not close enough
@@ -44,6 +46,8 @@ def create_birthday_event_per_user(*args, **kwargs):
         # Collect all users to receive an alert email for the new event
         all_emails = []
         for user in all_users.iterator():
+            if user.is_superuser:
+                continue
             if user != event.celebrant:
                 all_emails.append(user.email)
         context = {
@@ -67,6 +71,8 @@ def alert_for_events_without_host(*args, **kwargs):
         # Collect all users to receive an alert email
         all_emails = []
         for user in all_users.iterator():
+            if user.is_superuser:
+                continue
             if user != event.celebrant:
                 all_emails.append(user.email)
         context = {
@@ -94,6 +100,8 @@ def alert_for_new_comments(*args, **kwargs):
         # Collect all users to receive an alert email
         all_emails = []
         for user in all_users.iterator():
+            if user.is_superuser:
+                continue
             if event.eligible_for_actions(user):
                 all_emails.append(user.email)
         context = {
