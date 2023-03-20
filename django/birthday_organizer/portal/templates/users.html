@@ -32,7 +32,7 @@
                     Revolut:
                     <b>
                         {% if request.user_agent.is_mobile %}
-                            <a href="http://revolut.me/{{ event.host.revolut }}" class="disable-link-color">{{ event.host.revolut }}</a>
+                            <a href="http://revolut.me/{{ event.host.revolut }}" class="disable-link-color">{{ user.revolut }}</a>
                         {% else %}
                             <span class='clipboard-data tooltip-trigger' title="Click to copy">
                             {{ user.revolut }}
