@@ -10,7 +10,22 @@ $(document).ready(function(){
 
     // Set click-to-copy
     $('.clipboard-data').bind('click', function(){
-        navigator.clipboard.writeText($(this).text());
+        var input = $(this).find('.clipboard-data-input');
+        $(input).removeClass('hidden');
+        if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+          input.contenteditable = true;
+          input.readonly = false;
+          var range = document.createRange();
+          range.selectNodeContents(input);
+          var selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          input.setSelectionRange(0, 999999);
+        } else {
+          input.select()
+        }
+        document.execCommand('copy');
+        $(input).addClass('hidden');
     });
 
     // Engage tooltips

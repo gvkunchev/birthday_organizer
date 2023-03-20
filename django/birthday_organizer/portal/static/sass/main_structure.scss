@@ -23,5 +23,18 @@
 @media screen and (max-width: $mobile_limit) {
     .content-block {
         flex: 1;
+        width: 95% !important;
+    }
+
+    .content {
+        margin: 0 !important;
+    }
+
+    .content-block-event {
+        margin: 0 5px !important;
+    }
+
+    .content-block.user-block {
+        margin: 10px 0px !important;
     }
 }

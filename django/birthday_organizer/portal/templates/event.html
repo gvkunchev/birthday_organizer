@@ -35,11 +35,15 @@
             <div class="event-overview-payment-method">
                 {% if event.host.iban %}
                     IBAN:
-                    <b><span class='clipboard-data tooltip-trigger'
+                    <b>
+                        <span class='clipboard-data tooltip-trigger'
                         {% if not request.user_agent.is_mobile %}
                            title="Click to copy"
-                        {% endif %}
-                        >{{ event.host.iban }}</span></b>
+                        {% endif %}>
+                            {{ event.host.iban }}
+                            <input class="clipboard-data-input hidden" value="{{ event.host.iban }}" />
+                        </span>
+                    </b>
                 {% else %}
                     IBAN: <b>-</b>
                 {% endif %}
@@ -47,11 +51,16 @@
             <div class="event-overview-payment-method">
                 {% if event.host.revolut %}
                     Revolut:
-                    <b><span class='clipboard-data tooltip-trigger'
-                        {% if not request.user_agent.is_mobile %}
-                           title="Click to copy"
+                    <b>
+                        {% if request.user_agent.is_mobile %}
+                            <a href="http://revolut.me/{{ event.host.revolut }}" class="disable-link-color">{{ event.host.revolut }}</a>
+                        {% else %}
+                            <span class='clipboard-data tooltip-trigger' title="Click to copy">
+                            {{ event.host.revolut }}
+                            <input class="clipboard-data-input hidden" value="{{ event.host.revolut }}" />
+                            </span>
                         {% endif %}
-                        >{{ event.host.revolut }}</span></b>
+                    </b>
                 {% else %}
                     Revolut: <b>-</b>
                 {% endif %}

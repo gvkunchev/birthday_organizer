@@ -13,11 +13,15 @@
             <div class="user-block-content nowrap">
                 {% if user.iban %}
                     IBAN:
-                    <b><span class='clipboard-data tooltip-trigger'
+                    <b>
+                        <span class='clipboard-data tooltip-trigger'
                         {% if not request.user_agent.is_mobile %}
                            title="Click to copy"
-                        {% endif %}
-                        >{{ user.iban }}</span></b>
+                        {% endif %}>
+                        {{ user.iban }}
+                        <input class="clipboard-data-input hidden" value="{{ user.iban }}" />
+                        </span>
+                    </b>
                 {% else %}
                     IBAN: <b>-</b>
                 {% endif %}
@@ -26,11 +30,16 @@
             <div class="user-block-content nowrap">
                 {% if user.revolut %}
                     Revolut:
-                    <b><span class='clipboard-data tooltip-trigger'
-                        {% if not request.user_agent.is_mobile %}
-                           title="Click to copy"
+                    <b>
+                        {% if request.user_agent.is_mobile %}
+                            <a href="http://revolut.me/{{ event.host.revolut }}" class="disable-link-color">{{ event.host.revolut }}</a>
+                        {% else %}
+                            <span class='clipboard-data tooltip-trigger' title="Click to copy">
+                            {{ user.revolut }}
+                            <input class="clipboard-data-input hidden" value="{{ user.revolut }}" />
+                            </span>
                         {% endif %}
-                        >{{ user.revolut }}</span></b>
+                    </b>
                 {% else %}
                     Revolut: <b>-</b>
                 {% endif %}
