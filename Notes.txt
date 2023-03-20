@@ -6,3 +6,4 @@ Figure out how people will log-in - Google Authentication or manual, lookup in B
 Send email on new users (probably validate the email)
 In case there are multiple envets requiring an alert email - send one email for all, not one for each event.
 Logging
+Improve IBAN/Revolut clipboard/links (use revolut.me/<username>)
