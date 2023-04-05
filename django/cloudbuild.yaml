@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'europe-central2-docker.pkg.dev/birthday-organizer-380215/containers/birthday-organizer-django-image', '.' ]
+  args: [ 'build', '-t', 'europe-central2-docker.pkg.dev/birthday-organizer-382812/birthday-organizer-containers/birthday-organizer-django-image', '.' ]
 images:
-- 'europe-central2-docker.pkg.dev/birthday-organizer-380215/containers/birthday-organizer-django-image'
+- 'europe-central2-docker.pkg.dev/birthday-organizer-382812/birthday-organizer-containers/birthday-organizer-django-image'
