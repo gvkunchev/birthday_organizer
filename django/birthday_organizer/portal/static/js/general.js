@@ -1,17 +1,21 @@
 $(document).ready(function(){
 
     // Convert dates to localtime
-    $('.convert-date').each(function(i, e){
-        var date = new Date($(e).text() + ' UTC');
-        $(e).text(date.toLocaleDateString('en-GB', {
-            day : 'numeric',
-            month : 'short',
-            year : 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            second: 'numeric'
-        }));
-    })
+    function convert_dates(){
+        $('.convert-date').each(function(i, e){
+            var date = new Date($(e).text() + ' UTC');
+            $(e).text(date.toLocaleDateString('en-GB', {
+                day : 'numeric',
+                month : 'short',
+                year : 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric'
+            }));
+        })
+    }
+    convert_dates();
+
 
     // Handle mobile view toggle
     $('.expand-icon').click(function(){
@@ -148,6 +152,7 @@ $(document).ready(function(){
                     content = jQuery.parseHTML(data['content']);
                     $('.events-list').append(content);
                     input.val('');
+                    convert_dates();
                 }
             }
         });
