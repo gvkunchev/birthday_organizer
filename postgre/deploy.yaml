@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: postgre
-        image: "europe-central2-docker.pkg.dev/birthday-organizer-380215/containers/birthday-organizer-postgre-image:latest"
+        image: "europe-central2-docker.pkg.dev/birthday-organizer-382812/birthday-organizer-containers/birthday-organizer-postgre-image:latest"
         ports:
         - containerPort: 5432
         volumeMounts:
