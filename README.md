@@ -43,8 +43,6 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl apply -f celery/deploy.yaml```  
   * Expose the app pod by creating a service:  
     ```kubectl apply -f django/expose.yaml```  
-  * Migrate the database by opening a terminal in a django pod and running:  
-    ```python3 /var/birthday_organizer/manage.py migrate``` 
   * Get the external IP from the list of services:  
     ```kubectl get service/birthday-organizer-django-service```  
 
