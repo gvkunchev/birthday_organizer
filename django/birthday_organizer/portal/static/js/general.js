@@ -1,5 +1,18 @@
 $(document).ready(function(){
 
+    // Convert dates to localtime
+    $('.convert-date').each(function(i, e){
+        var date = new Date($(e).text() + ' UTC');
+        $(e).text(date.toLocaleDateString('en-GB', {
+            day : 'numeric',
+            month : 'short',
+            year : 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric'
+        }));
+    })
+
     // Handle mobile view toggle
     $('.expand-icon').click(function(){
         $('#nav-menu').toggleClass('mobile-view');

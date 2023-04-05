@@ -12,6 +12,9 @@ from users.models import CustomUser
 # Time before a birthday that should trigger event creation
 EVENT_CREATOR_SPAN = datetime.timedelta(days=14)
 
+# Time after a birthday that should trigger event archive
+EVENT_ARCHIVER_SPAN = datetime.timedelta(days=14)
+
 # Time before an event that should trigger an alert if no host yet
 NO_HOST_ALERT_SPAN = datetime.timedelta(days=14)
 
@@ -117,6 +120,6 @@ def archive_events(*args, **kwargs):
     """Archive passed events."""
     all_events = Event.objects.all().filter(archived=False)
     for event in all_events.iterator():
-        if event.date < timezone.now():
+        if timezone.now() - event.date > EVENT_CREATOR_SPAN:
             event.archived = True
             event.save()

@@ -13,9 +13,6 @@ RUN apt install -y redis-server
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# Set the timezone
-RUN DEBIAN_FRONTEND=noninteractive TZ=Europe/Sofia apt-get -y install tzdata
-
 # Copy the Django project
 COPY birthday_organizer /var/birthday_organizer
 

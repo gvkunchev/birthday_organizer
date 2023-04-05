@@ -7,7 +7,7 @@
         <legend>
             <span class="event-comment-author">{{ comment.user.full_name }}</span>
             -
-            <span class="event-comment-date">{{ comment.human_timestamp }}</span>
+            <span class="event-comment-date convert-date">{{ comment.human_timestamp }}</span>
         </legend>
         <div class="event-comment-content">{{ comment.content|linebreaks }}</div>
     </fieldset>

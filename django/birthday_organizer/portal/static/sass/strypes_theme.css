@@ -45,7 +45,9 @@ body {
   .content {
     margin: 0 !important; }
   .content-block-event {
-    margin: 0 5px !important; } }
+    margin: 0 5px !important; }
+  .content-block.user-block {
+    margin: 10px 0px !important; } }
 
 .footer {
   font-size: 10px;
