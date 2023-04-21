@@ -153,6 +153,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "portal/static/images",
     BASE_DIR / "portal/static/js",
     BASE_DIR / "portal/static/css",
+    BASE_DIR / "portal/static/sass",
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
