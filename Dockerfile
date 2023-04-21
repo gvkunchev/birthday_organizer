@@ -29,5 +29,4 @@ RUN a2enmod wsgi
 # Expose the port and start Apache
 EXPOSE 80
 
-#CMD ["bash", "/var/birthday_organizer/start", "include-celery"]
-CMD ["bash", "/var/birthday_organizer/start"]
+CMD ["bash", "/var/birthday_organizer/start", "include-celery"]
