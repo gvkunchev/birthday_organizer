@@ -3,8 +3,18 @@ import datetime
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 
 from .model_managers import UserManager
+
+
+def validate_strypes(value):
+    if not value.endswith('strypes.eu'):
+        raise ValidationError(
+            "Only Strypes employees are allowed",
+            params={"value": value},
+        )
+
 
 class Theme(models.TextChoices):
     STRYPES = 'STR', 'Strypes'
@@ -22,7 +32,7 @@ class CustomUser(AbstractUser):
         default=Theme.STRYPES,
     )
 
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, validators=[validate_strypes])
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     birthdate = models.DateTimeField(auto_now=False, editable=True)
