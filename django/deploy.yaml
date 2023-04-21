@@ -21,6 +21,8 @@ spec:
         env:
         - name: BIRTHDAY_ORGANIZER_ENV
           value: "prd"
+        - name: POSTGRES_HOSTNAME
+          value: "birthday-organizer-db-service"
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:

@@ -97,7 +97,7 @@ if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
             'NAME': 'birthday_organizer',
             'USER': os.environ['POSTGRES_USER'],
             'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-            'HOST': 'birthday-organizer-db-service',
+            'HOST': os.environ['POSTGRES_HOSTNAME'],
             'PORT': '5432',
         }
     }
