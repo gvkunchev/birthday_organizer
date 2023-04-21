@@ -10,14 +10,14 @@ RUN apt install -y libapache2-mod-wsgi-py3
 RUN apt install -y redis-server
 
 # Install all python packages
-COPY requirements.txt .
+COPY django/requirements.txt .
 RUN pip3 install -r requirements.txt
 
 # Copy the Django project
-COPY birthday_organizer /var/birthday_organizer
+COPY django/birthday_organizer /var/birthday_organizer
 
 # Prepare Apache
-ADD apache.conf /etc/apache2/sites-available/000-default.conf
+ADD django/apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod wsgi
 
 # Expose the port and start Apache
