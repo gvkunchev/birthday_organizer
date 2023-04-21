@@ -28,7 +28,8 @@ app.conf.beat_schedule = {
     },
     'alert_for_events_without_host': {
         'task': 'alert_for_events_without_host',
-        'schedule': crontab(minute=0, hour=0), # Daily at midnight UTC
+        #'schedule': crontab(minute=0, hour=0), # Daily at midnight UTC
+        'schedule': crontab(minute='*'), # Daily at midnight UTC
     },
     'alert_for_new_comments': {
         'task': 'alert_for_new_comments',
