@@ -1,3 +1,9 @@
+# This is exact copy of django/Dockerfile,
+# but it has its paths adjusted to look into the django subdirectory
+# and also includes the CMD line at the end to start the tool directly.
+# This Dockerfile will start the tool in a single container (useful for render.com)
+# while the yaml setup and the README.md explain how to start this in GCP.
+
 FROM ubuntu
 
 # Install all generic software
@@ -23,4 +29,4 @@ RUN a2enmod wsgi
 # Expose the port and start Apache
 EXPOSE 80
 
-CMD ["bash", "/var/birthday_organizer/start"]
+CMD ["bash", "/var/birthday_organizer/start", "include-celery"]
