@@ -27,9 +27,10 @@ else:
     SECRET_KEY = "development-dummy-secret-key"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['birthday-organizer.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://birthday-organizer.onrender.com']
 
 
 # Application definition
