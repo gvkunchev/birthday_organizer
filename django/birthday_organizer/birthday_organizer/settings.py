@@ -146,7 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-SASS_PROCESSOR_ROOT = BASE_DIR / 'portal/static/sass'
+SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "portal/static",
     BASE_DIR / "portal/static/fonts",
@@ -155,7 +155,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "portal/static/css",
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
