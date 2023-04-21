@@ -1,0 +1,18 @@
+.user-block {
+    border: 1px solid $theme_color_main_light;
+    border-radius: 3px;
+    padding: 5px;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    flex: none;
+
+    .user-block-content {
+        font-size: 70%;
+    }
+
+    .user-block-name {
+        font-weight: bold;
+        color: $theme_color_main_dark;
+    }
+}
