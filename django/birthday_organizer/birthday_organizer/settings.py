@@ -23,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
     SECRET_KEY = os.environ['DJANGO_KEY']
+    ADMIN_ENABLED = False
 else:
     SECRET_KEY = "development-dummy-secret-key"
+    ADMIN_ENABLED = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
