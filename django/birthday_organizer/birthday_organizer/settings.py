@@ -27,10 +27,16 @@ else:
     SECRET_KEY = "development-dummy-secret-key"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['birthday-organizer.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://birthday-organizer.onrender.com']
+if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+    DEBUG = False
+else:
+    DEBUG = True
+    
+if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+    ALLOWED_HOSTS = ['birthday-organizer.onrender.com']
+    CSRF_TRUSTED_ORIGINS = ['https://birthday-organizer.onrender.com']
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
