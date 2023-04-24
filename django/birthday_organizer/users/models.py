@@ -50,6 +50,10 @@ class CustomUser(AbstractUser):
     @property
     def full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+    
+    @property
+    def revolut_clean(self):
+        return self.revolut.replace('@', '')
 
     @property
     def form_birthdate(self):
