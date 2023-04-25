@@ -9,6 +9,20 @@
             -
             <span class="event-comment-date convert-date">{{ comment.human_timestamp }}</span>
         </legend>
-        <div class="event-comment-content">{{ comment.content|linebreaks }}</div>
+        
+        {% if request.user.id == comment.user.id %}
+            <span class="edit-comment-button">
+                <i class="fa fa-edit"></i> Edit comment
+            </span>
+            <span class="edit-comment-submit hidden">
+                <i class="fa fa-check"></i> Done
+            </span>
+        {% endif %}
+        <div class="event-comment-content">
+            {% if request.user.id == comment.user.id %}
+                <textarea class="edit-comment-area hidden" data-event="{{event.id}}" data-comment="{{comment.id}}">{{ comment.content }}</textarea>
+            {% endif %}
+            {{ comment.content|linebreaks }}
+        </div>
     </fieldset>
 {% endfor %}

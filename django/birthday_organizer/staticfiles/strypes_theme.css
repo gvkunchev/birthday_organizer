@@ -448,10 +448,14 @@ header {
       color: #eb6012;
       font-weight: bold; }
     .event-comments .event-comment .event-comment-content {
+      position: relative;
       max-height: 150px;
       overflow-y: auto;
       border: 1px dashed #eb6012;
       padding: 3px; }
+      .event-comments .event-comment .event-comment-content .edit-comment-button {
+        color: #eb6012;
+        cursor: pointer; }
   .event-comments .no-comments {
     color: #0f596e;
     padding: 5px; }

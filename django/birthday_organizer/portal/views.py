@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from .forms import AddEventForm, AddPaymentForm, AddCommentForm
 from users.models import Theme, CustomUser
-from base.models import Event, Payment
+from base.models import Event, Payment, Comment
 
 
 @login_required(login_url='/log_in')
@@ -202,6 +202,23 @@ def add_comment(request):
             content = render_to_string("event_comments.html",
                                        context, request=request)
             return JsonResponse({'result': 'success', 'content': content})
+    except (ValueError, KeyError, Event.DoesNotExist):
+        return JsonResponse({'result':'error', 'details': 'Invalid request'})
+
+@login_required(login_url='/log_in')
+def edit_comment(request):
+    '''Edit a comment.'''
+    try:
+        comment = Comment.objects.get(pk=request.POST['comment'])
+        event = Event.objects.get(pk=request.POST['event'])
+        if request.user.id != comment.user.id:
+            raise Event.DoesNotExist
+        comment.content = request.POST['content']
+        comment.save()
+        context = {'event': event}
+        content = render_to_string("event_comments.html",
+                                    context, request=request)
+        return JsonResponse({'result': 'success', 'content': content})
     except (ValueError, KeyError, Event.DoesNotExist):
         return JsonResponse({'result':'error', 'details': 'Invalid request'})
 
