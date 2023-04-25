@@ -154,7 +154,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "portal/static",
     BASE_DIR / "portal/static/fonts",
@@ -163,7 +162,11 @@ STATICFILES_DIRS = [
     BASE_DIR / "portal/static/css",
     BASE_DIR / "portal/static/sass",
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+    SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+else:
+    SASS_PROCESSOR_ROOT = BASE_DIR / 'portal/static/sass'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -1,4 +1,9 @@
-#### Initial setup  
+#### Initial setup non-GCP
+Simply use ./Dockerfile to deploy to a place other than GCP.
+You just need to prepare the environment with all the variables from ./secrets and set up a
+permanent database that Django will connect to.
+
+#### Initial setup GCP 
 * Create a project  
 https://console.cloud.google.com/projectcreate  
 * Create a Standard Kubernetes Engine Cluster  

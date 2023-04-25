@@ -22,10 +22,26 @@
         }
 
         .event-comment-content {
+            position: relative;
             max-height: 150px;
             overflow-y: auto;
             border: 1px dashed $theme_color_main_light;
             padding: 3px;
+        }
+
+        .edit-comment-button {
+            color: $theme_color_main_dark;
+            cursor: pointer;
+        }
+
+        .edit-comment-submit {
+            color: $theme_color_main_dark;
+            cursor: pointer;
+        }
+
+        .edit-comment-area {
+            width: 90%;
+            height: 100px;
         }
     }
 

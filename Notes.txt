@@ -9,3 +9,4 @@ Logging
 Write some tests
 Add markdown support for comments
 Include setting for alerts (per event and globally)
+Add a dark theme
