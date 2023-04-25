@@ -1,5 +1,6 @@
 Add wishlists (probably a good idea to make a new model with a one-to-one relationship with CustomUser)
 Add user filter for searching
+Allow users to edit comments
 Improve participants selection when creating event
 Include search for host and celebrant in the create event form
 Implement Google Authorization
