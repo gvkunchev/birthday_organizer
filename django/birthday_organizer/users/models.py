@@ -38,6 +38,7 @@ class CustomUser(AbstractUser):
     birthdate = models.DateTimeField(auto_now=False, editable=True)
     iban = models.CharField(max_length=100, blank=True)
     revolut = models.CharField(max_length=100, blank=True)
+    allow_alerts = models.BooleanField(default=True)
 
     objects = UserManager()
 

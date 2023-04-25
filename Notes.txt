@@ -8,6 +8,5 @@ In case there are multiple envets requiring an alert email - send one email for 
 Logging
 Write some tests
 Add markdown support for comments
-Include setting for alerts (per event and globally)
 Add a dark theme
 Static files require to be compiled and pushed manually, which is nasty. FIX THAT!

@@ -78,6 +78,19 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label for="allow_alerts">Allow alerts:</label>
+                        <span class="error">{{ errors.allow_alerts }}</span>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="allow_alerts"
+                        {% if request.user.allow_alerts %}
+                        checked
+                        {% endif %}
+                        />
+                    </td>
+                </tr>
             </table>
             <button type="submit">Update</button>
             <div class="short-message center">{{ personal_form_message }}&nbsp;</div>

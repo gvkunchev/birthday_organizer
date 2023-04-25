@@ -14,7 +14,7 @@ class CustomUserAdmin(UserAdmin):
             (None, {
                 "fields": (
                     ('email', 'first_name', 'last_name', 'birthdate', 'theme',
-                     'iban', 'revolut', 'is_active')
+                     'iban', 'revolut', 'is_active', 'allow_alerts')
                 ),
             }),
         )
@@ -23,7 +23,7 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': ('email', 'first_name', 'last_name',
                        'birthdate', 'password1', 'password2',
-                       'iban', 'revolut', 'is_active')
+                       'iban', 'revolut', 'is_active', 'allow_alerts')
         }),
     )
 

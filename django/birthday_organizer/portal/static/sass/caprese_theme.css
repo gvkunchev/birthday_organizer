@@ -531,6 +531,11 @@ header {
 .ui-tooltip-content {
   font-size: 10px; }
 
+input[type=checkbox] {
+  accent-color: #60d394;
+  width: 20px;
+  height: 20px; }
+
 @media screen and (max-width: 600px) {
   .mobile-only {
     display: inline; }
