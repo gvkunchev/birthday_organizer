@@ -532,7 +532,9 @@ header {
   font-size: 10px; }
 
 input[type=checkbox] {
-  accent-color: #eb6012; }
+  accent-color: #eb6012;
+  width: 20px;
+  height: 20px; }
 
 @media screen and (max-width: 600px) {
   .mobile-only {
