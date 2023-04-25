@@ -49,7 +49,7 @@ def create_birthday_event_per_user(*args, **kwargs):
         # Collect all users to receive an alert email for the new event
         all_emails = []
         for user in all_users.iterator():
-            if user.is_superuser:
+            if user.is_superuser or not user.allow_alerts:
                 continue
             if user != event.celebrant:
                 all_emails.append(user.email)
@@ -74,7 +74,7 @@ def alert_for_events_without_host(*args, **kwargs):
         # Collect all users to receive an alert email
         all_emails = []
         for user in all_users.iterator():
-            if user.is_superuser:
+            if user.is_superuser or not user.allow_alerts:
                 continue
             if user != event.celebrant:
                 all_emails.append(user.email)
@@ -103,7 +103,7 @@ def alert_for_new_comments(*args, **kwargs):
         # Collect all users to receive an alert email
         all_emails = []
         for user in all_users.iterator():
-            if user.is_superuser:
+            if user.is_superuser or not user.allow_alerts:
                 continue
             if event.eligible_for_actions(user):
                 # Ensure that there are comments for that event

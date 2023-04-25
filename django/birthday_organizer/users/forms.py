@@ -16,4 +16,4 @@ class EditPersonalInformationForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'birthdate',
-                  'iban', 'revolut', 'theme')
+                  'iban', 'revolut', 'theme', 'allow_alerts')

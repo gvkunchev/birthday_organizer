@@ -66,6 +66,12 @@
     font-size: 10px;
 }
 
+input[type=checkbox] {
+    accent-color: $theme_color_main_light;
+    width: 20px;
+    height: 20px;
+}
+
 @media screen and (max-width: $mobile_limit) {
     .mobile-only {
         display: inline;
