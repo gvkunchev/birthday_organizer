@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Birthday Organizer global version
+VERSION = (1, 0, 0)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -162,9 +164,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "portal/static/css",
     BASE_DIR / "portal/static/sass",
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
     SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
 else:
     SASS_PROCESSOR_ROOT = BASE_DIR / 'portal/static/sass'
 

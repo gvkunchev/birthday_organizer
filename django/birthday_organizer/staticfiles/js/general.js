@@ -153,10 +153,42 @@ $(document).ready(function(){
                     $('.events-list').append(content);
                     input.val('');
                     convert_dates();
+                    bindEditComments();
                 }
             }
         });
     })
+
+    // Bind edint comment events
+    function bindEditComments(){
+        $('.edit-comment-button').click(function(){
+            $(this).parents('fieldset').find('p').remove();
+            $(this).parents('fieldset').find('.edit-comment-submit').removeClass('hidden');
+            $(this).parents('fieldset').find('.edit-comment-area').removeClass('hidden');
+            $(this).parents('fieldset').find('.edit-comment-button').remove();
+        });
+        $('.edit-comment-submit').bind('click', function(){
+            var input = $(this).parents('fieldset').find('.edit-comment-area');
+            var content = input.val();
+            var event = input.data('event');
+            var comment = input.data('comment');
+            $.ajax({
+                type: "POST", headers: {'X-CSRFToken': getToken()},
+                url: 'edit_comment',
+                data: {'comment': comment, 'event': event, 'content': content},
+                success: function(data){
+                    if (data['result'] == 'success'){
+                        $('.events-list').children().remove();
+                        content = jQuery.parseHTML(data['content']);
+                        $('.events-list').append(content);
+                        convert_dates();
+                        bindEditComments();
+                    }
+                }
+            });
+        });
+    }
+    bindEditComments();
 
     //Bind confirm events
     $('.confirm').each(function(i, e){
