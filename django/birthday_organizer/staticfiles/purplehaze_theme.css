@@ -11,6 +11,16 @@ body {
   font-size: 20px;
   background-color: #F4F7F0; }
 
+.ui-dialog-titlebar {
+  background-color: #eed102 !important; }
+
+.ui-dialog-title {
+  background: transparent; }
+
+.ui-button:active {
+  background-color: #eed102 !important;
+  border: 1px solid black !important; }
+
 @use 'variables';
 .content {
   display: flex;
@@ -30,7 +40,14 @@ body {
 
 @media screen and (max-width: 600px) {
   .content-block {
-    flex: 1; } }
+    flex: 1;
+    width: 95% !important; }
+  .content {
+    margin: 0 !important; }
+  .content-block-event {
+    margin: 0 5px !important; }
+  .content-block.user-block {
+    margin: 10px 0px !important; } }
 
 .footer {
   font-size: 10px;
@@ -158,7 +175,8 @@ header {
 
 #calendar {
   max-width: 100%;
-  position: relative; }
+  position: relative;
+  margin: 0 10px; }
   #calendar table {
     border-spacing: 4px;
     background-color: white;
@@ -184,6 +202,9 @@ header {
     border-radius: 25%;
     cursor: pointer;
     color: #645c9f; }
+    #calendar .calendar-day.today {
+      border: 1px solid #eed102;
+      box-shadow: 0px 0px 3px 1px #eed102 inset; }
     #calendar .calendar-day:hover {
       box-shadow: 0px 0px 4px 1px #eed102; }
     #calendar .calendar-day.empty {
@@ -277,6 +298,35 @@ header {
     #calendar button.calendar-button-right {
       float: right; }
 
+#overview {
+  position: relative;
+  background-color: white;
+  border: 2px solid #eed102;
+  border-radius: 3px;
+  max-width: 100%;
+  margin: 0 10px;
+  padding: 0; }
+  #overview .overview-table {
+    border-spacing: 4px;
+    width: 350px;
+    margin: 0 auto; }
+  #overview .overview-title {
+    border-bottom: 2px solid #eed102;
+    color: #eed102;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center; }
+  #overview .overview-content-item {
+    color: #645c9f;
+    border-bottom: 1px solid #eed102;
+    border-radius: 3px;
+    padding: 1px 15px;
+    max-width: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer; }
+
 .event-type-set {
   border: 2px solid #645c9f;
   border-radius: 3px;
@@ -325,6 +375,8 @@ header {
   .event-overview .event-overview-date {
     color: #eed102; }
   .event-overview .event-overview-host {
+    color: #645c9f; }
+  .event-overview .event-overview-payment-method {
     color: #645c9f; }
   .event-overview .event-overview-total {
     color: #645c9f; }
@@ -396,10 +448,20 @@ header {
       color: #eed102;
       font-weight: bold; }
     .event-comments .event-comment .event-comment-content {
+      position: relative;
       max-height: 150px;
       overflow-y: auto;
       border: 1px dashed #eed102;
       padding: 3px; }
+    .event-comments .event-comment .edit-comment-button {
+      color: #645c9f;
+      cursor: pointer; }
+    .event-comments .event-comment .edit-comment-submit {
+      color: #645c9f;
+      cursor: pointer; }
+    .event-comments .event-comment .edit-comment-area {
+      width: 90%;
+      height: 100px; }
   .event-comments .no-comments {
     color: #645c9f;
     padding: 5px; }
@@ -408,7 +470,8 @@ header {
     height: 100px;
     vertical-align: middle;
     margin: 3px;
-    border: 1px solid #645c9f; }
+    border: 1px solid #645c9f;
+    background-color: #F4F7F0; }
   .event-comments #make_comment {
     vertical-align: middle;
     color: #645c9f;
@@ -425,6 +488,9 @@ header {
 .cursor-pointer,
 .tooltip-trigger {
   cursor: pointer; }
+
+.ui-tooltip-content {
+  font-size: 100% !important; }
 
 .semitransparent {
   opacity: 0.5; }
@@ -450,6 +516,10 @@ header {
   float: right;
   text-align: right; }
 
+.right-nomobile {
+  float: right;
+  text-align: right; }
+
 .clearfix:after {
   content: "";
   display: block;
@@ -469,7 +539,22 @@ header {
   .expand-on-mobile {
     width: 100%;
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+  #overview {
+    margin: 10px auto;
+    width: 100%; }
+  #calendar {
+    margin: 0 auto;
+    width: 100%; }
+  #calendar table {
+    margin: 10px auto;
+    width: 100%; }
+  .right-nomobile {
+    float: none;
+    text-align: center;
+    margin-bottom: 5px; }
+  #overview .overview-table {
+    width: 100%; } }
 
 .offset-wrapper {
   margin: 5px; }
