@@ -20,7 +20,7 @@ NO_HOST_ALERT_SPAN = datetime.timedelta(days=14)
 
 # Domain name for constructing links
 # TODO: Put the real one once in production
-DOMAIN_NAME = 'http://34.118.114.251'
+DOMAIN_NAME = 'https://birthday-organizer.onrender.com/'
 
 
 email = Email()
@@ -92,13 +92,13 @@ def alert_for_new_comments(*args, **kwargs):
     all_events = Event.objects.all().filter(archived=False)
     all_users = CustomUser.objects.all()
     for event in all_events.iterator():
-        send_alert = False
+        comments_to_alert_for = []
         for comment in event.comments.all():
             if not comment.alert_sent:
-                send_alert = True
+                comments_to_alert_for.append(comment)
             comment.alert_sent = True
             comment.save()
-        if not send_alert:
+        if not len(comments_to_alert_for):
             continue # No new comments - no need to alert
         # Collect all users to receive an alert email
         all_emails = []
@@ -106,6 +106,18 @@ def alert_for_new_comments(*args, **kwargs):
             if user.is_superuser:
                 continue
             if event.eligible_for_actions(user):
+                # Ensure that there are comments for that event
+                # from users other than the current one.
+                # If there are, break the `for`, resulting in
+                # appending to `all_emails`, if there are not,
+                # the `else` of the `for` is executed, resulting
+                # in `continue` for the outer `for` and skipping to
+                # the next user.
+                for comment in comments_to_alert_for:
+                    if comment.user.id != user.id:
+                        break
+                else:
+                    continue
                 all_emails.append(user.email)
         context = {
             'event_link': f'{DOMAIN_NAME}/event?id={event.id}',

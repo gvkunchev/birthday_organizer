@@ -9,12 +9,12 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
     search_fields = ('email',)
     filter_horizontal = ()
-    list_display = ('first_name', 'last_name', 'email', 'birthdate')
+    list_display = ('first_name', 'last_name', 'email', 'birthdate', 'is_active')
     fieldsets = (
             (None, {
                 "fields": (
                     ('email', 'first_name', 'last_name', 'birthdate', 'theme',
-                     'iban', 'revolut')
+                     'iban', 'revolut', 'is_active')
                 ),
             }),
         )
@@ -23,7 +23,7 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': ('email', 'first_name', 'last_name',
                        'birthdate', 'password1', 'password2',
-                       'iban', 'revolut')
+                       'iban', 'revolut', 'is_active')
         }),
     )
 

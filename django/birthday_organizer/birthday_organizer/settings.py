@@ -23,13 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
     SECRET_KEY = os.environ['DJANGO_KEY']
+    ADMIN_ENABLED = False
 else:
     SECRET_KEY = "development-dummy-secret-key"
+    ADMIN_ENABLED = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+    DEBUG = False
+else:
+    DEBUG = True
+    
+if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+    ALLOWED_HOSTS = ['birthday-organizer.onrender.com']
+    CSRF_TRUSTED_ORIGINS = ['https://birthday-organizer.onrender.com']
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -97,7 +106,7 @@ if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
             'NAME': 'birthday_organizer',
             'USER': os.environ['POSTGRES_USER'],
             'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-            'HOST': 'birthday-organizer-db-service',
+            'HOST': os.environ['POSTGRES_HOSTNAME'],
             'PORT': '5432',
         }
     }
@@ -145,14 +154,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-SASS_PROCESSOR_ROOT = BASE_DIR / 'portal/static/sass'
+SASS_PROCESSOR_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "portal/static",
     BASE_DIR / "portal/static/fonts",
     BASE_DIR / "portal/static/images",
     BASE_DIR / "portal/static/js",
     BASE_DIR / "portal/static/css",
+    BASE_DIR / "portal/static/sass",
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

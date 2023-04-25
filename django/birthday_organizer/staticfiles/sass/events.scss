@@ -1,0 +1,137 @@
+.event-type-set {
+    border: 2px solid $theme_color_main_dark;
+    border-radius: 3px;
+    width: 100%;
+    margin: 20px auto;
+
+    legend {
+        text-align: left;
+        color: $theme_color_main_dark;
+        font-weight: bold;
+        padding: 4px;
+    }
+
+    .event-block {
+        border: 1px solid $theme_color_main_light;
+        border-radius: 3px;
+        padding: 5px;
+        width: 220px;
+        height: 220px;
+        background-color: white;
+        flex: none;
+
+        .event-block-content {
+            font-size: 70%;
+        }
+
+        .event-block-name {
+            font-weight: bold;
+            color: $theme_color_main_dark;
+            width: 80%;
+        }
+
+        .event-block-name {
+            display: inline-block;
+            font-weight: bold;
+            color: $theme_color_main_dark;
+            width: 80%;
+            vertical-align: top;
+        }
+
+        .event-block-link {
+            display: inline-block;
+            width: 10%;
+            text-align: right;
+            color: $theme_color_main_dark;
+            vertical-align: top;
+            cursor: pointer;
+        }
+    }
+}
+
+.event-overview {
+    margin: 10px;
+
+    .event-overview-name {
+        font-weight: bold;
+        color: $theme_color_main_dark;
+    }
+
+    .event-overview-celebrant {
+        color: $theme_color_main_dark;
+    }
+
+    .event-overview-date {
+        color: $theme_color_main_light;
+    }
+
+    .event-overview-host {
+        color: $theme_color_main_dark;
+    }
+
+    .event-overview-payment-method {
+        color: $theme_color_main_dark;
+    }
+
+    .event-overview-total {
+        color: $theme_color_main_dark;
+    }
+}
+
+.event-participant-list {
+    margin: 5px;
+    border-collapse: collapse;
+    background-color: white;
+
+    .add-payment-cell {
+        text-align: center;
+        font-size: 70%;
+        font-style: italic;
+
+        .add-payment-button {
+            cursor: pointer;
+        }
+
+        .add-payment-amount {
+            width: 50px;
+            margin-left:5px;
+        }
+
+        .fa {
+            vertical-align: bottom;
+            font-size: 200%;
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    td, th {
+        border: 2px solid $theme_color_main_light;
+        padding: 5px;
+        color: $theme_color_main_dark;
+    }
+
+    .event-participant-payment,
+    .event-participant-payment-confirmation {
+        text-align: center;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    .payment-approved-icon {
+        color: green;
+    }
+
+    .payment-remove-icon{
+        color: tomato;
+    }
+
+    .semitransparent:not(.no-mouseover):hover {
+        opacity: 1;
+    }
+}
