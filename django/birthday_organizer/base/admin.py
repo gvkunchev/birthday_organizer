@@ -59,7 +59,7 @@ class CommentAdmin(admin.ModelAdmin):
     fieldsets = (
             (None, {
                 "fields": (
-                    ('event', 'timestamp', 'user', 'content')
+                    ('event', 'timestamp', 'user', 'content', 'likes')
                 ),
             }),
         )

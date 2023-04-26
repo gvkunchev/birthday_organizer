@@ -453,6 +453,8 @@ header {
       overflow-y: auto;
       border: 1px dashed #62CCC0;
       padding: 3px; }
+    .event-comments .event-comment .comment-button-separator {
+      color: #368980; }
     .event-comments .event-comment .edit-comment-button {
       color: #368980;
       cursor: pointer; }
@@ -462,6 +464,17 @@ header {
     .event-comments .event-comment .edit-comment-area {
       width: 90%;
       height: 100px; }
+    .event-comments .event-comment .like-button {
+      color: #368980;
+      cursor: pointer; }
+    .event-comments .event-comment .dislike-button {
+      color: #62CCC0;
+      cursor: pointer; }
+    .event-comments .event-comment .comment-likes-report {
+      color: #368980;
+      padding: 3px;
+      font-style: italic;
+      font-size: 80%; }
   .event-comments .no-comments {
     color: #368980;
     padding: 5px; }

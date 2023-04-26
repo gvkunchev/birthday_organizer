@@ -29,6 +29,10 @@
             padding: 3px;
         }
 
+        .comment-button-separator {
+            color: $theme_color_main_dark;
+        }
+
         .edit-comment-button {
             color: $theme_color_main_dark;
             cursor: pointer;
@@ -42,6 +46,23 @@
         .edit-comment-area {
             width: 90%;
             height: 100px;
+        }
+
+        .like-button {
+            color: $theme_color_main_dark;
+            cursor: pointer;
+        }
+
+        .dislike-button {
+            color: $theme_color_main_light;
+            cursor: pointer;
+        }
+
+        .comment-likes-report {
+            color: $theme_color_main_dark;
+            padding: 3px;
+            font-style: italic;
+            font-size: 80%;
         }
     }
 

@@ -46,10 +46,17 @@
                             </a>
                         </td>
                         {% endif %}
-                        {% if task.type == 'payment' %}
+                        {% if task.type == 'payment_missing' %}
                         <td class="overview-content-item tooltip-trigger" title="Payment missing - {{ task.name }}">
                             <a href="/event?id={{ task.id }}" class="disable-link-color">
                                 <i class="fa fa-money-check"></i> Payment missing - {{ task.name }}
+                            </a>
+                        </td>
+                        {% endif %}
+                        {% if task.type == 'confirmation_missing' %}
+                        <td class="overview-content-item tooltip-trigger" title="New payment - {{ task.name }}">
+                            <a href="/event?id={{ task.id }}" class="disable-link-color">
+                                <i class="fa fa-check"></i> New payment - {{ task.name }}
                             </a>
                         </td>
                         {% endif %}
