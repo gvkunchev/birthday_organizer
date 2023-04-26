@@ -327,6 +327,31 @@ header {
     white-space: nowrap;
     cursor: pointer; }
 
+#whats_new {
+  position: relative;
+  background-color: white;
+  border: 2px solid #60d394;
+  border-radius: 3px;
+  max-width: 100%;
+  margin: 0 10px;
+  padding: 0; }
+  #whats_new .whats-new-table {
+    border-spacing: 4px;
+    width: 350px;
+    margin: 0 auto; }
+  #whats_new .whats-new-title {
+    border-bottom: 2px solid #60d394;
+    color: #60d394;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center; }
+  #whats_new .whats-new-content-item {
+    color: #ee6055;
+    border-bottom: 1px solid #60d394;
+    border-radius: 3px;
+    padding: 1px 15px;
+    max-width: 1px; }
+
 .event-type-set {
   border: 2px solid #ee6055;
   border-radius: 3px;
