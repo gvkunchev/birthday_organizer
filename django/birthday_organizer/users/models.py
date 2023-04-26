@@ -21,6 +21,7 @@ class Theme(models.TextChoices):
     MINTMILK = 'MMM', 'Mint Milk'
     PURPLEHAZE = 'PRH', 'Purple haze'
     CAPRESE = 'CPR', 'Caprese'
+    NIGHTVISION = 'NTV', 'Night vision'
 
 
 class CustomUser(AbstractUser):

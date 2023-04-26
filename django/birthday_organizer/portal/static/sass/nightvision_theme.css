@@ -9,16 +9,16 @@ body {
   padding: 0;
   font-family: Helvetica, sans-serif;
   font-size: 20px;
-  background-color: #F4F7F0; }
+  background-color: #010C01; }
 
 .ui-dialog-titlebar {
-  background-color: #eb6012 !important; }
+  background-color: #2E7901 !important; }
 
 .ui-dialog-title {
   background: transparent; }
 
 .ui-button:active {
-  background-color: #eb6012 !important;
+  background-color: #2E7901 !important;
   border: 1px solid black !important; }
 
 @use 'variables';
@@ -34,7 +34,7 @@ body {
     max-width: 100%; }
 
 .welcome-message {
-  color: #0f596e;
+  color: #083205;
   font-weight: bold;
   padding: 4px; }
 
@@ -63,8 +63,8 @@ body {
 header {
   position: relative;
   overflow: hidden;
-  background-color: #eb6012;
-  border-bottom: 3px solid #0f596e;
+  background-color: #2E7901;
+  border-bottom: 3px solid #083205;
   padding: 0;
   margin: 0; }
   header .expand-icon {
@@ -74,7 +74,7 @@ header {
     top: 5px;
     cursor: pointer; }
     header .expand-icon i {
-      color: #F4F7F0;
+      color: #010C01;
       font-size: 200%; }
 
 .nav-button {
@@ -82,14 +82,14 @@ header {
   padding: 12px 20px;
   cursor: pointer;
   text-align: center;
-  color: #F4F7F0;
+  color: #010C01;
   text-decoration: none; }
   .nav-button.left {
     float: left; }
   .nav-button.right {
     float: right; }
   .nav-button:hover, .nav-button.active {
-    background-color: #0f596e; }
+    background-color: #083205; }
 
 @media screen and (max-width: 600px) {
   #nav-menu .nav-button {
@@ -113,7 +113,7 @@ header {
 .basic-form {
   position: relative;
   text-align: left;
-  background-color: #ffffff;
+  background-color: #012301;
   border: 1px solid #A9A9A9;
   display: inline-block;
   padding: 10px;
@@ -139,10 +139,10 @@ header {
     border-radius: 5px;
     padding: 5px 20px;
     cursor: pointer;
-    background-color: #F4F7F0;
+    background-color: #010C01;
     width: 100px; }
     .basic-form button:hover {
-      background-color: #BFD2D0; }
+      background-color: #0f3d45; }
 
 .error {
   color: #f56e4d; }
@@ -181,34 +181,34 @@ header {
     width: 354px;
     /* 350px + 2 px padding */
     border-spacing: 4px;
-    background-color: #ffffff;
-    border: 2px solid #eb6012;
+    background-color: #012301;
+    border: 2px solid #2E7901;
     border-radius: 3px; }
   #calendar .calendar-title-row td {
     text-align: center;
-    border-bottom: 2px solid #eb6012;
-    color: #eb6012;
+    border-bottom: 2px solid #2E7901;
+    color: #2E7901;
     font-weight: bold;
     border-radius: 10px; }
   #calendar .calendar-day-header {
     text-align: center;
-    color: #eb6012; }
+    color: #2E7901; }
   #calendar .calendar-day {
     position: relative;
-    background-color: #F4F7F0;
-    border: 1px solid #0f596e;
+    background-color: #010C01;
+    border: 1px solid #083205;
     text-align: center;
     vertical-align: middle;
     width: 2em;
     height: 2em;
     border-radius: 25%;
     cursor: pointer;
-    color: #0f596e; }
+    color: #083205; }
     #calendar .calendar-day.today {
-      border: 1px solid #eb6012;
-      box-shadow: 0px 0px 3px 1px #eb6012 inset; }
+      border: 1px solid #2E7901;
+      box-shadow: 0px 0px 3px 1px #2E7901 inset; }
     #calendar .calendar-day:hover {
-      box-shadow: 0px 0px 4px 1px #eb6012; }
+      box-shadow: 0px 0px 4px 1px #2E7901; }
     #calendar .calendar-day.empty {
       border-color: transparent;
       cursor: default;
@@ -222,11 +222,11 @@ header {
       #calendar .calendar-day .event-marker.event-participating {
         top: 4px;
         right: 4px;
-        background-color: #0f596e; }
+        background-color: #083205; }
       #calendar .calendar-day .event-marker.event-hosting {
         bottom: 4px;
         left: 4px;
-        background-color: #eb6012; }
+        background-color: #2E7901; }
   #calendar .calendar-popup {
     position: absolute;
     top: 0;
@@ -234,7 +234,7 @@ header {
     width: 100%;
     height: 100%;
     display: none;
-    outline: 2px solid #eb6012;
+    outline: 2px solid #2E7901;
     border-radius: 2px; }
     #calendar .calendar-popup .calendar-popup-relative {
       position: relative;
@@ -242,27 +242,27 @@ header {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #ffffff; }
+      background-color: #012301; }
     #calendar .calendar-popup .calendar-popup-close {
       position: absolute;
       top: 0px;
       right: 5px;
       cursor: pointer;
-      color: #0f596e; }
+      color: #083205; }
     #calendar .calendar-popup .calendar-popup-title {
       text-align: center;
-      border-bottom: 2px solid #eb6012;
-      color: #eb6012;
+      border-bottom: 2px solid #2E7901;
+      color: #2E7901;
       font-weight: bold;
       border-radius: 10px;
       height: 7%; }
     #calendar .calendar-popup .calendar-popup-content {
-      color: #0f596e;
+      color: #083205;
       padding: 5px;
       height: 90%;
       overflow-y: auto; }
       #calendar .calendar-popup .calendar-popup-content .event-legend {
-        color: #eb6012; }
+        color: #2E7901; }
       #calendar .calendar-popup .calendar-popup-content a.calendar-event-link {
         cursor: pointer;
         display: block;
@@ -280,17 +280,17 @@ header {
       line-height: 1em;
       margin: 0 5px; }
     #calendar .legend-wrapper .legend-participating {
-      color: #0f596e; }
+      color: #083205; }
       #calendar .legend-wrapper .legend-participating .dot {
-        background-color: #0f596e;
+        background-color: #083205;
         display: inline-block; }
     #calendar .legend-wrapper .legend-hosting {
-      color: #eb6012; }
+      color: #2E7901; }
       #calendar .legend-wrapper .legend-hosting .dot {
-        background-color: #eb6012;
+        background-color: #2E7901;
         display: inline-block; }
   #calendar button {
-    color: #eb6012;
+    color: #2E7901;
     border: 0 none;
     background-color: transparent;
     cursor: pointer;
@@ -302,8 +302,8 @@ header {
 
 #overview {
   position: relative;
-  background-color: #ffffff;
-  border: 2px solid #eb6012;
+  background-color: #012301;
+  border: 2px solid #2E7901;
   border-radius: 3px;
   max-width: 100%;
   margin: 10px;
@@ -313,14 +313,14 @@ header {
     width: 350px;
     margin: 0 auto; }
   #overview .overview-title {
-    border-bottom: 2px solid #eb6012;
-    color: #eb6012;
+    border-bottom: 2px solid #2E7901;
+    color: #2E7901;
     font-weight: bold;
     border-radius: 10px;
     text-align: center; }
   #overview .overview-content-item {
-    color: #0f596e;
-    border-bottom: 1px solid #eb6012;
+    color: #083205;
+    border-bottom: 1px solid #2E7901;
     border-radius: 3px;
     padding: 1px 15px;
     max-width: 1px;
@@ -331,8 +331,8 @@ header {
 
 #whats_new {
   position: relative;
-  background-color: #ffffff;
-  border: 2px solid #eb6012;
+  background-color: #012301;
+  border: 2px solid #2E7901;
   border-radius: 3px;
   max-width: 100%;
   margin: 10px;
@@ -342,53 +342,53 @@ header {
     width: 350px;
     margin: 0 auto; }
   #whats_new .whats-new-title {
-    border-bottom: 2px solid #eb6012;
-    color: #eb6012;
+    border-bottom: 2px solid #2E7901;
+    color: #2E7901;
     font-weight: bold;
     border-radius: 10px;
     text-align: center; }
   #whats_new .whats-new-content-item {
-    color: #0f596e;
-    border-bottom: 1px solid #eb6012;
+    color: #083205;
+    border-bottom: 1px solid #2E7901;
     border-radius: 3px;
     padding: 1px 15px;
     max-width: 1px; }
 
 .event-type-set {
-  border: 2px solid #0f596e;
+  border: 2px solid #083205;
   border-radius: 3px;
   width: 100%;
   margin: 20px auto; }
   .event-type-set legend {
     text-align: left;
-    color: #0f596e;
+    color: #083205;
     font-weight: bold;
     padding: 4px; }
   .event-type-set .event-block {
-    border: 1px solid #eb6012;
+    border: 1px solid #2E7901;
     border-radius: 3px;
     padding: 5px;
     width: 220px;
     height: 220px;
-    background-color: #ffffff;
+    background-color: #012301;
     flex: none; }
     .event-type-set .event-block .event-block-content {
       font-size: 70%; }
     .event-type-set .event-block .event-block-name {
       font-weight: bold;
-      color: #0f596e;
+      color: #083205;
       width: 80%; }
     .event-type-set .event-block .event-block-name {
       display: inline-block;
       font-weight: bold;
-      color: #0f596e;
+      color: #083205;
       width: 80%;
       vertical-align: top; }
     .event-type-set .event-block .event-block-link {
       display: inline-block;
       width: 10%;
       text-align: right;
-      color: #0f596e;
+      color: #083205;
       vertical-align: top;
       cursor: pointer; }
 
@@ -396,22 +396,22 @@ header {
   margin: 10px; }
   .event-overview .event-overview-name {
     font-weight: bold;
-    color: #0f596e; }
+    color: #083205; }
   .event-overview .event-overview-celebrant {
-    color: #0f596e; }
+    color: #083205; }
   .event-overview .event-overview-date {
-    color: #eb6012; }
+    color: #2E7901; }
   .event-overview .event-overview-host {
-    color: #0f596e; }
+    color: #083205; }
   .event-overview .event-overview-payment-method {
-    color: #0f596e; }
+    color: #083205; }
   .event-overview .event-overview-total {
-    color: #0f596e; }
+    color: #083205; }
 
 .event-participant-list {
   margin: 5px;
   border-collapse: collapse;
-  background-color: #ffffff; }
+  background-color: #012301; }
   .event-participant-list .add-payment-cell {
     text-align: center;
     font-size: 70%;
@@ -428,9 +428,9 @@ header {
       .event-participant-list .add-payment-cell .fa:hover {
         opacity: 1; }
   .event-participant-list td, .event-participant-list th {
-    border: 2px solid #eb6012;
+    border: 2px solid #2E7901;
     padding: 5px;
-    color: #0f596e; }
+    color: #083205; }
   .event-participant-list .event-participant-payment,
   .event-participant-list .event-participant-payment-confirmation {
     text-align: center; }
@@ -444,77 +444,77 @@ header {
     opacity: 1; }
 
 .user-block {
-  border: 1px solid #eb6012;
+  border: 1px solid #2E7901;
   border-radius: 3px;
   padding: 5px;
   width: 250px;
   height: 250px;
-  background-color: #ffffff;
+  background-color: #012301;
   flex: none; }
   .user-block .user-block-content {
     font-size: 70%; }
   .user-block .user-block-name {
     font-weight: bold;
-    color: #0f596e; }
+    color: #083205; }
 
 .event-comments {
-  border: 2px solid #eb6012;
+  border: 2px solid #2E7901;
   border-radius: 3px;
   margin: 5px;
   flex: 1;
-  background-color: #ffffff; }
+  background-color: #012301; }
   .event-comments .event-comment {
-    border: 1px solid #0f596e;
+    border: 1px solid #083205;
     margin: 10px 3px;
     font-size: 80%;
-    background-color: #F4F7F0; }
+    background-color: #010C01; }
     .event-comments .event-comment .event-comment-author {
-      color: #0f596e;
+      color: #083205;
       font-weight: bold; }
     .event-comments .event-comment .event-comment-date {
-      color: #eb6012;
+      color: #2E7901;
       font-weight: bold; }
     .event-comments .event-comment .event-comment-content {
       position: relative;
       max-height: 150px;
       overflow-y: auto;
-      border: 1px dashed #eb6012;
+      border: 1px dashed #2E7901;
       padding: 3px; }
     .event-comments .event-comment .comment-button-separator {
-      color: #0f596e; }
+      color: #083205; }
     .event-comments .event-comment .edit-comment-button {
-      color: #0f596e;
+      color: #083205;
       cursor: pointer; }
     .event-comments .event-comment .edit-comment-submit {
-      color: #0f596e;
+      color: #083205;
       cursor: pointer; }
     .event-comments .event-comment .edit-comment-area {
       width: 90%;
       height: 100px; }
     .event-comments .event-comment .like-button {
-      color: #0f596e;
+      color: #083205;
       cursor: pointer; }
     .event-comments .event-comment .dislike-button {
-      color: #eb6012;
+      color: #2E7901;
       cursor: pointer; }
     .event-comments .event-comment .comment-likes-report {
-      color: #0f596e;
+      color: #083205;
       padding: 3px;
       font-style: italic;
       font-size: 80%; }
   .event-comments .no-comments {
-    color: #0f596e;
+    color: #083205;
     padding: 5px; }
   .event-comments #comment {
     width: 50%;
     height: 100px;
     vertical-align: middle;
     margin: 3px;
-    border: 1px solid #0f596e;
-    background-color: #F4F7F0; }
+    border: 1px solid #083205;
+    background-color: #010C01; }
   .event-comments #make_comment {
     vertical-align: middle;
-    color: #0f596e;
+    color: #083205;
     padding: 5px 10px;
     cursor: pointer; }
 
@@ -572,7 +572,7 @@ header {
   font-size: 10px; }
 
 input[type=checkbox] {
-  accent-color: #eb6012;
+  accent-color: #2E7901;
   width: 20px;
   height: 20px; }
 
@@ -613,13 +613,34 @@ input[type=checkbox] {
 
 .button-link {
   display: inline-block;
-  color: #0f596e;
+  color: #083205;
   padding: 2px;
   text-decoration: none;
-  background-color: #ffffff;
-  border: 2px solid #0f596e;
+  background-color: #012301;
+  border: 2px solid #083205;
   border-radius: 3px; }
   .button-link:hover {
-    background-color: #eb6012; }
+    background-color: #2E7901; }
 
-/*# sourceMappingURL=strypes_theme.css.map */
+* {
+  color: #cbcbcb !important; }
+
+input, select, textarea, option {
+  background-color: #012301 !important; }
+
+option:checked {
+  background-color: #2E7901 !important; }
+
+.dot {
+  border: 1px solid #cbcbcb; }
+
+.ui-tooltip-content, .ui-tooltip {
+  background-color: #012301 !important; }
+
+.ui-dialog, .ui-dialog-buttonpane {
+  background-color: #083205 !important; }
+
+.ui-button {
+  background-color: #2E7901 !important; }
+
+/*# sourceMappingURL=nightvision_theme.css.map */

@@ -17,7 +17,7 @@
         padding: 5px;
         width: 220px;
         height: 220px;
-        background-color: white;
+        background-color: $theme_color_default_background;
         flex: none;
 
         .event-block-content {
@@ -81,7 +81,7 @@
 .event-participant-list {
     margin: 5px;
     border-collapse: collapse;
-    background-color: white;
+    background-color: $theme_color_default_background;
 
     .add-payment-cell {
         text-align: center;

@@ -113,7 +113,7 @@ header {
 .basic-form {
   position: relative;
   text-align: left;
-  background-color: white;
+  background-color: #FFFFFF;
   border: 1px solid #A9A9A9;
   display: inline-block;
   padding: 10px;
@@ -181,7 +181,7 @@ header {
     width: 354px;
     /* 350px + 2 px padding */
     border-spacing: 4px;
-    background-color: white;
+    background-color: #FFFFFF;
     border: 2px solid #60d394;
     border-radius: 3px; }
   #calendar .calendar-title-row td {
@@ -242,7 +242,7 @@ header {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: white; }
+      background-color: #FFFFFF; }
     #calendar .calendar-popup .calendar-popup-close {
       position: absolute;
       top: 0px;
@@ -302,7 +302,7 @@ header {
 
 #overview {
   position: relative;
-  background-color: white;
+  background-color: #FFFFFF;
   border: 2px solid #60d394;
   border-radius: 3px;
   max-width: 100%;
@@ -331,7 +331,7 @@ header {
 
 #whats_new {
   position: relative;
-  background-color: white;
+  background-color: #FFFFFF;
   border: 2px solid #60d394;
   border-radius: 3px;
   max-width: 100%;
@@ -370,7 +370,7 @@ header {
     padding: 5px;
     width: 220px;
     height: 220px;
-    background-color: white;
+    background-color: #FFFFFF;
     flex: none; }
     .event-type-set .event-block .event-block-content {
       font-size: 70%; }
@@ -411,7 +411,7 @@ header {
 .event-participant-list {
   margin: 5px;
   border-collapse: collapse;
-  background-color: white; }
+  background-color: #FFFFFF; }
   .event-participant-list .add-payment-cell {
     text-align: center;
     font-size: 70%;
@@ -449,7 +449,7 @@ header {
   padding: 5px;
   width: 250px;
   height: 250px;
-  background-color: white;
+  background-color: #FFFFFF;
   flex: none; }
   .user-block .user-block-content {
     font-size: 70%; }
@@ -462,7 +462,7 @@ header {
   border-radius: 3px;
   margin: 5px;
   flex: 1;
-  background-color: white; }
+  background-color: #FFFFFF; }
   .event-comments .event-comment {
     border: 1px solid #ee6055;
     margin: 10px 3px;
@@ -616,7 +616,7 @@ input[type=checkbox] {
   color: #ee6055;
   padding: 2px;
   text-decoration: none;
-  background-color: white;
+  background-color: #FFFFFF;
   border: 2px solid #ee6055;
   border-radius: 3px; }
   .button-link:hover {
