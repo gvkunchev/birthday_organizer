@@ -7,11 +7,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'font_awesome.min.css' %}">
-        
-        <link href="{% sass_src 'strypes_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'STR' %}disabled="disabled"{% endif %} />
+
+        <link href="{% sass_src 'milk_mint_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'MMM' %}disabled="disabled"{% endif %} />
         <link href="{% sass_src 'purplehaze_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'PRH' %}disabled="disabled"{% endif %} />
         <link href="{% sass_src 'caprese_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'CPR' %}disabled="disabled"{% endif %} />
-        <link href="{% sass_src 'default_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'MMM' %}disabled="disabled"{% endif %} />
+        <link href="{% sass_src 'strypes_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.is_authenticated %}{% if request.user.theme != 'STR' %}disabled="disabled"{% endif %}{% endif %} />
 
         <link href="{% static 'jquery-ui.css' %}{% version_variable %}" rel="stylesheet" type="text/css" />
         <script src="{% static 'jquery-3.6.0.min.js' %}{% version_variable %}"></script>

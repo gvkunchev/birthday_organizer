@@ -1,8 +1,8 @@
 {
 	"version": 3,
-	"file": "default_theme.css",
+	"file": "milk_mint_theme.css",
 	"sources": [
-		"default_theme.scss",
+		"milk_mint_theme.scss",
 		"_variables.scss",
 		"combined.scss",
 		"generic.scss",
