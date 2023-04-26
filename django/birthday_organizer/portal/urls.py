@@ -18,5 +18,6 @@ urlpatterns = [
     path('get_total', views.get_total),
     path('join_event', views.join_event),
     path('become_host', views.become_host),
-    path('delete_event', views.delete_event)
+    path('delete_event', views.delete_event),
+    path('toggle_like', views.toggle_like),
 ]

@@ -172,6 +172,24 @@ def toggle_payment(request):
         return JsonResponse({'result':'error', 'details': 'Invalid request'})
 
 @login_required(login_url='/log_in')
+def toggle_like(request):
+    '''Toggle comment like.'''
+    try:
+        comment = Comment.objects.get(pk=request.POST['comment'])
+        event = Event.objects.get(pk=request.POST['event'])
+        if bool(int(request.POST['status'])):
+            comment.likes.add(request.user)
+        else:
+            comment.likes.remove(request.user)
+        comment.save()
+        context = {'event': event}
+        content = render_to_string("event_comments.html",
+                                    context, request=request)
+        return JsonResponse({'result': 'success', 'content': content})
+    except (ValueError, KeyError, Event.DoesNotExist):
+        return JsonResponse({'result':'error', 'details': 'Invalid request'})
+
+@login_required(login_url='/log_in')
 def remove_payment(request):
     '''Remove payment.'''
     try:

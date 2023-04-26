@@ -1,3 +1,5 @@
+{% load birthday_organizer_extras %}
+
 {% if event.comments.all|length == 0 %}
     <div class="no-comments">There are no comments yet.</div>
 {% endif %}
@@ -17,12 +19,32 @@
             <span class="edit-comment-submit hidden">
                 <i class="fa fa-check"></i> Done
             </span>
+            <span class="comment-button-separator">|</span>
+        {% endif %}
+        {% comment_liked_by comment request.user as liked %}
+        {% if liked %}
+            <span class="dislike-button tooltip-trigger" data-comment="{{ comment.id }}" data-event="{{ event.id }}" title="Remove your like">
+                <i class="fa fa-thumbs-up"></i> Liked
+            </span>
+            <span class="like-button tooltip-trigger hidden" data-comment="{{ comment.id }}" data-event="{{ event.id }}" title="Add a like">
+                <i class="fa fa-thumbs-up"></i> Like
+            </span>
+        {% else %}
+            <span class="dislike-button tooltip-trigger hidden" data-comment="{{ comment.id }}" data-event="{{ event.id }}" title="Remove your like">
+                <i class="fa fa-thumbs-up"></i> Liked
+            </span>
+            <span class="like-button tooltip-trigger" data-comment="{{ comment.id }}" data-event="{{ event.id }}" title="Add a like">
+                <i class="fa fa-thumbs-up"></i> Like
+            </span>
         {% endif %}
         <div class="event-comment-content">
             {% if request.user.id == comment.user.id %}
                 <textarea class="edit-comment-area hidden" data-event="{{event.id}}" data-comment="{{comment.id}}">{{ comment.content }}</textarea>
             {% endif %}
             {{ comment.content|linebreaks }}
+        </div>
+        <div class="comment-likes-report">
+            {% get_all_likes_for_comment comment %}
         </div>
     </fieldset>
 {% endfor %}

@@ -112,6 +112,7 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(default=timezone.now, editable=True)
     content = models.CharField(max_length=10000)
     alert_sent = models.BooleanField(default=False)
+    likes = models.ManyToManyField(CustomUser, blank=True, related_name='comment_likes')
 
     @property
     def human_timestamp(self):
