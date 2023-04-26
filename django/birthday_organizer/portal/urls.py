@@ -20,4 +20,5 @@ urlpatterns = [
     path('become_host', views.become_host),
     path('delete_event', views.delete_event),
     path('toggle_like', views.toggle_like),
+    path('change_theme', views.change_theme),
 ]

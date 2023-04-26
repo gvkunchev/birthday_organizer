@@ -9,4 +9,3 @@ Logging
 Write some tests
 Add markdown support for comments
 Add a dark theme
-Static files require to be compiled and pushed manually, which is nasty. FIX THAT!
