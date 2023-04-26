@@ -176,8 +176,9 @@ header {
 #calendar {
   max-width: 100%;
   position: relative;
-  margin: 0 10px; }
+  margin: 10px; }
   #calendar table {
+    width: 354px;
     border-spacing: 4px;
     background-color: white;
     border: 2px solid #eb6012;
@@ -304,7 +305,7 @@ header {
   border: 2px solid #eb6012;
   border-radius: 3px;
   max-width: 100%;
-  margin: 0 10px;
+  margin: 10px;
   padding: 0; }
   #overview .overview-table {
     border-spacing: 4px;
@@ -333,7 +334,7 @@ header {
   border: 2px solid #eb6012;
   border-radius: 3px;
   max-width: 100%;
-  margin: 0 10px;
+  margin: 10px;
   padding: 0; }
   #whats_new .whats-new-table {
     border-spacing: 4px;
@@ -585,7 +586,12 @@ input[type=checkbox] {
     margin-right: auto; }
   #overview {
     margin: 10px auto;
-    width: 100%; }
+    width: 100% !important;
+    flex: none !important; }
+  #whats_new {
+    margin: 10px auto;
+    width: 100% !important;
+    flex: none !important; }
   #calendar {
     margin: 0 auto;
     width: 100%; }
@@ -597,6 +603,8 @@ input[type=checkbox] {
     text-align: center;
     margin-bottom: 5px; }
   #overview .overview-table {
+    width: 100%; }
+  #whats_new .whats-new-table {
     width: 100%; } }
 
 .offset-wrapper {
