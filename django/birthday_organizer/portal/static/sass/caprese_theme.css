@@ -472,7 +472,9 @@ header {
       cursor: pointer; }
     .event-comments .event-comment .comment-likes-report {
       color: #ee6055;
-      padding: 3px; }
+      padding: 3px;
+      font-style: italic;
+      font-size: 80%; }
   .event-comments .no-comments {
     color: #ee6055;
     padding: 5px; }
