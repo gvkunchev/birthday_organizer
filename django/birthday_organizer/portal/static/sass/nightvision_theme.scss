@@ -1,0 +1,37 @@
+@import 'variables';
+$theme_color_background_light: #010C01;
+$theme_color_background_dark: #0f3d45;
+$theme_color_main_dark: #083205;
+$theme_color_main_light: #2E7901;
+$theme_color_default_background: #012301;
+
+@import 'combined.scss';
+
+
+* {
+    color: #cbcbcb !important;
+}
+
+input, select, textarea, option {
+    background-color: $theme_color_default_background !important;
+}
+
+option:checked {
+    background-color: $theme_color_main_light !important;
+}
+
+.dot {
+    border: 1px solid #cbcbcb;
+}
+
+.ui-tooltip-content, .ui-tooltip {
+    background-color: $theme_color_default_background !important;
+}
+
+.ui-dialog, .ui-dialog-buttonpane {
+    background-color: $theme_color_main_dark !important;
+}
+
+.ui-button {
+    background-color: $theme_color_main_light !important;
+}

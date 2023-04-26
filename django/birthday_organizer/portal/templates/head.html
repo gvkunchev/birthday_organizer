@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'font_awesome.min.css' %}">
 
+        <link class="theme-stylesheet theme-stylesheet-ntv" href="{% sass_src 'nightvision_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'NTV' %}disabled="disabled"{% endif %} />
         <link class="theme-stylesheet theme-stylesheet-mmm" href="{% sass_src 'milk_mint_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'MMM' %}disabled="disabled"{% endif %} />
         <link class="theme-stylesheet theme-stylesheet-prh" href="{% sass_src 'purplehaze_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'PRH' %}disabled="disabled"{% endif %} />
         <link class="theme-stylesheet theme-stylesheet-cpr" href="{% sass_src 'caprese_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'CPR' %}disabled="disabled"{% endif %} />
