@@ -88,7 +88,14 @@ input[type=checkbox] {
 
     #overview {
         margin: 10px auto;
-        width: 100%;
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    #whats_new {
+        margin: 10px auto;
+        width: 100% !important;
+        flex: none !important;
     }
 
     #calendar {
@@ -108,6 +115,10 @@ input[type=checkbox] {
     }
 
     #overview .overview-table {
+        width: 100%;
+    }
+
+    #whats_new .whats-new-table {
         width: 100%;
     }
 }
