@@ -26,6 +26,24 @@ $(document).ready(function(){
     *
     */
 
+    // Change theme dynamically in the setting page
+    $('select[name=theme]').bind('change', function(){
+        var sel_theme = $(this).val().toLowerCase();
+        $('.theme-stylesheet-' + sel_theme).attr('disabled', false);
+        $('.theme-stylesheet').not($('.theme-stylesheet-' + sel_theme)).attr('disabled', 'disabled');
+        $.ajax({
+            type: "POST", headers: {'X-CSRFToken': getToken()},
+            url: 'change_theme',
+            data: {'theme': $(this).val()},
+            success: function(data){
+                // Nothing to do
+            },
+            error: function(data){
+                console.error('Unable to change the theme dynamically.')
+            }
+        });
+    })
+
     // Handle mobile view toggle
     $('.expand-icon').click(function(){
         $('#nav-menu').toggleClass('mobile-view');

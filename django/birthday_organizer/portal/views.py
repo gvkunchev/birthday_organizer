@@ -245,3 +245,14 @@ def settings(request):
     '''User's settings page.'''
     context = {'themes': Theme.choices}
     return render(request, "settings.html", context)
+
+@login_required(login_url='/log_in')
+def change_theme(request):
+    '''Change user theme.'''
+    try:
+        user = CustomUser.objects.get(id=request.user.id)
+        user.theme = request.POST['theme']
+        user.save()
+        return JsonResponse({'result': 'success'})
+    except (ValueError, KeyError, CustomUser.DoesNotExist):
+        return JsonResponse({'result':'error'})
