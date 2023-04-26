@@ -116,4 +116,4 @@ class Comment(models.Model):
     @property
     def human_timestamp(self):
         '''Return timestamp in human readable format.'''
-        return timezone.localtime(self.timestamp).strftime("%Y %B %d %H:%M:%S")
+        return timezone.localtime(self.timestamp).strftime("%Y/%m/%d %H:%M:%S")
