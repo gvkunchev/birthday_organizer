@@ -41,7 +41,7 @@
             {% if request.user.id == comment.user.id %}
                 <textarea class="edit-comment-area hidden" data-event="{{event.id}}" data-comment="{{comment.id}}">{{ comment.content }}</textarea>
             {% endif %}
-            <span class="slowdown-trigger">{{ comment.content }}</span>
+            <span class="showdown-trigger">{{ comment.content }}</span>
         </div>
         <div class="comment-likes-report">
             {% get_all_likes_for_comment comment %}

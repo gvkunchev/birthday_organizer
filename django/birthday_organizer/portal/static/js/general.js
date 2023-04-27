@@ -19,8 +19,8 @@ function getToken() {
 
 $(document).ready(function(){
 
-    var slowDownConverter = new showdown.Converter();
-    slowDownConverter.setOption('emoji', true);
+    var showDownConverter = new showdown.Converter();
+    showDownConverter.setOption('emoji', true);
 
 
     /*
@@ -274,7 +274,7 @@ $(document).ready(function(){
     // Bind edit comment events
     function bindEditComments(){
         $('.edit-comment-button').click(function(){
-            $(this).parents('fieldset').find('p').remove();
+            $(this).parents('fieldset').find('.showdown-trigger').remove();
             $(this).parents('fieldset').find('.edit-comment-submit').removeClass('hidden');
             $(this).parents('fieldset').find('.edit-comment-area').removeClass('hidden');
             $(this).parents('fieldset').find('.edit-comment-button').remove();
@@ -345,9 +345,9 @@ $(document).ready(function(){
         });
     }
 
-    function applySlowdown(){
-        $('.slowdown-trigger').each(function(){
-            $(this).html(slowDownConverter.makeHtml($(this).html()));
+    function applyShowdown(){
+        $('.showdown-trigger').each(function(){
+            $(this).html(showDownConverter.makeHtml($(this).html()));
         })
     }
 
@@ -362,7 +362,7 @@ $(document).ready(function(){
     function setUpComments(){
         setToolTip();
         convertDates();
-        applySlowdown();
+        applyShowdown();
         bindEditComments();
         bindToggleLike();
     }
