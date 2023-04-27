@@ -632,7 +632,7 @@ input[type=checkbox] {
 input, select, textarea, option {
   background-color: #012301 !important; }
 
-textarea {
+textarea, input[type=number], input[type=text], input[type=date], select {
   border: 1px solid #2E7901 !important; }
 
 option:checked {
