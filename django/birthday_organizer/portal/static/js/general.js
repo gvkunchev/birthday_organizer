@@ -19,6 +19,9 @@ function getToken() {
 
 $(document).ready(function(){
 
+    var slowDownConverter = new showdown.Converter();
+    slowDownConverter.setOption('emoji', true);
+
 
     /*
     *
@@ -342,6 +345,13 @@ $(document).ready(function(){
         });
     }
 
+    function applySlowdown(){
+        $('.slowdown-trigger').each(function(){
+            $(this).html(slowDownConverter.makeHtml($(this).html()));
+        })
+    }
+
+
 
     /*
     *
@@ -352,6 +362,7 @@ $(document).ready(function(){
     function setUpComments(){
         setToolTip();
         convertDates();
+        applySlowdown();
         bindEditComments();
         bindToggleLike();
     }
