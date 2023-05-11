@@ -55,7 +55,11 @@
                         {% if request.user_agent.is_mobile %}
                             <a href="http://revolut.me/{{ event.host.revolut_clean }}" class="disable-link-color">{{ event.host.revolut }}</a>
                         {% else %}
-                            <span class='clipboard-data tooltip-trigger' title="Click to copy">
+                            <span class='clipboard-data tooltip-trigger'
+                            {% if not request.user_agent.is_mobile %}
+                                title="Click to copy"
+                            {% endif %}
+                            >
                             {{ event.host.revolut }}
                             <input class="clipboard-data-input hidden" value="{{ event.host.revolut }}" />
                             </span>
