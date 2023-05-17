@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Event(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now=False, editable=True)
     participants = models.ManyToManyField(CustomUser,
                                           related_name='participated_events')
