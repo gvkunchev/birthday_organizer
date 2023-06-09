@@ -8,3 +8,4 @@ In case there are multiple envets requiring an alert email - send one email for 
 Logging
 Write some tests
 Send actual comment content when alerting for new comment activity.
+Allow hosts to make payments manually

@@ -18,6 +18,9 @@
                     {% if not event.host %}
                         <a href="become_host?id={{ event.id }}" class="button-link"><i class="fa fa-crown"></i> Become host</a>
                     {% endif %}
+                    {% if event.host != request.user %}
+                        <a href="leave_event?id={{ event.id }}" class="button-link"><i class="fa fa-sign-out"></i> Leave event</a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </div>

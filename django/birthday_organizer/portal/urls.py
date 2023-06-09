@@ -17,6 +17,7 @@ urlpatterns = [
     path('edit_comment', views.edit_comment),
     path('get_total', views.get_total),
     path('join_event', views.join_event),
+    path('leave_event', views.leave_event),
     path('become_host', views.become_host),
     path('delete_event', views.delete_event),
     path('toggle_like', views.toggle_like),
