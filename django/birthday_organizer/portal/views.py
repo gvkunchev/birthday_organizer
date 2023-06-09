@@ -110,6 +110,17 @@ def join_event(request):
         return redirect('/event?id={}'.format(req_event.pk))
 
 @login_required(login_url='/log_in')
+def leave_event(request):
+    '''Leave to an event.'''
+    req_event = get_object_or_404(Event, pk=request.GET['id'])
+    try:
+        req_event.participants.remove(request.user)
+        req_event.save()
+    except:
+        pass # User not part of the event - nothing to do
+    return redirect('/event?id={}'.format(req_event.pk))
+
+@login_required(login_url='/log_in')
 def become_host(request):
     '''Become a host to an event.'''
     req_event = get_object_or_404(Event, pk=request.GET['id'])
