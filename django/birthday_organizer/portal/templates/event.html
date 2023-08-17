@@ -85,9 +85,9 @@
                             <li>
                                 {% if event.host == request.user %}
                                     {% if item in event.wishlist_item.all %}
-                                        <a href="/event/{{ event.pk }}/unselect_wishlist/{{ item.pk }}"><i class="fa fa-bag-shopping tooltip-trigger" title="Marked as bought. Click to deselect. Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
+                                        <a href="/event/{{ event.pk }}/unselect_wishlist/{{ item.pk }}" class="disable-link-color"><i class="fa fa-bag-shopping tooltip-trigger" title="Marked as bought. Click to deselect. Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
                                     {% else %}
-                                        <a href="/event/{{ event.pk }}/select_wishlist/{{ item.pk }}"><i class="semitransparent fa fa-bag-shopping tooltip-trigger" title="Mark as bought and Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
+                                        <a href="/event/{{ event.pk }}/select_wishlist/{{ item.pk }}" class="disable-link-color"><i class="semitransparent fa fa-bag-shopping tooltip-trigger" title="Mark as bought and Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
                                     {% endif %}
                                 {% endif %}
                                 {{ item.title }}
