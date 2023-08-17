@@ -1,3 +1,4 @@
+{% load birthday_organizer_extras %}
 {% include 'head.html'%}
 {% include 'header.html' with active="users" %}
 
@@ -46,6 +47,19 @@
                     </b>
                 {% else %}
                     Revolut: <b>-</b>
+                {% endif %}
+            </div>
+            <br/>
+            <div class="user-block-content nowrap">
+                {% if user.wishlistitem_set.all|active %}
+                    Wishlist:
+                    <ul class="wishlist-user-list">
+                        {% for item in user.wishlistitem_set.all|active %}
+                            <li class="tooltip-trigger" title="{% if item.description %}{{ item.description }}{% endif %}">{{ item.title }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    Wishlist is empty.
                 {% endif %}
             </div>
         </div>
