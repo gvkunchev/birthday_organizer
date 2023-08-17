@@ -1,0 +1,26 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="wishlist" %}
+
+
+<div class="content">
+    <div class="expand-on-mobile wishlist-form-wrapper">
+        <form action="" method="post" class="basic-form wishlist-form">
+            {% csrf_token %}
+            <div><label for="title">Title:</label></div>
+            <span class="error">{{ errors.title }}</span>
+            <input type="text" name="title" id="title" value="{{ wishlist_item.title }}">
+            <br/><br/>
+            <div><label for="description">Description:</label></div>
+            <span class="error">{{ errors.description }}</span>
+            <textarea name="description" id="description">{% if wishlist_item.description %}{{ wishlist_item.description }}{% endif %}</textarea>
+            <hr/>
+            <button class="button-link" type="submit"><i class="fa fa-save"></i> Save</button>
+        </form>
+        <br/><br/>
+        <div class="center">
+            <a href="/wishlist/delete/{{ wishlist_item.pk }}" class="button-link confirm"><i class="fa fa-trash"></i> Delete item</a>
+        </div>
+    </div>
+</div>
+
+{% include 'foot.html' %}

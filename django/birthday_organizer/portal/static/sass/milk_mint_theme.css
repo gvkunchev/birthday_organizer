@@ -626,4 +626,20 @@ input[type=checkbox] {
   .button-link:hover {
     background-color: #62CCC0; }
 
+.wishlist-edit-table {
+  border-collapse: collapse;
+  background-color: #FFFFFF; }
+  .wishlist-edit-table td, .wishlist-edit-table th {
+    border: 2px solid #62CCC0;
+    padding: 5px;
+    color: #368980; }
+  .wishlist-edit-table th {
+    font-weight: bold; }
+
+.wishlist-form-wrapper {
+  padding: 5px; }
+
+.wishlist-form {
+  height: auto !important; }
+
 /*# sourceMappingURL=milk_mint_theme.css.map */

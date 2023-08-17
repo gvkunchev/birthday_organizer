@@ -626,4 +626,20 @@ input[type=checkbox] {
   .button-link:hover {
     background-color: #eb6012; }
 
+.wishlist-edit-table {
+  border-collapse: collapse;
+  background-color: #ffffff; }
+  .wishlist-edit-table td, .wishlist-edit-table th {
+    border: 2px solid #eb6012;
+    padding: 5px;
+    color: #0f596e; }
+  .wishlist-edit-table th {
+    font-weight: bold; }
+
+.wishlist-form-wrapper {
+  padding: 5px; }
+
+.wishlist-form {
+  height: auto !important; }
+
 /*# sourceMappingURL=strypes_theme.css.map */

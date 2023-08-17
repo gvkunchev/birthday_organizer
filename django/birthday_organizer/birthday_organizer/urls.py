@@ -19,7 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('portal.urls')),
-    path('', include('users.urls'))
+    path('', include('users.urls')),
+    path('', include('wishlists.urls'))
 ]
 
 if settings.ADMIN_ENABLED:

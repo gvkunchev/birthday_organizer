@@ -1,0 +1,63 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="wishlist" %}
+
+
+<div class="content">
+    {% if wishlist_items %}
+        <table class="wishlist-edit-table expand-on-mobile">
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Active</th>
+            </tr>
+            {% for item in wishlist_items %}
+                <tr>
+                    <td>
+                        <a href="/wishlist/edit/{{ item.pk }}">
+                            <i class="fa fa-edit tooltip-trigger" title="Edit"></i>
+                        </a>
+                    </td>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        {% if item.description %}
+                            {{ item.description }}
+                        {% endif %}
+                    </td>
+                    <td class="center">
+                        {% if item.active %}
+                            <a href="/wishlist/deactivate/{{ item.pk }}">
+                                <i class="fa fa-check-circle tooltip-trigger" title="Click to deactivate"></i>
+                            </a>
+                        {% else %}
+                            <a href="/wishlist/activate/{{ item.pk }}">
+                                <i class="fa fa-circle-xmark tooltip-trigger" title="Click to activate"></i>
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div style="flex-basis: 100%;">
+            No wishlist items yet.
+            <br/>
+        </div>
+    {% endif %}
+    <div class="expand-on-mobile wishlist-form-wrapper">
+        <form action="" method="post" class="basic-form wishlist-form">
+            {% csrf_token %}
+            <div><label for="title">Title:</label></div>
+            <span class="error">{{ errors.title }}</span>
+            <input type="text" name="title" id="title">
+            <br/><br/>
+            <div><label for="description">Description:</label></div>
+            <span class="error">{{ errors.description }}</span>
+            <textarea name="description" id="description"></textarea>
+            <hr/>
+            <button class="button-link" type="submit"><i class="fa fa-plus"></i> Add</button>
+        </form>
+    </div>
+</div>
+
+{% include 'foot.html' %}

@@ -98,7 +98,7 @@ $(document).ready(function(){
     //Bind confirm events
     $('.confirm').each(function(i, e){
         $(e).click(function(event){
-            $("<div>").html("Are you sure you want to delete this event?").dialog({
+            $("<div>").html("Are you sure you want to delete this?").dialog({
                 title: "Please confirm",
                 buttons: [
                   {
