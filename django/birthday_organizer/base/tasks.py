@@ -60,6 +60,13 @@ def create_birthday_event_per_user(*args, **kwargs):
         email.send_email(all_emails,
                          f'New event - "{event.name}"',
                          render_to_string('emails/new_event.html', context))
+        if event.celebrant:
+            context = {
+                'wishlist_link': f'{DOMAIN_NAME}/wishlist'
+            }
+            email.send_email([event.celebrant.email],
+                            f'Wishlist reminder',
+                            render_to_string('emails/wishlist_reminder.html', context))
 
 @shared_task(name="alert_for_events_without_host")
 def alert_for_events_without_host(*args, **kwargs):
@@ -135,3 +142,7 @@ def archive_events(*args, **kwargs):
         if timezone.now() - event.date > EVENT_CREATOR_SPAN:
             event.archived = True
             event.save()
+            # If event has selected wishlist items - deactivate them
+            for item in event.wishlist_item.all():
+                item.active = False
+                item.save()

@@ -626,6 +626,22 @@ input[type=checkbox] {
   .button-link:hover {
     background-color: #2E7901; }
 
+.wishlist-edit-table {
+  border-collapse: collapse;
+  background-color: #012301; }
+  .wishlist-edit-table td, .wishlist-edit-table th {
+    border: 2px solid #2E7901;
+    padding: 5px;
+    color: #083205; }
+  .wishlist-edit-table th {
+    font-weight: bold; }
+
+.wishlist-form-wrapper {
+  padding: 5px; }
+
+.wishlist-form {
+  height: auto !important; }
+
 * {
   color: #cbcbcb !important; }
 

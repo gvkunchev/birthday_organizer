@@ -143,3 +143,7 @@ class CustomUser(AbstractUser):
             if len(overview_list) >= LIMIT:
                 break
         return {'overview_tasks': overview_list}
+
+    def get_wishlist_items(self):
+        """Get all wishlist items."""
+        return self.wishlistitem_set.all()

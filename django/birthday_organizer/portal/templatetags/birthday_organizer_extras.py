@@ -5,6 +5,15 @@ from users.models import CustomUser
 register = template.Library()
 
 
+@register.filter('active')
+def active(collection):
+    """Filter collection based on its active field."""
+    result = []
+    for item in collection:
+        if item.active:
+            result.append(item)
+    return result
+
 @register.filter('get_value_from_dict')
 def get_value_from_dict(dict_data, key):
     """Usage example {{ your_dict|get_value_from_dict:your_key }}"""

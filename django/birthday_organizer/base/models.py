@@ -3,6 +3,7 @@ from django.db import models
 from users.models import CustomUser
 from django.utils import timezone
 
+from wishlists.models import WishlistItem
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
@@ -15,6 +16,7 @@ class Event(models.Model):
                              blank=True, null=True,
                              related_name='hosted_events')
     archived = models.BooleanField(default=False)
+    wishlist_item = models.ManyToManyField(WishlistItem)
 
     def __str__(self):
         return self.name

@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'users',
     'base',
     'portal',
-    'django_user_agents'
+    'django_user_agents',
+    'wishlists'
 ]
 
 STATICFILES_FINDERS = [

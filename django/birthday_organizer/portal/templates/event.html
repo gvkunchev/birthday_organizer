@@ -1,3 +1,4 @@
+{% load birthday_organizer_extras %}
 {% include 'head.html'%}
 {% include 'header.html' with active="events" %}
 
@@ -73,6 +74,33 @@
                 {% endif %}
             </div>
             <div class="event-overview-total">Total: <b><span class='total-money'>{{ event.get_total_money|floatformat:2 }}</span> {{ currency }}</b></div>
+        {% endif %}
+        {% if event.celebrant %}
+            <br/>
+            {% if event.celebrant.wishlistitem_set.all|active %}
+                Wishlist:
+                <ul>
+                    {% for item in event.celebrant.wishlistitem_set.all %}
+                        {% if item.active %}
+                            <li>
+                                {% if event.host == request.user %}
+                                    {% if item in event.wishlist_item.all %}
+                                        <a href="/event/{{ event.pk }}/unselect_wishlist/{{ item.pk }}"><i class="fa fa-bag-shopping tooltip-trigger" title="Marked as bought. Click to deselect. Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
+                                    {% else %}
+                                        <a href="/event/{{ event.pk }}/select_wishlist/{{ item.pk }}"><i class="semitransparent fa fa-bag-shopping tooltip-trigger" title="Mark as bought and Birthday Organizer will automatically remove that item from the user's wishlist as soon as the event is archived."></i></a>
+                                    {% endif %}
+                                {% endif %}
+                                {{ item.title }}
+                                {% if item.description %}
+                                     - {{ item.description }}
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <i class="fa fa-list"></i> The celebrant has no items in their Wishlist.
+            {% endif %}
         {% endif %}
         <hr/>
         <hr/>

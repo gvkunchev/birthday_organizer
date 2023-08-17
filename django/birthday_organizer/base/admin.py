@@ -13,7 +13,8 @@ class EventAdmin(admin.ModelAdmin):
     fieldsets = (
             (None, {
                 "fields": (
-                    ('name', 'date', 'celebrant', 'host', 'participants', 'archived')
+                    ('name', 'date', 'celebrant', 'host', 'participants', 'archived',
+                     'wishlist_item')
                 ),
             }),
         )
