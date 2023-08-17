@@ -3,7 +3,7 @@
     border-radius: 3px;
     padding: 5px;
     width: 250px;
-    height: 250px;
+    height: 300px;
     background-color: $theme_color_default_background;
     flex: none;
 
@@ -15,4 +15,11 @@
         font-weight: bold;
         color: $theme_color_main_dark;
     }
+}
+
+.wishlist-user-list {
+    height: 80px;
+    width: 80%;
+    overflow: auto;
+    margin: 0;
 }
