@@ -14,7 +14,7 @@
             {% for item in wishlist_items %}
                 <tr>
                     <td>
-                        <a href="/wishlist/edit/{{ item.pk }}">
+                        <a href="/wishlist/edit/{{ item.pk }}" class="disable-link-color">
                             <i class="fa fa-edit tooltip-trigger" title="Edit"></i>
                         </a>
                     </td>
@@ -26,11 +26,11 @@
                     </td>
                     <td class="center">
                         {% if item.active %}
-                            <a href="/wishlist/deactivate/{{ item.pk }}">
+                            <a href="/wishlist/deactivate/{{ item.pk }}" class="disable-link-color">
                                 <i class="fa fa-check-circle tooltip-trigger" title="Click to deactivate"></i>
                             </a>
                         {% else %}
-                            <a href="/wishlist/activate/{{ item.pk }}">
+                            <a href="/wishlist/activate/{{ item.pk }}" class="disable-link-color">
                                 <i class="fa fa-circle-xmark tooltip-trigger" title="Click to activate"></i>
                             </a>
                         {% endif %}
