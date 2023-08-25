@@ -636,6 +636,10 @@ input[type=checkbox] {
   .button-link:hover {
     background-color: #2E7901; }
 
+.select2-container * {
+  font-size: 13px !important;
+  color: black !important; }
+
 .wishlist-edit-table {
   border-collapse: collapse;
   background-color: #012301; }
@@ -675,5 +679,15 @@ option:checked {
 
 .ui-button {
   background-color: #2E7901 !important; }
+
+.select2-container * {
+  background-color: #083205 !important;
+  color: #cbcbcb !important; }
+
+.select2-container {
+  border: 1px solid #2E7901 !important; }
+
+.select2-container--default .select2-selection--single {
+  border: 0 none !important; }
 
 /*# sourceMappingURL=nightvision_theme.css.map */

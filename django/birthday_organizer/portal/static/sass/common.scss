@@ -140,3 +140,8 @@ input[type=checkbox] {
         background-color: $theme_color_main_light;
     }
 }
+
+.select2-container * {
+    font-size: 13px !important;
+    color: black !important;
+}

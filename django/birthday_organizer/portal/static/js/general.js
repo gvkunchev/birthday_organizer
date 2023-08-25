@@ -393,4 +393,7 @@ $(document).ready(function(){
         })
     })
 
+    $('select[name="celebrant"]').select2();
+    $('select[name="host"]').select2();
+
 });

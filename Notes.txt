@@ -1,5 +1,4 @@
 Improve participants selection when creating event
-Include search for host and celebrant in the create event form
 Implement Google Authorization
 Include profile pictures from Google
 In case there are multiple envets requiring an alert email - send one email for all, not one for each event.

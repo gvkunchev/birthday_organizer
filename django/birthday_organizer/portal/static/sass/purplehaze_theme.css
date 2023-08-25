@@ -636,6 +636,10 @@ input[type=checkbox] {
   .button-link:hover {
     background-color: #eed102; }
 
+.select2-container * {
+  font-size: 13px !important;
+  color: black !important; }
+
 .wishlist-edit-table {
   border-collapse: collapse;
   background-color: #FFFFFF; }
