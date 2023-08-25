@@ -128,7 +128,8 @@ def alert_for_new_comments(*args, **kwargs):
                 all_emails.append(user.email)
         context = {
             'event_link': f'{DOMAIN_NAME}/event?id={event.id}',
-            'event_name': event.name
+            'event_name': event.name,
+            'comments': comments_to_alert_for
         }
         email.send_email(all_emails,
                          f'New comments - "{event.name}"',
