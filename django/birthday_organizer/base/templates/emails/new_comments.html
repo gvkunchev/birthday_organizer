@@ -5,5 +5,7 @@ Please spend a minute to take a look.
 
 <a href="{{ event_link }}">{{ event_name }}</a>
 
+{% for comment in comments %}{{ comment.user.full_name }} at {{ comment.human_timestamp }}<br/>{{ comment.content }}<hr><hr>{% endfor %}
+
 Best Regards,
 Birthday Organizers
