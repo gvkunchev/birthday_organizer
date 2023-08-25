@@ -3,6 +3,11 @@
 {% include 'header.html' with active="users" %}
 
 <div class="content">
+
+    <div class="user-filter-wrapper">
+        <label for="user_filter">Filter:</label>
+        <input type="text" id="user_filter" placeholder="Search by name"/>
+    </div>
     {% for user in users %}
         <div class="content-block user-block">
             <div class="user-block-name nowrap">{{ user.full_name }}</div>

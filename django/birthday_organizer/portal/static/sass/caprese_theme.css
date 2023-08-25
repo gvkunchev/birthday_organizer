@@ -463,6 +463,10 @@ header {
   overflow: auto;
   margin: 0; }
 
+.user-filter-wrapper {
+  flex: 0 0 100%;
+  color: #ee6055; }
+
 .event-comments {
   border: 2px solid #60d394;
   border-radius: 3px;
