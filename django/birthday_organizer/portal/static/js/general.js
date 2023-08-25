@@ -374,4 +374,27 @@ $(document).ready(function(){
     }
     setUpPayments();
 
+    /*
+    *
+    * Filters
+    *
+    */
+
+    $('#user_filter').bind('change keyup paste', function(){
+        var input_val = $(this).val().toLowerCase();
+        $('.user-block').each(function(i, e){
+            var name = $(e).find('.user-block-name').text().toLowerCase();
+            if (name.includes(input_val)) {
+                $(e).show();
+            }
+            else{
+                $(e).hide();
+            }
+        })
+    })
+
+    $('select[name="celebrant"]').select2();
+    $('select[name="host"]').select2();
+    $('select[name="participants"]').select2({'multiple': true});
+
 });

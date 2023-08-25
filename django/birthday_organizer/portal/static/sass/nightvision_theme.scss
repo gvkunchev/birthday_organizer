@@ -39,3 +39,16 @@ option:checked {
 .ui-button {
     background-color: $theme_color_main_light !important;
 }
+
+.select2-container * {
+    background-color: $theme_color_main_dark !important;
+    color: #cbcbcb !important;
+}
+
+.select2-container {
+    border: 1px solid $theme_color_main_light !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 0 none !important;
+}

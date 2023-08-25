@@ -7,6 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'font_awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'select2_4.0.8_css_select2.min.css' %}">
 
         <link class="theme-stylesheet theme-stylesheet-ntv" href="{% sass_src 'nightvision_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'NTV' %}disabled="disabled"{% endif %} />
         <link class="theme-stylesheet theme-stylesheet-mmm" href="{% sass_src 'milk_mint_theme.scss' %}{% version_variable %}" rel="stylesheet" type="text/css" {% if request.user.theme != 'MMM' %}disabled="disabled"{% endif %} />
@@ -20,6 +21,7 @@
         <script src="{% static 'showdown.min.js' %}{% version_variable %}"></script>
         <script src="{% static 'calendar.js' %}{% version_variable %}"></script>
         <script src="{% static 'general.js' %}{% version_variable %}"></script>
+        <script src="{% static 'select2_4.0.8_js_select2.min.js' %}{% version_variable %}"></script>
         <link rel="icon" href="{% static 'strypes_logo.png' %}{% version_variable %}" type="image/png">
         <title>Birthday Organizer</title>
     </head>

@@ -463,6 +463,10 @@ header {
   overflow: auto;
   margin: 0; }
 
+.user-filter-wrapper {
+  flex: 0 0 100%;
+  color: #368980; }
+
 .event-comments {
   border: 2px solid #62CCC0;
   border-radius: 3px;
@@ -631,6 +635,13 @@ input[type=checkbox] {
   border-radius: 3px; }
   .button-link:hover {
     background-color: #62CCC0; }
+
+.select2-container * {
+  font-size: 13px !important;
+  color: black !important; }
+
+.select2-container {
+  min-width: 200px !important; }
 
 .wishlist-edit-table {
   border-collapse: collapse;

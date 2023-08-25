@@ -1,7 +1,3 @@
-TODO:
-Add user filter for searching
-Improve participants selection when creating event
-Include search for host and celebrant in the create event form
 Implement Google Authorization
 Include profile pictures from Google
 In case there are multiple envets requiring an alert email - send one email for all, not one for each event.
@@ -9,10 +5,3 @@ Logging
 Write some tests
 Send actual comment content when alerting for new comment activity.
 Allow hosts to make payments manually
-
-Additional notes:
-1. Wishlists ideas / requirements
-  - The wishlist items can be marked as "gifted" and as a consequence "archived" (in a section called "Treasure Hoard" in the wishlist view) after the event
-  - (Nice to have) BO should remind the user a 4-3-2 weeks before his birthday in case his/hers wishlist is empty
-  - (Nice to have) The people in the event should be able to vote for a specific item in the wishlist
-  - There should be a visual difference when "deactivating" an item in the wishlist
