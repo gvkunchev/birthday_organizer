@@ -640,6 +640,9 @@ input[type=checkbox] {
   font-size: 13px !important;
   color: black !important; }
 
+.select2-container {
+  min-width: 200px !important; }
+
 .wishlist-edit-table {
   border-collapse: collapse;
   background-color: #FFFFFF; }
