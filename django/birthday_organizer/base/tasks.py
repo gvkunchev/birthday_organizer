@@ -43,6 +43,7 @@ def create_birthday_event_per_user(*args, **kwargs):
         # Ensure the event doesn't exist and create it
         try:
             Event.objects.get(date=date, celebrant=celebrant)
+            continue
         except Event.DoesNotExist:
             event = Event(name=name, date=date, celebrant=celebrant)
             event.save()
@@ -72,13 +73,13 @@ def create_birthday_event_per_user(*args, **kwargs):
 def alert_for_events_without_host(*args, **kwargs):
     """Alert for upcoming events that still doesn't have hosts."""
     all_events = Event.objects.all().filter(archived=False)
-    all_users = CustomUser.objects.all()
     for event in all_events.iterator():
         if not datetime.timedelta() < event.date - timezone.now() < NO_HOST_ALERT_SPAN:
             continue # Event passed or not close enough
         if event.host is not None:
             continue # Already has a host
         # Collect all users to receive an alert email
+        all_users = event.participants.all()
         all_emails = []
         for user in all_users.iterator():
             if user.is_superuser or not user.allow_alerts:
