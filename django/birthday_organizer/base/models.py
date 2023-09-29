@@ -16,7 +16,7 @@ class Event(models.Model):
                              blank=True, null=True,
                              related_name='hosted_events')
     archived = models.BooleanField(default=False)
-    wishlist_item = models.ManyToManyField(WishlistItem)
+    wishlist_item = models.ManyToManyField(WishlistItem, blank=True)
 
     def __str__(self):
         return self.name
@@ -66,6 +66,7 @@ class Event(models.Model):
                         'amount': payment.amount,
                         'confirmed': payment.confirmed,
                         'currency': payment.currency,
+                        'added_by_host': payment.added_by_host,
                         'id': payment.id,
                         'user': payment.user
                     })
@@ -89,6 +90,7 @@ class Payment(models.Model):
     event = models.ForeignKey(Event, models.CASCADE, blank=True, null=True,
                               related_name='payments')
     confirmed = models.BooleanField(default=False)
+    added_by_host = models.BooleanField(default=False)
 
     @staticmethod
     def currency():

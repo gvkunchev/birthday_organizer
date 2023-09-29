@@ -138,10 +138,16 @@ def become_host(request):
 def add_payment(request):
     '''Add payment.'''
     try:
-        form = AddPaymentForm(request.POST)
+        data = request.POST.dict()
+        data['added_by_host'] = False
         event = Event.objects.filter(archived=False).get(pk=request.POST['event'])
         if str(request.user.id) != request.POST['user']:
-            raise Event.DoesNotExist
+            data['added_by_host'] = True
+            if request.user != event.host:
+                # Payment can be done only for the logged in user, unless
+                # they are the host - host can add payments for all participants
+                raise Event.DoesNotExist
+        form = AddPaymentForm(data)
         if not event.eligible_for_actions(request.user):
             raise Event.DoesNotExist
         if form.is_valid():
