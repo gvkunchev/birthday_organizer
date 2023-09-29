@@ -31,19 +31,19 @@ class PaymentAdmin(admin.ModelAdmin):
     ordering = ('user',)
     search_fields = ('user__first_name', 'user__last_name', 'event__name')
     filter_horizontal = ()
-    list_display = ('event', 'user', 'amount', 'confirmed')
-    list_filter = ('confirmed', )
+    list_display = ('event', 'user', 'amount', 'confirmed', 'added_by_host')
+    list_filter = ('confirmed', 'added_by_host')
     fieldsets = (
             (None, {
                 "fields": (
-                    ('event', 'user', 'amount', 'confirmed')
+                    ('event', 'user', 'amount', 'confirmed', 'added_by_host')
                 ),
             }),
         )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('event', 'user', 'amount', 'confirmed')
+            'fields': ('event', 'user', 'amount', 'confirmed', 'added_by_host')
         }),
     )
 

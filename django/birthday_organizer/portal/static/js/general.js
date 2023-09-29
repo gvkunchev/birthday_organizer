@@ -152,7 +152,7 @@ $(document).ready(function(){
         var input = $('.add-payment-amount');
         var amount = input.val();
         var event = input.data('event');
-        var user = input.data('user');
+        var user = $('#payment_on_behalf_of').val() || input.data('user');
         $.ajax({
             type: "POST", headers: {'X-CSRFToken': getToken()},
             url: 'add_payment',

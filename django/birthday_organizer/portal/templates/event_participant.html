@@ -17,8 +17,7 @@
             <td class="event-participant-payment-confirmation">
 
                 {% if request.user == event.host %}
-
-                    {% if payment.user == request.user %}
+                    {% if payment.user == request.user or payment.added_by_host %}
                         <span class="payment-remove-trigger payment-remove-icon tooltip-trigger"
                             {% if not request.user_agent.is_mobile %}
                                 title="Click to remove payment."
@@ -68,7 +67,7 @@
                 {% else %} {# request.user != event.host #}
 
                     {% if payment.user == request.user %}
-                        {% if payment.confirmed %}
+                        {% if payment.confirmed or payment.added_by_host %}
                             <span class="payment-approved-icon tooltip-trigger"
                                 title="Payment is received">
                                 <i class="fa fa-check-circle"></i>
@@ -84,7 +83,7 @@
                             </span>
                         {% endif %}
                     {% else %}
-                        {% if payment.confirmed %}
+                        {% if payment.confirmed or payment.added_by_host %}
                             <span
                                 class="payment-approved-icon tooltip-trigger"
                                 title="Payment is confirmed.">

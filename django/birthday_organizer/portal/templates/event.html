@@ -118,9 +118,23 @@
                                             data-user="{{ request.user.id }}"
                                             data-event="{{ event.id }}"
                                             class="add-payment-amount" />
-                                            {{ currency }} <span class="add-payment-button">
-                                                                <i class="fa fa-plus-circle"></i>
-                                                            </span>
+                                            {{ currency }}
+                                            {% if event.host == request.user %}
+                                                <br/>
+                                                on behalf of 
+                                                <select name="payment_on_behalf_of" id="payment_on_behalf_of">
+                                                    <option value="{{ event.host.pk }}" selected="selected">me</option>
+                                                    {% for user in event.participants.all %}
+                                                        {% if user != event.host %}
+                                                            <option value="{{ user.id }}">{{ user.full_name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select> 
+                                            {% endif %}
+                                            <span class="add-payment-button">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </span>
+                                    <br/>
                                 </td>
                             </tr>
                         {% endif %}

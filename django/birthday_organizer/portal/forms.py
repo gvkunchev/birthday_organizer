@@ -28,7 +28,7 @@ class AddPaymentForm(forms.ModelForm):
 
     class Meta:
         model = Payment
-        fields = ('event', 'user', 'amount', 'confirmed')
+        fields = ('event', 'user', 'amount', 'confirmed', 'added_by_host')
 
 
 class AddCommentForm(forms.ModelForm):
