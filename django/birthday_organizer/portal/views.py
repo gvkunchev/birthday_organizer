@@ -1,3 +1,5 @@
+import os
+
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
@@ -5,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AddEventForm, AddPaymentForm, AddCommentForm
 from users.models import Theme, CustomUser
 from base.models import Event, Payment, Comment
+from base.tasks import send_email_participants_wanted
 
 
 @login_required(login_url='/log_in')
@@ -133,6 +136,18 @@ def become_host(request):
         req_event.host = request.user
         req_event.save()
         return redirect('/event?id={}'.format(req_event.pk))
+
+@login_required(login_url='/log_in')
+def participants_wanted(request):
+    '''Send email, asking for more participants.'''
+    event = get_object_or_404(Event, pk=request.GET['id'])
+    if request.user != event.host:
+        raise Event.DoesNotExist
+    if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
+        send_email_participants_wanted.delay(event)
+    else:
+        send_email_participants_wanted(event)
+    return redirect('/event?id={}'.format(event.pk))
 
 @login_required(login_url='/log_in')
 def add_payment(request):
