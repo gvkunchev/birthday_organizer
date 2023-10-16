@@ -120,6 +120,31 @@ $(document).ready(function(){
         })
     })
 
+    //Bind confirm events
+    $('.confirm-email-send').each(function(i, e){
+        $(e).click(function(event){
+            $("<div>").html("Are you sure you want to send an email to all users that are still not part of the event?").dialog({
+                title: "Please confirm",
+                buttons: [
+                  {
+                    text: "OK",
+                    click: function() {
+                        window.location.href = $(e).attr('href');
+                        $(this).dialog("close");
+                    }
+                  },
+                  {
+                    text: "Cancel",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                  }
+                ]
+              });
+            event.preventDefault();
+        })
+    })
+
     /*
     *
     * Payment events

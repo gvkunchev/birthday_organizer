@@ -10,6 +10,7 @@ urlpatterns = [
     path('add_event', views.add_event),
     path('edit_event', views.edit_event),
     path('event', views.event),
+    path('participants_wanted', views.participants_wanted),
     path('add_payment', views.add_payment),
     path('toggle_payment', views.toggle_payment),
     path('remove_payment', views.remove_payment),

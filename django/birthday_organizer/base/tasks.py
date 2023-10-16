@@ -148,3 +148,26 @@ def archive_events(*args, **kwargs):
             for item in event.wishlist_item.all():
                 item.active = False
                 item.save()
+
+@shared_task(name="participants_wanted")
+def send_email_participants_wanted(event):
+    """Broadcast email, asking for more participants."""
+    all_users = CustomUser.objects.all()
+    all_emails = []
+    for user in all_users:
+        if event.celebrant and user.pk == event.celebrant.pk:
+            continue
+        if user.pk == event.host.pk:
+            continue
+        if user in event.participants.all():
+            continue
+        all_emails.append(user.email)
+    if not all_emails:
+        return False
+    context = {
+        'event_link': f'{DOMAIN_NAME}/event?id={event.id}',
+        'event_name': event.name
+    }
+    email.send_email(all_emails,
+                        f'Participants wanted - "{event.name}"',
+                        render_to_string('emails/participants_wanted.html', context))
