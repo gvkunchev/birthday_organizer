@@ -486,6 +486,8 @@ header {
     line-height: 50px;
     text-align: center; }
     .circle-block .circle-block-controls .circle-block-control {
+      text-decoration: none;
+      color: #F4F7F0;
       display: block;
       background-color: #eed102;
       margin: 5px; }
