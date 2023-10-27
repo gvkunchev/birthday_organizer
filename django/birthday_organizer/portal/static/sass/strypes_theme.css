@@ -467,6 +467,43 @@ header {
   flex: 0 0 100%;
   color: #0f596e; }
 
+.circle-block {
+  border: 1px solid #eb6012;
+  border-radius: 3px;
+  padding: 5px;
+  width: 250px;
+  height: 350px;
+  background-color: #ffffff;
+  flex: none; }
+  .circle-block .circle-block-content .circle-user-list {
+    height: 250px;
+    overflow: auto; }
+  .circle-block .circle-block-name {
+    font-weight: bold;
+    color: #0f596e; }
+  .circle-block .circle-block-controls {
+    height: 50px;
+    line-height: 50px;
+    text-align: center; }
+    .circle-block .circle-block-controls .circle-block-control {
+      display: block;
+      background-color: #eb6012;
+      margin: 5px; }
+      .circle-block .circle-block-controls .circle-block-control.half-control {
+        display: inline-block;
+        width: 40%; }
+
+.circle-type-set {
+  border: 2px solid #0f596e;
+  border-radius: 3px;
+  width: 100%;
+  margin: 20px auto; }
+  .circle-type-set legend {
+    text-align: left;
+    color: #0f596e;
+    font-weight: bold;
+    padding: 4px; }
+
 .event-comments {
   border: 2px solid #eb6012;
   border-radius: 3px;

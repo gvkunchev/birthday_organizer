@@ -8,7 +8,8 @@ from .forms import AddEventForm, AddPaymentForm, AddCommentForm
 from users.models import Theme, CustomUser
 from base.models import Event, Payment, Comment
 from base.tasks import send_email_participants_wanted
-
+from circles.models import Circle
+from circles.forms import AddCircleForm
 
 @login_required(login_url='/log_in')
 def index(request):
@@ -45,6 +46,62 @@ def users(request):
     '''Users page.'''
     context = request.user.get_all_other_users()
     return render(request, "users.html", context)
+
+@login_required(login_url='/log_in')
+def circles(request):
+    '''Circles page.'''
+    circles = {
+        'my_circles': [circle for circle in Circle.objects.all() if request.user in circle.users.all()],
+        'other_circles': [circle for circle in Circle.objects.all() if request.user not in circle.users.all()]
+    }
+    return render(request, "circles.html", circles)
+
+@login_required(login_url='/log_in')
+def join_circle(request):
+    '''Join a circle.'''
+    circle = get_object_or_404(Circle, pk=request.GET['id'])
+    circle.users.add(request.user)
+    return redirect(circles)
+
+@login_required(login_url='/log_in')
+def leave_circle(request):
+    '''Leave a circle.'''
+    circle = get_object_or_404(Circle, pk=request.GET['id'])
+    circle.users.remove(request.user)
+    if not len(circle.users.all()):
+        circle.delete()
+    return redirect(circles)
+
+@login_required(login_url='/log_in')
+def add_circle(request):
+    '''Add a new circle.'''
+    context = {
+        'type': 'add'
+    }
+    if request.method == 'POST':
+        form = AddCircleForm(request.POST)
+        context['errors'] = form.errors
+        if form.is_valid():
+            circle = form.save()
+            circle.users.add(request.user)
+            return redirect(circles)
+    return render(request, 'add_edit_circle.html', context)
+
+@login_required(login_url='/log_in')
+def edit_circle(request):
+    '''Edit a circle.'''
+    circle = get_object_or_404(Circle, pk=request.GET['id'])
+    context = {
+        'type': 'edit',
+        'circle': circle
+    }
+    if request.method == 'POST':
+        form = AddCircleForm(request.POST, instance=circle)
+        context['errors'] = form.errors
+        if form.is_valid():
+            form.save()
+            return redirect(circles)
+    return render(request, 'add_edit_circle.html', context)
 
 @login_required(login_url='/log_in')
 def add_event(request):
