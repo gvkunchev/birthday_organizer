@@ -1,0 +1,32 @@
+{% include 'head.html'%}
+{% include 'header.html' with active="events" %}
+
+<div class="content">
+
+    <div class="center">
+        <form action="" method="post" class="basic-form add-circle-form">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    {% with circle.name as default_name %}
+                    <td>
+                        <label for="name">Name:</label>
+                        <span class="error">{{ errors.name }}</span>
+                    </td>
+                    <td>
+                        <input type="text" name="name" id="name" value="{{ request.POST.name|default:default_name }}"/>
+                    </td>
+                    {% endwith %}
+                </tr>
+            </table>
+            {% if type == 'add' %}
+                <button type="submit">Create</button>
+            {% else %}
+                <button type="submit">Edit</button>
+            {% endif %}
+        </form>
+
+    </div>
+</div>
+
+{% include 'foot.html' %}

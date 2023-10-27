@@ -52,6 +52,18 @@ class Event(models.Model):
     @property
     def participants_ids(self):
         return map(lambda x: x.id, self.participants.all())
+    
+    def get_email_recepients(self):
+        """Get all users that share a circle with the celebrant."""
+        if not self.celebrant:
+            return list(CustomUser.objects.all())
+        users = []
+        for circle in self.celebrant.circles.all():
+            for user in circle.users.all():
+                if user.pk != self.celebrant.pk:
+                    if user not in users:
+                        users.append(user)
+        return users
 
     def get_all_payments(self):
         '''Get all payments for the event.'''

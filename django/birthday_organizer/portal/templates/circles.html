@@ -1,0 +1,76 @@
+{% load birthday_organizer_extras %}
+{% include 'head.html'%}
+{% include 'header.html' with active="circles" %}
+
+<div class="offset-wrapper">
+    <a href="add_circle" class="button-link float-right"><i class="fa fa-plus"></i> Add circle</a>
+</div>
+<div class="clearfix"></div>
+
+<div class="content">
+
+    <fieldset class="circle-type-set">
+        <legend>My circles</legend>
+        {% if my_circles %}
+            <div class="content">
+                {% for circle in my_circles %}
+                    <div class="content-block circle-block">
+                        <div class="circle-block-name nowrap">{{ circle.name }}</div>
+                        <hr/>
+                        <div class="circle-block-content">
+                            <div class="circle-user-list">
+                                {% if circle.users.all %}
+                                    {% for user in circle.users.all %}
+                                        <div class="circle-user tooltip-trigger" title="{{ user.email }}">{{ user.full_name }}</div>
+                                    {% endfor %}
+                                {% else %}
+                                    No users in this circle
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="circle-block-controls">
+                            <a href="/leave_circle?id={{ circle.pk }}" class="circle-block-control half-control">Leave</a>
+                            <a href="/edit_circle?id={{ circle.pk }}" class="circle-block-control half-control">Edit</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            There are no circles you are part of.
+        {% endif %}
+    </fieldset>
+
+    
+    
+    <fieldset class="circle-type-set">
+        <legend>Other circles</legend>
+        {% if other_circles %}
+            <div class="content">
+                {% for circle in other_circles %}
+                    <div class="content-block circle-block">
+                        <div class="circle-block-name nowrap">{{ circle.name }}</div>
+                        <hr/>
+                        <div class="circle-block-content">
+                            <div class="circle-user-list">
+                                {% if circle.users.all %}
+                                    {% for user in circle.users.all %}
+                                        <div class="circle-user tooltip-trigger" title="{{ user.email }}">{{ user.full_name }}</div>
+                                    {% endfor %}
+                                {% else %}
+                                    No users in this circle
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="circle-block-controls">
+                            <a href="/join_circle?id={{ circle.pk }}" class="circle-block-control">Join</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            There are no other circles you can join.
+        {% endif %}
+    </fieldset>
+
+</div>
+{% include 'foot.html' %}

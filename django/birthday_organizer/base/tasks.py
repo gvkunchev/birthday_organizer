@@ -49,7 +49,7 @@ def create_birthday_event_per_user(*args, **kwargs):
             event.save()
         # Collect all users to receive an alert email for the new event
         all_emails = []
-        for user in all_users.iterator():
+        for user in event.get_email_recepients():
             if user.is_superuser or not user.allow_alerts:
                 continue
             if user != event.celebrant:
@@ -152,9 +152,8 @@ def archive_events(*args, **kwargs):
 @shared_task(name="participants_wanted")
 def send_email_participants_wanted(event):
     """Broadcast email, asking for more participants."""
-    all_users = CustomUser.objects.all()
     all_emails = []
-    for user in all_users:
+    for user in event.get_email_recepients():
         if event.celebrant and user.pk == event.celebrant.pk:
             continue
         if user.pk == event.host.pk:

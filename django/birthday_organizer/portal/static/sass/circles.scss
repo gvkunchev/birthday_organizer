@@ -1,0 +1,53 @@
+.circle-block {
+    border: 1px solid $theme_color_main_light;
+    border-radius: 3px;
+    padding: 5px;
+    width: 250px;
+    height: 350px;
+    background-color: $theme_color_default_background;
+    flex: none;
+
+    .circle-block-content {
+        .circle-user-list {
+            height: 250px;
+            overflow: auto;
+        }
+    }
+
+    .circle-block-name {
+        font-weight: bold;
+        color: $theme_color_main_dark;
+    }
+
+    .circle-block-controls {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+
+        .circle-block-control {
+            display: block;
+            background-color: $theme_color_main_light;
+            margin: 5px;
+
+            &.half-control {
+                display: inline-block;
+                width: 40%;
+            }
+        }
+    }
+}
+
+
+.circle-type-set {
+    border: 2px solid $theme_color_main_dark;
+    border-radius: 3px;
+    width: 100%;
+    margin: 20px auto;
+
+    legend {
+        text-align: left;
+        color: $theme_color_main_dark;
+        font-weight: bold;
+        padding: 4px;
+    }
+}
