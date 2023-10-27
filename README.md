@@ -57,3 +57,8 @@ https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubect
     ```kubectl exec -i -t birthday-organizer-django-96c9f7568-gdx8h -- /bin/bash```  
   * Force update once a new container image is available:
     ```kubectl rollout restart deploy birthday-organizer-django```
+
+#### Development environment
+  * Set up virtualenv with django/requirements.txt installed and the following env variables set up:
+      * GMAIL_USER
+      * GMAIL_PASS
