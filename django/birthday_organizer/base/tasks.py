@@ -33,6 +33,8 @@ def create_birthday_event_per_user(*args, **kwargs):
     for user in all_users.iterator():
         if user.is_superuser:
             continue
+        if not user.is_active:
+            continue
         next_birthday = user.get_next_birthday()
         if not datetime.timedelta() < next_birthday - timezone.now() < EVENT_CREATOR_SPAN:
             continue # Birthday passed or not close enough
