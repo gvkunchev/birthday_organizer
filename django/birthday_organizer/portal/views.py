@@ -107,7 +107,7 @@ def edit_circle(request):
 def add_event(request):
     '''Add an event page.'''
     context = {
-        'users': CustomUser.objects.all().exclude(is_superuser=True),
+        'users': CustomUser.objects.all().exclude(is_superuser=True).exclude(is_active=False),
         'type': 'add'
     }
     if request.method == 'POST':
@@ -134,7 +134,7 @@ def delete_event(request):
 def edit_event(request):
     '''Add an event page.'''
     context = {
-        'users': CustomUser.objects.all().exclude(is_superuser=True),
+        'users': CustomUser.objects.all().exclude(is_superuser=True).exclude(is_active=False),
         'type': 'edit'
     }
     event = get_object_or_404(Event, pk=request.GET['id'])
