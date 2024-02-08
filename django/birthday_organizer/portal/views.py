@@ -35,7 +35,7 @@ def event(request):
             raise Event.DoesNotExist
         context = {'event': event, 'payments': event.get_all_payments(),
                    'currency': Payment.currency,
-                   'participants': event.participants.all().order_by('-first_name', '-last_name')}
+                   'participants': event.participants.all().order_by('first_name', 'last_name')}
         return render(request, "event.html", context)
     except KeyError:
         return redirect(events)
