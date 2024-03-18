@@ -226,7 +226,8 @@ def add_payment(request):
         if form.is_valid():
             form.save()
             context = {'event': event, 'payments': event.get_all_payments(),
-                       'currency': Payment.currency}
+                       'currency': Payment.currency,
+                       'participants': event.participants.all().order_by('first_name', 'last_name')}
             content = render_to_string("event_participants.html",
                                        context, request=request)
             return JsonResponse({'result': 'success', 'content': content})
@@ -287,7 +288,8 @@ def remove_payment(request):
         payment.delete()
         event = payment.event
         context = {'event': event, 'payments': event.get_all_payments(),
-                   'currency': Payment.currency}
+                   'currency': Payment.currency,
+                   'participants': event.participants.all().order_by('first_name', 'last_name')}
         content = render_to_string("event_participants.html",
                                    context, request=request)
         return JsonResponse({'result': 'success', 'content': content})
