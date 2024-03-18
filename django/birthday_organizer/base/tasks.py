@@ -152,8 +152,9 @@ def archive_events(*args, **kwargs):
                 item.save()
 
 @shared_task(name="participants_wanted")
-def send_email_participants_wanted(event):
+def send_email_participants_wanted(event_pk):
     """Broadcast email, asking for more participants."""
+    event = Event.objects.get(pk=event_pk)
     all_emails = []
     for user in event.get_email_recepients():
         if event.celebrant and user.pk == event.celebrant.pk:

@@ -202,9 +202,9 @@ def participants_wanted(request):
     if request.user != event.host:
         raise Event.DoesNotExist
     if os.environ.get('BIRTHDAY_ORGANIZER_ENV') == 'prd':
-        send_email_participants_wanted.delay(event)
+        send_email_participants_wanted.delay(event.pk)
     else:
-        send_email_participants_wanted(event)
+        send_email_participants_wanted(event.pk)
     return redirect('/event?id={}'.format(event.pk))
 
 @login_required(login_url='/log_in')
