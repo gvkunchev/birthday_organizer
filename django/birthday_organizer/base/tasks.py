@@ -54,6 +54,8 @@ def create_birthday_event_per_user(*args, **kwargs):
         for user in event.get_email_recepients():
             if user.is_superuser or not user.allow_alerts:
                 continue
+            if not user.is_active:
+                continue
             if user != event.celebrant:
                 all_emails.append(user.email)
         context = {
@@ -85,6 +87,8 @@ def alert_for_events_without_host(*args, **kwargs):
         all_emails = []
         for user in all_users.iterator():
             if user.is_superuser or not user.allow_alerts:
+                continue
+            if not user.is_active:
                 continue
             if user != event.celebrant:
                 all_emails.append(user.email)
