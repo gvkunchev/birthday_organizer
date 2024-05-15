@@ -8,7 +8,7 @@ FROM ubuntu
 
 # Install all generic software
 RUN apt update
-RUN apt install -y python3.10
+RUN apt install -y python3
 RUN apt install -y python3-pip
 RUN apt install -y apache2
 RUN apt install -y apache2-utils
