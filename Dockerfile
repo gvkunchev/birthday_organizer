@@ -17,7 +17,7 @@ RUN apt install -y redis-server
 
 # Install all python packages
 COPY django/requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip3 install --break-system-packages -r requirements.txt
 
 # Copy the Django project
 COPY django/birthday_organizer /var/birthday_organizer
