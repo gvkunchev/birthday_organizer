@@ -167,6 +167,8 @@ def send_email_participants_wanted(event_pk):
             continue
         if user in event.participants.all():
             continue
+        if not user.is_active:
+            continue
         all_emails.append(user.email)
     if not all_emails:
         return False
