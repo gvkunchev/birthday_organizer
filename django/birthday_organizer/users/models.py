@@ -11,7 +11,7 @@ from .model_managers import UserManager
 def validate_strypes(value):
     if not value.endswith('ict.eu'):
         raise ValidationError(
-            "Only Strypes employees are allowed",
+            "Only Strypes employees are allowed (*@ict.eu)",
             params={"value": value},
         )
 
